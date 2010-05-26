@@ -1,0 +1,17 @@
+
+25th May 2010
+* Study on neat template design
+* Tried out examples.
+* Study based on SlashBinSlash bash event website
+* Thinking howto UI design based on paper sketches.
+* Design of basic struture template
+* Discussion with mentor
+* Application of color scheme
+
+26th May 2010
+
+* Tried on template design
+* Tried out colour combo
+* Visited various sites to stdy colour scheme
+* Tried out examples
+* Generated a rough template for the project
