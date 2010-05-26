@@ -1,0 +1,8 @@
+25th May 2010
+* Study on pdf generation process
+* Tried out pdf generation examples
+* Design on resume generation wit pdf compatibility
+
+26th May 2010
+* Design on resume generation
+* Making page layout of resume
