@@ -1,9 +1,7 @@
 <?php
-	$host="localhost"; // Host name
-	$username="root"; // Mysql username
-	$password="neenujacob"; // Mysql password
-	$db_name="test"; // Database name
-	$tbl_name="members"; // Table name
+	include 'logininfo.php';
+	$user_tbl="members"; // Table name
+        $data_tbl="personalinfo";
 
 	// username and password sent from form
 	$myusername=$_POST['myusername'];
@@ -30,10 +28,13 @@
         $status="success";
 	if($count==0)
         {
-            $sql="INSERT INTO $tbl_name VALUES ('$myusername','$mypassword')";
+            $sql="INSERT INTO $user_tbl VALUES('$myusername','$mypassword')";
+            $result=mysql_query($sql);
+            $sql="INSERT INTO $data_tbl (username,area_of_work) VALUES('$myusername','general')";
             $result=mysql_query($sql);
         }
         else
             $status="error";
+
         die($status);
 ?>

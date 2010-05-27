@@ -1,8 +1,6 @@
 <?php
-	$host="localhost"; // Host name
-	$username="root"; // Mysql username
-	$password="neenujacob"; // Mysql password
-	$db_name="test"; // Database name
+        include 'logininfo.php';
+	
 	$tbl_name="members"; // Table name
 
 	// username and password sent from form
@@ -26,17 +24,14 @@
 
 	// Mysql_num_row is counting table row
 	$count=mysql_num_rows($result);
-	$status="success";
+	$status="error";
 
         // If result matched $myusername and $mypassword, table row must be 1 row
 	if($count==1)
-	{
-		// Register $myusername, $mypassword and redirect to file "edit.php"
-		session_register("myusername");
-		session_register("mypassword");
-		header("location:edit.php");
-	}
-	else
-		$status="error";
+        {
+                setcookie("user",$myusername,time()+3600);
+                session_start();
+                $status="success";
+        }
         die($status);
 ?>
