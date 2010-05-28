@@ -1,5 +1,8 @@
 <?php
         include 'fetchdatabase.php';
+        $sql="SELECT * FROM sections WHERE username='$user'";
+        $result=mysql_query($sql);
+        $sections=mysql_fetch_array($result);
 ?>
 
 <html>
@@ -7,7 +10,7 @@
 <head>
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <link rel="stylesheet" type="text/css" href="mystyle.css" />
-        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/ajaxfileupload.js"></script>
         <script type="text/javascript">
                 $(document).ready(function(){
@@ -33,6 +36,95 @@
                             echo '$("#website").hide();';
                         if($data['address']==NULL)
                             echo '$("#address").hide();';
+
+                        function section_hide($type)
+                        {
+                                echo '$("#'.$type.'").hide();';
+                        }
+                        function section_show($type)
+                        {
+                                echo '$("#'.$type.'").show();';
+                        }
+                        if($sections['summary']=='0')
+                        {
+                            section_hide("summary");
+                        }
+                        else
+                        {
+                            section_show("summary");
+                        }
+                        if($sections['skills']=='0')
+                        {
+                            section_hide("skills");
+                        }
+                        else
+                        {
+                            section_show("skills");
+                        }
+                        if($sections['experience']=='0')
+                        {
+                            section_hide("experience");
+                        }
+                        else
+                        {
+                            section_show("experience");
+                        }
+                        if($sections['studies']=='0')
+                        {
+                            section_hide("studies");
+                        }
+                        else
+                        {
+                            section_show("studies");
+                        }
+                        if($sections['interests']=='0')
+                        {
+                            section_hide("interests");
+                        }
+                        else
+                        {
+                            section_show("interests");
+                        }
+                        if($sections['hobbies']=='0')
+                        {
+                            section_hide("hobbies");
+                        }
+                        else
+                        {
+                            section_show("hobbies");
+                        }
+                        if($sections['languages']=='0')
+                        {
+                            section_hide("languages");
+                        }
+                        else
+                        {
+                            section_show("languages");
+                        }
+                        if($sections['certificates']=='0')
+                        {
+                            section_hide("certificates");
+                        }
+                        else
+                        {
+                            section_show("certificates");
+                        }
+                        if($sections['publications']=='0')
+                        {
+                            section_hide("publications");
+                        }
+                        else
+                        {
+                            section_show("publications");
+                        }
+                        if($sections['awards']=='0')
+                        {
+                            section_hide("awards");
+                        }
+                        else
+                        {
+                            section_show("awards");
+                        }
                         ?>
                         $("#profile_pic p").click(function(){
                                 $("#profile_pic p").hide();
@@ -64,11 +156,11 @@
 <body>
 
 	<div id="page">
-		<div id="header">
+            <div id="header">
 			<div id="sideline"><a href="logout.php" title="Log out">Logout</a></div>
 			<div id="title">Resume-Bakery</div>
 			<div id="tagline">Enter a tagline here</div>
-		</div>
+            </div>
             <div id="body" style="width: 730px;margin-left: auto;margin-right: auto;">
                         <div id="personal_info">
                                 <div id="profile_pic">
