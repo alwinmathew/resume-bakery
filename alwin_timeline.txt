@@ -6,3 +6,13 @@
 26th May 2010
 * Design on resume generation
 * Making page layout of resume
+
+27th May 2010
+* Study on section management
+* Design on different sections
+* Dynamic addition/removal of sections
+
+28th May 2010
+* Study of section management
+* Study on inline editing
+* Tried out inline editing examples
