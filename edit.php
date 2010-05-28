@@ -10,9 +10,26 @@
 <head>
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <link rel="stylesheet" type="text/css" href="editmystyle.css" />
-        <script type="text/javascript" src="jquery.js"></script>
-        <script type="text/javascript" src="js/ajaxfileupload.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.inlineEdit.js"></script>
         <script type="text/javascript">
+                function update_info(type,value)
+                {
+                        $.ajax({
+                                type: 'POST',
+                                url: "updateinfo.php",
+                                data: "infotype=" +type +"&infovalue=" +value,
+                                success: function(){
+                                        var fn="#"+type +" p";
+                                        $(".section div").hide();
+                                        $(fn).show();
+                                        if(value=="")
+                                            value="Click to edit description";
+                                        $(fn).html(value);
+                                }
+                        });
+                }
+
                 function update_section(type,value)
                 {
                         $.ajax({
@@ -20,13 +37,77 @@
                                 url: "updatesection.php",
                                 data: "sectiontype=" +type +"&sectionvalue=" +value,
                                 success: function(){
-                                        location.reload();
+                                        var section="#"+type;
+                                        var add="#add_"+type;
+                                        var sec="#sec_"+type;
+                                        if(value=="1")
+                                        {
+                                                $(section).show();
+                                                $(add).hide();
+                                                $(sec).show();
+                                        }
+                                        else
+                                        {
+                                                $(section).hide();
+                                                $(add).show();
+                                                $(sec).hide();
+                                        }
                                 }
                         });
+                }
+                function refresh_section()
+                {
+                        //$("#file_upload").hide();
+                        $(".section div").hide();
+                        $(".section p").show();
+                }
+                function edit_section(type)
+                {
+                        var edit="."+type +"_edit";
+                        var sec="#edit_"+type;
+                        var fn="#"+type +" p";
+                        var data=$(fn).html();
+                        refresh_section();
+                        if(data=="Click to edit description")
+                            data="";
+                        $(edit).show();
+                        $(fn).hide();
+                        $(sec).val(data);
+                        $(".save").click(function(){
+                                data=$(sec).val();
+                                update_info(type,data);
+                        });
+                        $(".cancel").click(function(){
+                                $(sec).val(data);
+                                $(".section div").hide();
+                                $(fn).show();
+                        });
+                       /* $(edit).click(function(e){
+				e.stopPropagation();
+			});
+                        $(document).click(function(){
+                                $(".section div").hide();
+                                $(fn).show();
+			});*/
+
+                        /*$("#page").click(function(event){
+                                var target = $(event.target);
+                                if (target.is(button))
+                                {
+                                        data=$(sec).val();
+                                        update_info(type,data);
+                                }
+                                else
+                                {
+                                        $(".section div").hide();
+                                        $(fn).show();
+                                }
+                        });*/
                 }
 
                 $(document).ready(function(){
                         $("#file_upload").hide();
+                        $(".section div").hide();
                         document.getElementById("add_title").defaultSelected = true;
                         $("#profile_pic p").click(function(){
                                 $(this).hide();
@@ -41,11 +122,101 @@
                         $("#first_name,#last_name,#gender,#dob,#marital_status,#phone,#email,#mobile,#website,#address,.section p").mouseout(function(){
                                 $(this).css("background-color", "white");
                         });
-                        $("#first_name").click(function(){
-                                var f_name=$("#first_name").val();
-                                $(this).html(f_name);
-                                
+                        $("#first_name").inlineEdit({
+                                save: function(event, data) {
+                                        update_info("first_name",data.value);
+                                },
+                                buttonText: 'save'
                         });
+                        $("#last_name").inlineEdit({                                
+                                save: function(event, data) {
+                                        update_info("last_name",data.value);
+                                },
+                                buttonText: 'save'
+                        });
+                        $("#phone").inlineEdit({
+                                save: function(event, data) {
+                                        update_info("phone",data.value);
+                                },
+                                buttonText: 'save'
+                        });
+                        $("#email").inlineEdit({
+                                save: function(event, data) {
+                                        update_info("email",data.value);
+                                },
+                                buttonText: 'save'
+                        });
+                        $("#mobile").inlineEdit({
+                                save: function(event, data) {
+                                        update_info("mobile",data.value);
+                                },
+                                buttonText: 'save'
+                        });
+                        $("#website").inlineEdit({
+                                save: function(event, data) {
+                                        update_info("website",data.value);
+                                },
+                                buttonText: 'save'
+                        });
+                        $("#address").inlineEdit({
+                                save: function(event, data) {
+                                        update_info("address",data.value);
+                                },
+                                buttonText: 'save'
+                        });
+
+                        $("#personal_info").click(function(){
+                                refresh_section();
+                        });
+
+                        $("#summary p").click(function(){
+                                edit_section("summary");
+                        });
+                        $("#skills p").click(function(){
+                                edit_section("skills");
+                        });
+                        $("#experience p").click(function(){
+                                edit_section("experience");
+                        });
+                        $("#studies p").click(function(){
+                                edit_section("studies");
+                        });
+                        $("#interests p").click(function(){
+                                edit_section("interests");
+                        });
+                        $("#hobbies p").click(function(){
+                                edit_section("hobbies");
+                        });
+                        $("#languages p").click(function(){
+                                edit_section("languages");
+                        });
+                        $("#certificates p").click(function(){
+                                edit_section("certificates");
+                        });
+                        $("#publications p").click(function(){
+                                edit_section("publications");
+                        });
+                        $("#awards p").click(function(){
+                                edit_section("awards");
+                        });
+
+                        /*$("#skills p").editable('updateinfo.php',{
+                                submit: 'save',
+                                type: 'textarea',
+                                id: 'infotype',
+                                name: 'infovalue',
+                                callback: function(){
+                                        location.reload();
+                                }
+                        });
+                        $("#summary p").inlineEdit({
+                                save: function(event, data) {
+                                        update_info("summary",data.value);
+                                },
+                                buttonText: 'save'
+                        });
+                        */
+                        
                         $("#add_summary").click(function(){
                                 update_section("summary","1");
                         });
@@ -261,50 +432,100 @@
                                         <tr><td id="mobile"><?echo $data['mobile']==NULL?'+ add mobile':$data['mobile'];?></td>
                                             <td id="website"><?echo $data['website']==NULL?'+ add website/blog URL':$data['website'];?></td></tr>
                                         
-                                        <tr id="address"><td><?echo $data['address']==NULL?'+ add address':$data['address'];?></td></tr>
+                                        <tr><td id="address"><?echo $data['address']==NULL?'+ add address':$data['address'];?></td></tr>
                                         </table>
                                 </div>
                         </div>
                         <table>
                             <tr class="section" id="summary">
                                 <td class="title"><h3>Summary</h3></td>
-                                <td><p><?echo $data['summary'];?></p></td>
+                                <td><p><?echo $data['summary'];?></p>
+                                    <div class="summary_edit">
+                                        <textarea id="edit_summary" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="skills">
                                 <td class="title"><h3>Skills</h3></td>
-                                <td><p><?echo $data['skills'];?></p></td>
+                                <td><p><?echo $data['skills'];?></p>
+                                    <div class="skills_edit">
+                                        <textarea id="edit_skills" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="experience">
                                 <td class="title"><h3>Experience</h3></td>
-                                <td><p><?echo $data['experience'];?></p></td>
+                                <td><p><?echo $data['experience'];?></p>
+                                    <div class="experience_edit">
+                                        <textarea id="edit_experience" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="studies">
                                 <td class="title"><h3>Studies</h3></td>
-                                <td><p><?echo $data['studies'];?></p></td>
+                                <td><p><?echo $data['studies'];?></p>
+                                    <div class="studies_edit">
+                                        <textarea id="edit_studies" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="interests">
                                 <td class="title"><h3>Interests</h3></td>
-                                <td><p><?echo $data['interests'];?></p></td>
+                                <td><p><?echo $data['interests'];?></p>
+                                    <div class="interests_edit">
+                                        <textarea id="edit_interests" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="hobbies">
                                 <td class="title"><h3>Hobbies</h3></td>
-                                <td><p><?echo $data['hobbies'];?></p></td>
+                                <td><p><?echo $data['hobbies'];?></p>
+                                    <div class="hobbies_edit">
+                                        <textarea id="edit_hobbies" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="languages">
                                 <td class="title"><h3>Languages</h3></td>
-                                <td><p><?echo $data['languages'];?></p></td>
+                                <td><p><?echo $data['languages'];?></p>
+                                    <div class="languages_edit">
+                                        <textarea id="edit_languages" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="certificates">
                                 <td class="title"><h3>Certificates</h3></td>
-                                <td><p><?echo $data['certificates'];?></p></td>
+                                <td><p><?echo $data['certificates'];?></p>
+                                    <div class="certificates_edit">
+                                        <textarea id="edit_certificates" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="publications">
                                 <td class="title"><h3>Publications</h3></td>
-                                <td><p><?echo $data['publications'];?></p></td>
+                                <td><p><?echo $data['publications'];?></p>
+                                    <div class="publications_edit">
+                                        <textarea id="edit_publications" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr class="section" id="awards">
                                 <td class="title"><h3>Awards</h3></td>
-                                <td><p><?echo $data['awards'];?></p></td>
+                                <td><p><?echo $data['awards'];?></p>
+                                    <div class="awards_edit">
+                                        <textarea id="edit_awards" cols="60" rows="8"></textarea>
+                                        <button class="save">save</button><button class="cancel">cancel</button>
+                                    </div>
+                                </td>
                             </tr>
                         </table>
 		</div>

@@ -43,10 +43,15 @@
                 font-size: 12px;
                 width: 400px;
         }
+        #info td
+        {
+                min-width: 150px;
+                height: 30px;
+                border: none;
+        }
         td
         {
-                min-width: 200px;
-                height: 30px;
+                border-top: 1px dotted gray;
         }
         h3
         {
@@ -68,7 +73,6 @@
                 padding-top: 5px;
                 font-size: small;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
-                border: 1px dotted teal;
                 width: 480px;
                 min-height: 150px;
         }
