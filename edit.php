@@ -11,20 +11,26 @@
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <link rel="stylesheet" type="text/css" href="editmystyle.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery.inlineEdit.js"></script>
         <script type="text/javascript">
-                function update_info(type,value)
+                function update_info(type,value,fn)
                 {
                         $.ajax({
                                 type: 'POST',
                                 url: "updateinfo.php",
                                 data: "infotype=" +type +"&infovalue=" +value,
                                 success: function(){
-                                        var fn="#"+type +" p";
+                                        //var fn="#"+type +" p";
                                         $(".section div").hide();
+                                        $(".info_edit").hide();
                                         $(fn).show();
                                         if(value=="")
-                                            value="Click to edit description";
+                                            if(fn.indexOf(" p")>=0)
+                                                value="Click to edit description";
+                                            else
+                                            {
+                                                value="+ add "+type;
+                                                value=value+(type=="website"?"/blog URL":"");
+                                            }
                                         $(fn).html(value);
                                 }
                         });
@@ -55,11 +61,38 @@
                                 }
                         });
                 }
+                function refresh_info()
+                {
+                        $(".info_edit").hide();
+                        $("#first_name,#last_name,#info p").show();
+                        $("#file_upload").hide();
+                        $("#profile_pic p").show();
+                }
                 function refresh_section()
                 {
-                        //$("#file_upload").hide();
                         $(".section div").hide();
                         $(".section p").show();
+                }
+                function edit_info(type)
+                {
+                        var edit="#"+type +"_edit";
+                        var sec="#edit_"+type;
+                        var fn="#"+type;
+                        var data=$(fn).html();
+                        refresh_info();
+                        if(data.substr(0,5)=="+ add")
+                            data="";
+                        $(fn).hide();
+                        $(edit).show();
+                        $(sec).val(data);
+                        $(".save").click(function(){
+                                data=$(sec).val();
+                                update_info(type,data,fn);
+                        });
+                        $(".cancel").click(function(){
+                                $(sec).val(data);
+                                refresh_info();
+                        });
                 }
                 function edit_section(type)
                 {
@@ -75,12 +108,11 @@
                         $(sec).val(data);
                         $(".save").click(function(){
                                 data=$(sec).val();
-                                update_info(type,data);
+                                update_info(type,data,fn);
                         });
                         $(".cancel").click(function(){
                                 $(sec).val(data);
-                                $(".section div").hide();
-                                $(fn).show();
+                                refresh_section();
                         });
                        /* $(edit).click(function(e){
 				e.stopPropagation();
@@ -107,66 +139,109 @@
 
                 $(document).ready(function(){
                         $("#file_upload").hide();
-                        $(".section div").hide();
+                        refresh_info();
+                        refresh_section();
                         document.getElementById("add_title").defaultSelected = true;
                         $("#profile_pic p").click(function(){
+                                refresh_info();
                                 $(this).hide();
                                 $("#file_upload").show();
                         });
                         $("#preview").click(function(){
                                 window.location.replace("preview.php");
                         });
-                        $("#first_name,#last_name,#gender,#dob,#marital_status,#phone,#email,#mobile,#website,#address,.section p").mouseover(function(){
+                        $("#first_name,#last_name,#info td,.section p").mouseover(function(){
                                 $(this).css("background-color", "#ffffdd");
                         });
-                        $("#first_name,#last_name,#gender,#dob,#marital_status,#phone,#email,#mobile,#website,#address,.section p").mouseout(function(){
+                        $("#first_name,#last_name,#info td,.section p").mouseout(function(){
                                 $(this).css("background-color", "white");
                         });
-                        $("#first_name").inlineEdit({
+                        /*$("#first_name").inlineEdit({
                                 save: function(event, data) {
                                         update_info("first_name",data.value);
                                 },
-                                buttonText: 'save'
+                                buttonText: 'save',
+                                placeholder: 'FirstName'
                         });
                         $("#last_name").inlineEdit({                                
                                 save: function(event, data) {
                                         update_info("last_name",data.value);
                                 },
-                                buttonText: 'save'
+                                buttonText: 'save',
+                                placeholder: 'LastName'
                         });
                         $("#phone").inlineEdit({
                                 save: function(event, data) {
                                         update_info("phone",data.value);
                                 },
-                                buttonText: 'save'
+                                buttonText: 'save',
+                                placeholder: '+ add phone'
                         });
                         $("#email").inlineEdit({
                                 save: function(event, data) {
                                         update_info("email",data.value);
                                 },
-                                buttonText: 'save'
+                                buttonText: 'save',
+                                placeholder: '+add email'
                         });
                         $("#mobile").inlineEdit({
                                 save: function(event, data) {
                                         update_info("mobile",data.value);
                                 },
-                                buttonText: 'save'
+                                buttonText: 'save',
+                                placeholder: '+ add mobile'
                         });
                         $("#website").inlineEdit({
                                 save: function(event, data) {
                                         update_info("website",data.value);
                                 },
-                                buttonText: 'save'
+                                buttonText: 'save',
+                                placeholder: '+ add website/blog URL'
                         });
                         $("#address").inlineEdit({
                                 save: function(event, data) {
                                         update_info("address",data.value);
                                 },
-                                buttonText: 'save'
+                                buttonText: 'save',
+                                placeholder: '+ add address'
+                        });*/
+
+                        $("#personal_info,#section_view").click(function(){
+                                refresh_section();
+                        });
+                        $(".section,#section_view").click(function(){
+                                refresh_info();
                         });
 
-                        $("#personal_info").click(function(){
-                                refresh_section();
+                        $("#first_name").click(function(){
+                                edit_info("first_name");
+                        });
+                        $("#last_name").click(function(){
+                                edit_info("last_name");
+                        });
+                        $("#gender").click(function(){
+                                edit_info("gender");
+                        });
+                        $("#dob").click(function(){
+                                edit_info("dob");
+                        });
+                        $("#marital_status").click(function(){
+                                edit_info("marital_status");
+                        });
+                        $("#phone").click(function(){
+                                edit_info("phone");
+                        });
+                        $("#mobile").click(function(){
+                                edit_info("mobile");
+                        });
+                        $("#email").click(function(){
+                                edit_info("email");
+                        });
+                        $("#website").click(function(){
+                                edit_info("website");
+                        });
+                        $("#address").click(function(){
+                                edit_info("address");
                         });
 
                         $("#summary p").click(function(){
@@ -419,20 +494,67 @@
                                 <div id="info">
                                         <div class="name">
                                                 <span id="first_name"><?echo $data['first_name']?></span>
-                                                <span id="last_name">&nbsp;<?echo $data['last_name']?></span>
+                                                <span class="info_edit" id="first_name_edit">
+                                                    <input id="edit_first_name" type="text">
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span>
+                                                &nbsp;
+                                                <span id="last_name"><?echo $data['last_name']?></span>
+                                                <span class="info_edit" id="last_name_edit">
+                                                    <input id="edit_last_name" type="text">
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span>
                                         </div>
                                         <table>
-                                        <tr><td id="gender" onclick=""><?echo $data['gender']==NULL?'+ add gender':$data['gender']=='M'?'Male':'Female';?></td>
-                                            <td id="dob"><?echo $data['dob']==NULL?'+ add date of birth':$data['dob'];?></td>
-                                            <td id="marital_status"><?echo $data['marital_status']==NULL?'+ add marital status':$data['marital_status']=='S'?'Single':'Married';?></td></tr>
+                                            <tr><td><p id="gender"><?echo $data['gender']==NULL?'+ add gender':$data['gender']=='M'?'Male':'Female';?></p>
+                                                <span class="info_edit" id="gender_edit">
+                                                    <select name="add_gender">
+                                                        <option id="e">Male</option>
+                                                        <option id="add_title">Female</option>
+                                                    </select>
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span></td>
+                                                <td><p id="dob"><?echo $data['dob']==NULL?'+ add date of birth':$data['dob'];?></p>
+                                                <span class="info_edit" id="first_name_edit">
+                                                    <input id="edit_first_name" type="text">
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span></td>
+                                                <td><p id="marital_status"><?echo $data['marital_status']==NULL?'+ add marital status':$data['marital_status']=='S'?'Single':'Married';?></p>
+                                                <span class="info_edit" id="marital_status_edit">
+                                                    <select name="add_marital_status">
+                                                        <option id="add_title">Single</option>
+                                                        <option id="add_title">Married</option>
+                                                    </select>
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span></td></tr>
                                         
-                                        <tr><td id="phone"><?echo $data['phone']==NULL?'+ add phone':$data['phone'];?></td>
-                                            <td id="email"><?echo $data['email']==NULL?'+ add email':$data['email'];?></td></tr>
+                                            <tr><td><p id="phone"><?echo $data['phone']==NULL?'+ add phone':$data['phone'];?></p>
+                                                <span class="info_edit" id="phone_edit">
+                                                    <input id="edit_phone" type="text">
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span></td>
+                                                <td><p id="email"><?echo $data['email']==NULL?'+ add email':$data['email'];?></p>
+                                                <span class="info_edit" id="email_edit">
+                                                    <input id="edit_email" type="text">
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span></td></tr>
                                         
-                                        <tr><td id="mobile"><?echo $data['mobile']==NULL?'+ add mobile':$data['mobile'];?></td>
-                                            <td id="website"><?echo $data['website']==NULL?'+ add website/blog URL':$data['website'];?></td></tr>
+                                            <tr><td><p id="mobile"><?echo $data['mobile']==NULL?'+ add mobile':$data['mobile'];?></p>
+                                                <span class="info_edit" id="mobile_edit">
+                                                    <input id="edit_mobile" type="text">
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span></td>
+                                                <td><p id="website"><?echo $data['website']==NULL?'+ add website/blog URL':$data['website'];?></p>
+                                                <span class="info_edit" id="website_edit">
+                                                    <input id="edit_website" type="text">
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span></td></tr>
                                         
-                                        <tr><td id="address"><?echo $data['address']==NULL?'+ add address':$data['address'];?></td></tr>
+                                            <tr><td><p id="address"><?echo $data['address']==NULL?'+ add address':$data['address'];?></p>
+                                                <span class="info_edit" id="address_edit">
+                                                    <input id="edit_address" type="text">
+                                                    <button class="save">save</button><button class="cancel">cancel</button>
+                                                </span></td></tr>
                                         </table>
                                 </div>
                         </div>
