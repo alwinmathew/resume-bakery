@@ -16,3 +16,8 @@
 * Study of section management
 * Study on inline editing
 * Tried out inline editing examples
+
+29th May 2010
+* Design on inline editing options
+* Study on "click-remove" of data fields
+* Tried out examples for click-removal of data fields
