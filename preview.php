@@ -8,6 +8,7 @@
 <html>
 
 <head>
+        <title>preview - Resume Bakery</title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <link rel="stylesheet" type="text/css" href="mystyle.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
@@ -159,7 +160,7 @@
             <div id="header">
 			<div id="sideline"><a href="logout.php" title="Log out">Logout</a></div>
 			<div id="title">Resume-Bakery</div>
-			<div id="tagline">Enter a tagline here</div>
+			<div id="tagline">easy resume management</div>
             </div>
             <div id="body" style="width: 730px;margin-left: auto;margin-right: auto;">
                         <div id="personal_info">

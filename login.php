@@ -1,6 +1,7 @@
 <html>
 
 <head>
+        <title>login - Resume Bakery</title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
 	<style type="text/css">
 	#page
@@ -260,7 +261,7 @@
 		<div id="header">
 			<div id="sideline"><a href="login.php" title="Login to your account">Login</a> | <a id="register" title="Register as new user" onclick='$("#popup").show();'>Register</a></div>
 			<div id="title"><a href="main.html">Resume-Bakery</a></div>
-			<div id="tagline">Enter a tagline here</div>
+			<div id="tagline">easy resume management</div>
 		</div>
 
             <div id="login_box">

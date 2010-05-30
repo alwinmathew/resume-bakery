@@ -10,7 +10,10 @@
         $sql="UPDATE personalinfo SET skills='$type' WHERE username='$user'";
         $result=mysql_query($sql);
     }*/
-    $sql="UPDATE personalinfo SET $type='$data' WHERE username='$user'";
+    if($data!="")
+            $sql="UPDATE personalinfo SET $type='$data' WHERE username='$user'";
+    else
+            $sql="UPDATE personalinfo SET $type=DEFAULT WHERE username='$user'";
     $result=mysql_query($sql);
     die;
 ?>
