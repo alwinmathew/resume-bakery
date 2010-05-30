@@ -8,6 +8,7 @@
 <html>
 
 <head>
+        <title>edit - Resume Bakery</title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <link rel="stylesheet" type="text/css" href="editmystyle.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
@@ -19,12 +20,15 @@
                                 url: "updateinfo.php",
                                 data: "infotype=" +type +"&infovalue=" +value,
                                 success: function(){
-                                        //$(".section div").hide();
+                                        $(".section div").hide();
                                         $(".info_edit").hide();
                                         $(fn).show();
                                         if(type=="dob")
                                         {
-                                                $(fn).html($("#dob_day option:selected").val()+" "+$("#dob_month option:selected").html()+" "+$("#dob_year option:selected").val());
+                                                if(value=="")
+                                                    $(fn).html("+ add date of birth");
+                                                else
+                                                    $(fn).html($("#dob_day option:selected").val()+" "+$("#dob_month option:selected").html()+" "+$("#dob_year option:selected").val());
                                                 return;
                                         }
                                         if(value=="")
@@ -32,8 +36,12 @@
                                                 value="Click to edit description";
                                             else
                                             {
-                                                value="+ add "+type;
+                                                value=(type=="marital_status")?"+ add marital status":"+ add "+type;
                                                 value=value+(type=="website"?"/blog URL":"");
+                                                if(type=="first_name")
+                                                    value="firstname";
+                                                else if(type=="last_name")
+                                                    value="lastname";
                                             }
                                         $(fn).html(value);
                                 }
@@ -85,7 +93,7 @@
                         var selection="#add_"+type;
                         var data=$(fn).html();
                         refresh_info();
-                        if(data.substr(0,5)=="+ add")
+                        if(data.substr(0,5)=="+ add"||data=="firstname"||data=="lastname")
                             data="";
                         $(fn).hide();
                         $(edit).show();
@@ -95,6 +103,8 @@
                                         data=$(selection+" option:selected").val();
                                 else
                                         data=$(sec).val();
+                                if(data=="--")
+                                        data="";
                                 update_info(type,data,fn);
                         });
                         $(".cancel").click(function(){
@@ -132,6 +142,8 @@
                                 month=$("#dob_month option:selected").val();
                                 year=$("#dob_year option:selected").val();
                                 value=year+"-"+month+"-"+day;
+                                if(day=="--"||month=="--"||year=="--")
+                                    value="";
                                 update_info("dob",value,"#dob");
                         });
                         $(".cancel").click(function(){
@@ -319,7 +331,7 @@
 		<div id="header">
 			<div id="sideline"><a href="logout.php" title="Log out">Logout</a></div>
 			<div id="title">Resume-Bakery</div>
-			<div id="tagline">Enter a tagline here</div>
+                        <div id="tagline">easy resume management</div>
 		</div>
 		<div id="body">
                         <div id="personal_info">
@@ -333,25 +345,26 @@
                                 </div>
                                 <div id="info">
                                         <div class="name">
-                                                <span class="fields" id="first_name"><?echo $data['first_name']?></span>
+                                                <span class="fields" id="first_name"><?echo $data['first_name'];?></span>
                                                 <span class="info_edit" id="first_name_edit">
                                                     <input id="edit_first_name" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span>
                                                 &nbsp;
-                                                <span class="fields" id="last_name"><?echo $data['last_name']?></span>
+                                                <span class="fields" id="last_name"><?echo $data['last_name'];?></span>
                                                 <span class="info_edit" id="last_name_edit">
                                                     <input id="edit_last_name" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span>
                                         </div>
                                         <table>
-                                            <tr><td><p class="fields" id="gender"><?echo $data['gender']==NULL?'+ add gender':$data['gender']=='M'?'Male':'Female';?></p>
+                                            <tr><td><p class="fields" id="gender"><?echo $data['gender']==NULL?'+ add gender':($data['gender']=='M'?'Male':'Female');?></p>
                                                 <span class="info_edit" id="gender_edit">
                                                     <select id="add_gender">
+                                                        <option>--</option>
                                                         <option id="male">Male</option>
                                                         <option id="female">Female</option>
-                                                    </select>
+                                                    </select><br>
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td>
                                                 <td><p id="dob"><?echo $data['dob']==NULL?'+ add date of birth':date('d M Y',strtotime($data['dob']));?></p>
@@ -388,6 +401,7 @@
                                                             <option value="29">29</option>
                                                             <option value="30">30</option>
                                                             <option value="31">31</option>
+                                                            <option>--</option>
                                                     </select>
                                                     <select id="dob_month">
                                                             <option value="01">Jan</option>
@@ -402,8 +416,10 @@
                                                             <option value="10">Oct</option>
                                                             <option value="11">Nov</option>
                                                             <option value="12">Dec</option>
+                                                            <option>--</option>
                                                     </select>
                                                     <select id="dob_year">
+                                                            <option>--</option>
                                                             <option value="2010">2010</option>
                                                             <option value="2009">2009</option>
                                                             <option value="2008">2008</option>
@@ -515,16 +531,16 @@
                                                             <option value="1902">1902</option>
                                                             <option value="1901">1901</option>
                                                             <option value="1900">1900</option>
-                                                    </select>
-                                                    <br>
+                                                    </select><br>
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td>
-                                                <td><p class="fields" id="marital_status"><?echo $data['marital_status']==NULL?'+ add marital status':$data['marital_status']=='S'?'Single':'Married';?></p>
+                                                <td><p class="fields" id="marital_status"><?echo $data['marital_status']==NULL?'+ add marital status':($data['marital_status']=='S'?'Single':'Married');?></p>
                                                 <span class="info_edit" id="marital_status_edit">
                                                     <select id="add_marital_status">
+                                                        <option>--</option>
                                                         <option id="single">Single</option>
                                                         <option id="married">Married</option>
-                                                    </select>
+                                                    </select><br>
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td></tr>
                                         

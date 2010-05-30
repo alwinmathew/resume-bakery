@@ -21,3 +21,8 @@
 * Design on inline editing options
 * Study on "click-remove" of data fields
 * Tried out examples for click-removal of data fields
+
+30th May 2010
+* Tested various editing conditions
+* Completed editing design
+* Study on compatibility of pdf generation
