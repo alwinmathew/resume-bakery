@@ -169,15 +169,14 @@
         
         #popup_close
         {
-                width:13px;
-                height:13px;
+                width:16px;
+                height:16px;
                 position:relative;
                 cursor:pointer;
-                background-color: teal;
+                background: url('images/cancel.png');
                 left:250px;
                 text-align:center;
                 top:-15px;
-                border: 1px solid red;
         }
 	</style>
 	<script type="text/javascript" src="js/jquery.js"></script>

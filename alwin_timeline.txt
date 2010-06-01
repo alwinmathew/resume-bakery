@@ -26,3 +26,7 @@
 * Tested various editing conditions
 * Completed editing design
 * Study on compatibility of pdf generation
+
+31st May 2010
+* Tried out pdf generation of resumes
+* Completed design on pdf generation tool
