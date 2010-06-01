@@ -68,12 +68,14 @@
         }
         .section p
         {
-                padding-top: 5px;
+                margin-top: 5px;
+                margin-bottom: 5px;
                 font-size: small;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 /*border: 1px dotted gray;*/
                 width: 480px;
                 min-height: 150px;
+                text-align: justify;
         }
         #edit_dob
         {

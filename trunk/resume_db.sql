@@ -57,7 +57,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES ('alwin','8d10344331a7ac7665c83d8956bfc992'),('melwin','69f50a8fa8200560db52e968572e2542');
+INSERT INTO `members` VALUES ('ancy','8d10344331a7ac7665c83d8956bfc992'),('alwin','8d10344331a7ac7665c83d8956bfc992'),('melwin','69f50a8fa8200560db52e968572e2542');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,16 +82,16 @@ CREATE TABLE `personalinfo` (
   `website` varchar(30) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `profile_pic` varchar(25) DEFAULT NULL,
-  `summary` varchar(500) DEFAULT NULL,
-  `skills` varchar(500) DEFAULT NULL,
-  `experience` varchar(500) DEFAULT NULL,
-  `studies` varchar(500) DEFAULT NULL,
-  `interests` varchar(500) DEFAULT NULL,
-  `hobbies` varchar(500) DEFAULT NULL,
-  `languages` varchar(500) DEFAULT NULL,
-  `certificates` varchar(500) DEFAULT NULL,
-  `publications` varchar(500) DEFAULT NULL,
-  `awards` varchar(500) DEFAULT NULL,
+  `summary` varchar(2000) DEFAULT NULL,
+  `skills` varchar(2000) DEFAULT NULL,
+  `experience` varchar(2000) DEFAULT NULL,
+  `studies` varchar(2000) DEFAULT NULL,
+  `interests` varchar(2000) DEFAULT NULL,
+  `hobbies` varchar(2000) DEFAULT NULL,
+  `languages` varchar(2000) DEFAULT NULL,
+  `certificates` varchar(2000) DEFAULT NULL,
+  `publications` varchar(2000) DEFAULT NULL,
+  `awards` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`username`,`area_of_work`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -102,7 +102,7 @@ CREATE TABLE `personalinfo` (
 
 LOCK TABLES `personalinfo` WRITE;
 /*!40000 ALTER TABLE `personalinfo` DISABLE KEYS */;
-INSERT INTO `personalinfo` VALUES ('alwin','general','Alwin','Mathew','u','1989-09-08','u','','','','','XI/673H, Puthenpurackal House, Kunnumpuram, Thrikkakara, Cochin - 682021','images/clematis.jpg','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('melwin','general','firstname','lastname',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `personalinfo` VALUES ('alwin','general','Alwin','Mathew','M','2006-06-03','S','0484-2295565','91 8891406276','alwinmathew316@gmail.com',NULL,'XI/673H, Puthenpurackal House, Kunnumpuram, Thrikkakara, Cochin - 682021','images/clematis.jpg','A wiki ( /Ã‹Ë†wÃ‰Âªki/ WIK-ee) is a website  that allows the easy[1]  creation and editing of any number of interlinked web pages  via a web browser using a simplified markup language or a WYSIWYG text editor.[2][3]  Wikis are typically powered by wiki software and are often used to create collaborative websites, to power community websites, for personal note taking, in corporate intranets, and in knowledge management systems.\n\nWikis may exist to serve a specific purpose, and in such cases, user','sfa f asf my skills field..\nsfsdfg s',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL),('melwin','general','firstname','lastname',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('ancy','general','firstname','lastname',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `personalinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +136,7 @@ CREATE TABLE `sections` (
 
 LOCK TABLES `sections` WRITE;
 /*!40000 ALTER TABLE `sections` DISABLE KEYS */;
-INSERT INTO `sections` VALUES ('alwin','general','1','1','1','0','0','0','0','0','0','0');
+INSERT INTO `sections` VALUES ('alwin','general','1','1','1','0','0','1','0','0','0','0');
 /*!40000 ALTER TABLE `sections` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -149,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-05-29 20:54:20
+-- Dump completed on 2010-05-31 16:45:14
