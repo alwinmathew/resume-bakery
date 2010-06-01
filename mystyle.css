@@ -1,25 +1,29 @@
         #body
 	{
 		margin-top:10px;
-		background-color: white;/*#b8dbe6;*/
+		background-color: white;
 		min-height:677px;
 		padding:30px;
-                margin-right: 150px;
+                width: 690px;
+                margin-left: auto;
+                margin-right: auto;
 	}
 
         #personal_info
         {
-                height: 230px;
+                height: 200px;
         }
 
         #profile_pic
 	{
+                margin-left: 15px;
+                margin-top: 15px;
 		width: 120px;
 		height: 120px;
 		background-color: white;
                 font-size: 10px;
 	}
-        .name
+        #first_name,#last_name
         {
                 font-size: 34px;
                 font-weight: bold;
@@ -32,10 +36,9 @@
 	#info
 	{
                 margin-left: 200px;
-                margin-top: -120px;
+                margin-top: -130px;
 		font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
-                /*white-space: pre;*/
 	}
         #info table
         {
@@ -47,42 +50,41 @@
         {
                 min-width: 150px;
                 height: 30px;
-                border: none;
         }
-        td
-        {
-                border-top: 1px dotted gray;
-        }
+        
         h3
         {
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: x-large;
         }
-        .section
-        {
-                border-top: 1px dotted gray;
-        }
         .title
         {
-                width: 200px;
-                /*border: 1px dotted gray;*/
+                width: 192px;
+                vertical-align: top;
+        }
+        .data
+        {
+                width: 480px;
                 vertical-align: top;
         }
         .section p
         {
-                padding-top: 5px;
+                margin-top: 5px;
+                margin-bottom: 5px;
                 font-size: small;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
-                width: 480px;
-                min-height: 150px;
+                min-height: 100px;
+                text-align: justify;
         }
         .section td
         {
-                
+                height: 100px;
+                border-top: 1px dotted gray;
         }
         #gender,#g,#dob,#d,#marital_status
         {
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
+                font-weight: bold;
         }
 

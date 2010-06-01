@@ -66,12 +66,13 @@
 		font-family: "Trebuchet MS", Helvetica, sans-serif;
 		font-size: 13px;
 		padding-bottom: 5px;
+                font-style: italic;
 	}
         #preview,#edit
         {
                 position: absolute;
                 top: 180px;
-                left: 860px;
+                left: 840px;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
                 cursor: pointer;
@@ -80,10 +81,13 @@
         {
                 position: absolute;
                 top: 200px;
-                left: 860px;
+                left: 840px;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
-                cursor: pointer;
+        }
+        #pdf a
+        {
+                text-decoration: none;
         }
         #section_view
         {
