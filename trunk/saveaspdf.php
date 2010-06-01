@@ -52,52 +52,52 @@ $html.='
 $html.=($sections['summary']=='1')?
                             '<tr class="section" id="summary">
                                 <td class="title"><h3>Summary</h3></td>
-                                <td class="data"><p>'.$data['summary'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['summary'].'</p></td>
                             </tr>':'';
 $html.=($sections['skills']=='1')?
                             '<tr class="section" id="skills">
                                 <td class="title"><h3>Skills</h3></td>
-                                <td class="data"><p>'.$data['skills'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['skills'].'</p></td>
                             </tr>':'';
 $html.=($sections['experience']=='1')?
                             '<tr class="section" id="experience">
                                 <td class="title"><h3>Experience</h3></td>
-                                <td class="data"><p>'.$data['experience'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['experience'].'</p></td>
                             </tr>':'';
 $html.=($sections['studies']=='1')?
                             '<tr class="section" id="studies">
                                 <td class="title"><h3>Studies</h3></td>
-                                <td class="data"><p>'.$data['studies'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['studies'].'</p></td>
                             </tr>':'';
 $html.=($sections['interests']=='1')?
                             '<tr class="section" id="interests">
                                 <td class="title"><h3>Interests</h3></td>
-                                <td class="data"><p>'.$data['interests'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['interests'].'</p></td>
                             </tr>':'';
 $html.=($sections['hobbies']=='1')?
                             '<tr class="section" id="hobbies">
                                 <td class="title"><h3>Hobbies</h3></td>
-                                <td class="data"><p>'.$data['hobbies'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['hobbies'].'</p></td>
                             </tr>':'';
 $html.=($sections['languages']=='1')?
                             '<tr class="section" id="languages">
                                 <td class="title"><h3>Languages</h3></td>
-                                <td class="data"><p>'.$data['languages'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['languages'].'</p></td>
                             </tr>':'';
 $html.=($sections['certificates']=='1')?
                             '<tr class="section" id="certificates">
                                 <td class="title"><h3>Certificates</h3></td>
-                                <td class="data"><p>'.$data['certificates'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['certificates'].'</p></td>
                             </tr>':'';
 $html.=($sections['publications']=='1')?
                             '<tr class="section" id="publications">
                                 <td class="title"><h3>Publications</h3></td>
-                                <td class="data"><p>'.$data['publications'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['publications'].'</p></td>
                             </tr>':'';
 $html.=($sections['awards']=='1')?
                             '<tr class="section" id="awards">
                                 <td class="title"><h3>Awards</h3></td>
-                                <td class="data"><p>'.$data['awards'].'</p></td>
+                                <td class="data" align="justify"><p>'.$data['awards'].'</p></td>
                             </tr>':'';
 
 $html.='</table>';
