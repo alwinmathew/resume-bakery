@@ -1,7 +1,8 @@
 <?php
 
 
-include("fetchdatabase.php");
+include 'session.php';
+include 'fetchdatabase.php';
 $sql="SELECT * FROM sections WHERE username='$user'";
 $result=mysql_query($sql);
 $sections=mysql_fetch_array($result);

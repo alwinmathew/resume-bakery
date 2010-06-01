@@ -1,4 +1,5 @@
 <?
+        include 'session.php';
         include 'fetchdatabase.php';
         $sql="SELECT * FROM sections WHERE username='$user'";
         $result=mysql_query($sql);
@@ -54,7 +55,17 @@
                                 type: 'POST',
                                 url: "updatesection.php",
                                 data: "sectiontype=" +type +"&sectionvalue=" +value,
-                                success: function(){
+                                success: function(data){
+                                        if(type=="sharing")
+                                        {
+                                            if(data=="1")
+                                                $("#share span").html("Public");
+                                            else
+                                                $("#share span").html("Private");
+                                            /*var share=(value=='1')?("Public"):("Private");
+                                            $("#share span").html(share);*/
+                                            return;
+                                        }
                                         var section="#"+type;
                                         var add="#add_"+type;
                                         var sec="#sec_"+type;
@@ -175,7 +186,10 @@
                                 $("#file_upload").show();
                         });
                         $("#preview").click(function(){
-                                window.location.replace("preview.php");
+                                window.location.replace("preview");
+                        });
+                        $("#share span").click(function(){
+                                update_section("sharing","");
                         });
                         $("#first_name,#last_name,#info td,.section p").mouseover(function(){
                                 $(this).css("background-color", "#ffffdd");
@@ -562,6 +576,7 @@
                     <option class="add_new" id="add_awards">Awards</option>
                 </select>
             </div>
+            <div id="share">Your Resume is : <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span></div>
 	</div>
 
 </body>
