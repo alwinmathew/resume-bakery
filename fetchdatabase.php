@@ -1,12 +1,4 @@
 <?php
-        if(!isset ($_COOKIE['user']))
-        {
-                setcookie("user","",time()-3600);
-                header("location: login.php");
-        }
-        $user=$_COOKIE['user'];
-        setcookie("user",$user,time()+3600);
-
         include 'logininfo.php';
         $tbl_name="personalinfo"; // Table name
 

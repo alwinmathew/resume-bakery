@@ -68,7 +68,17 @@
 		padding-bottom: 5px;
                 font-style: italic;
 	}
-        #preview,#edit
+        #preview
+        {
+                position: absolute;
+                top: 180px;
+                left: 780px;
+                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-size: 12px;
+                cursor: pointer;
+                font-weight: bold;
+        }
+        #edit
         {
                 position: absolute;
                 top: 180px;
@@ -76,6 +86,7 @@
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
                 cursor: pointer;
+                font-weight: bold;
         }
         #pdf
         {
@@ -84,6 +95,7 @@
                 left: 840px;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
+                font-weight: bold;
         }
         #pdf a
         {
@@ -101,5 +113,19 @@
         }
         .sec_views
         {
+                cursor: pointer;
+        }
+        #share
+        {
+                position: absolute;
+                top: 210px;
+                left: 780px;
+                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-size: 12px;
+        }
+        #share span
+        {
+                font-weight: bold;
+                color: brown;
                 cursor: pointer;
         }

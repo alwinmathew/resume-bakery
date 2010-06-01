@@ -201,7 +201,7 @@
                                                 data: "myusername=" +username +"&mypassword=" +password,
                                                 success: function(data){
                                                         if(data=="success")
-                                                                window.location.replace("edit.php");
+                                                                window.location.replace("edit");
                                                         else
                                                                 $("#error_login").html("Invalid Login! Try again.");
 
@@ -258,8 +258,8 @@
 	
 	<div id="page">
 		<div id="header">
-			<div id="sideline"><a href="login.php" title="Login to your account">Login</a> | <a id="register" title="Register as new user" onclick='$("#popup").show();'>Register</a></div>
-			<div id="title"><a href="main.html">Resume-Bakery</a></div>
+			<div id="sideline"><a href="login" title="Login to your account">Login</a> | <a id="register" title="Register as new user" onclick='$("#popup").show();'>Register</a></div>
+			<div id="title"><a href="main">Resume-Bakery</a></div>
 			<div id="tagline">easy resume management</div>
 		</div>
 

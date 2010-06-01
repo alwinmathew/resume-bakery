@@ -1,15 +1,21 @@
 <?php
-        include 'session.php';
+        $user=$_GET['id'];
+        if($user=='')
+            header("location: login");
         include 'fetchdatabase.php';
         $sql="SELECT * FROM sections WHERE username='$user'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
+        if($sections['sharing']=='0')
+        {
+                include 'session.php';
+        }
 ?>
 
 <html>
 
 <head>
-        <title>preview - Resume Bakery</title>
+        <title>Resume Bakery - <?echo $data['first_name'].' '.$data['last_name'];?></title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <link rel="stylesheet" type="text/css" href="mystyle.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
@@ -142,11 +148,6 @@
 <body>
 
 	<div id="page">
-            <div id="header">
-			<div id="sideline"><a href="logout.php" title="Log out">Logout</a></div>
-			<div id="title">Resume-Bakery</div>
-			<div id="tagline">easy resume management</div>
-            </div>
             <div id="body">
                         <div id="personal_info">
                                 <div id="profile_pic">
@@ -168,7 +169,7 @@
                                             <td id="website"><?echo "Website/Blog: ".$data['website'];?></td></tr>
                                         </table>
                                         <p id="address"><?echo $data['address'];?></p>
-                                        
+
                                 </div>
                         </div>
                         <table>
@@ -214,8 +215,6 @@
                             </tr>
                         </table>
 		</div>
-            <div id="edit">Edit</div>
-            <div id="pdf"><a href="saveaspdf.php">Save as PDF</a></div>
 	</div>
 
 </body>

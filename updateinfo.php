@@ -1,4 +1,5 @@
 <?php
+    include 'session.php';
     include 'fetchdatabase.php';
     $type=$_POST['infotype'];
     $data=$_POST['infovalue'];
