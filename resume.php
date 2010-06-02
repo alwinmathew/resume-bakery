@@ -6,9 +6,14 @@
         $sql="SELECT * FROM sections WHERE username='$user'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
+        $id=$user;
         if($sections['sharing']=='0')
         {
                 include 'session.php';
+                if($id!=$user)
+                {
+                        header("location: resume?id=$user");
+                }
         }
 ?>
 

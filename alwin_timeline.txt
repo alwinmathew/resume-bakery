@@ -30,3 +30,8 @@
 31st May 2010
 * Tried out pdf generation of resumes
 * Completed design on pdf generation tool
+
+1st June 2010
+* Study on resume sharing(public/private) feature
+* Making page layout of public resumes
+* Design on resume sharing feature
