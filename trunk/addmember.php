@@ -2,6 +2,7 @@
 	include 'logininfo.php';
 	$user_tbl="members"; // Table name
         $data_tbl="personalinfo";
+        $section_tbl="sections";
 
 	// username and password sent from form
 	$myusername=$_POST['myusername'];
@@ -31,6 +32,8 @@
             $sql="INSERT INTO $user_tbl VALUES('$myusername','$mypassword')";
             $result=mysql_query($sql);
             $sql="INSERT INTO $data_tbl (username,area_of_work) VALUES('$myusername','general')";
+            $result=mysql_query($sql);
+            $sql="INSERT INTO $section_tbl (username,area_of_work) VALUES('$myusername','general')";
             $result=mysql_query($sql);
         }
         else
