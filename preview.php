@@ -11,11 +11,11 @@
 <head>
         <title>preview - Resume Bakery</title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-        <link rel="stylesheet" type="text/css" href="mystyle.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="mystyle.php"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript">
                 $(document).ready(function(){
-                        $("#file_upload").hide();
+                        
                         <?
                         if(($data['gender']==NULL)||($data['dob']==NULL&&$data['marital_status']==NULL))
                             echo '$("#g").hide();';
@@ -127,10 +127,6 @@
                             section_show("awards");
                         }
                         ?>
-                        $("#profile_pic p").click(function(){
-                                $("#profile_pic p").hide();
-                                $("#file_upload").show();
-                        });
                         $("#edit").click(function(){
                                 window.location.replace("edit");
                         });
@@ -147,7 +143,8 @@
 			<div id="title">Resume-Bakery</div>
 			<div id="tagline">easy resume management</div>
             </div>
-            <div id="body">
+            <div id="body">                
+            <div id="resume_body">
                         <div id="personal_info">
                                 <div id="profile_pic">
                                         <img src="<?echo $data['profile_pic']?>" height="120" width="120">
@@ -215,9 +212,10 @@
                         </table>
 		</div>
             <div id="edit">Edit</div>
-            <div id="pdf"><a href="saveaspdf.php">Save as PDF</a></div>
+            <div id="pdf"><a href="saveaspdf">Save as PDF</a></div>
+            <div id="design_resume"><a href="design">Design your Resume</a></div>
 	</div>
-
+        </div>
 </body>
 
 </html>
