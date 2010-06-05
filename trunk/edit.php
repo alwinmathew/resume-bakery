@@ -576,7 +576,9 @@
                     <option class="add_new" id="add_awards">Awards</option>
                 </select>
             </div>
-            <div id="share">Your Resume is : <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span></div>
+            <div id="share">Your Resume is : <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br>
+                <a href="resume?id=<?echo $user;?>">View your public resume</a>
+            </div>
 	</div>
 
 </body>

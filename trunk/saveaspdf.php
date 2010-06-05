@@ -7,16 +7,11 @@ $sql="SELECT * FROM sections WHERE username='$user'";
 $result=mysql_query($sql);
 $sections=mysql_fetch_array($result);
 
-/*$html=$_SERVER['QUERY_STRING'];
-//$html=$_GET['myhtml'];
-$html=str_replace("myhtml=","",$html);
+$width=(int)$data['margin_width'];
+$height=297-(2*$width);
 
-$html=urldecode($html);
-
-//echo $html;
-//$html = file_get_contents($_POST['myhtml']);
-//print_r($html);*/
-$html = '
+$html = '<div id="body" style="background-color: '.$data['background_color'].';padding-top: '.$data['margin_width'].';padding-left: '.$data['margin_width'].';padding-right: '.$data['margin_width'].';height: 297mm">
+        <div id="resume_body" style="border: 1px solid '.$data['margin_color'].';height: '.$height.'mm">
 	<div id="personal_info">
                                 <div id="profile_pic">
                                         <img src="'.$data['profile_pic'].'" height="120" width="120">
@@ -43,10 +38,6 @@ $html.=($data['website']!=NULL)?('<td id="website">Website/Blog: '.$data['websit
 $html.='</tr></table>';
 $html.=($data['address']!=NULL)?('<p id="address">'.$data['address'].'</p>'):'';
 $html.='
-
-
-                                        
-
                                 </div>
                         </div>
                         <table>';
@@ -100,27 +91,19 @@ $html.=($sections['awards']=='1')?
                                 <td class="title"><h3>Awards</h3></td>
                                 <td class="data" align="justify"><p>'.$data['awards'].'</p></td>
                             </tr>':'';
-
-$html.='</table>';
-
-
-//==============================================================
-//==============================================================
-//==============================================================
+$html.='</table></div></div>';
 
 include("pdf/mpdf.php");
 
-/*ob_start();
-include 'preview.php';
-$html=ob_get_clean();*/
-$mpdf=new mPDF();
+$mpdf=new mPDF('win-1252','A4',0,'',0,0,0,0);
 
 $mpdf->useOnlyCoreFonts = true;
 
-$mpdf->SetDisplayMode('fullpage');
+$mpdf->SetDisplayMode('fullpage','single');
 
 // LOAD a stylesheet
-$stylesheet = file_get_contents('mystyle.css');
+$stylesheet = file_get_contents('pdfstyle.css');
+
 $mpdf->WriteHTML($stylesheet,1);	// The parameter 1 tells that this is css/style only and no body/html/text
 
 $mpdf->WriteHTML($html,2);
@@ -128,9 +111,5 @@ $mpdf->WriteHTML($html,2);
 $mpdf->Output();
 
 exit;
-//==============================================================
-//==============================================================
-//==============================================================
-
 ?>
 

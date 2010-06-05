@@ -35,3 +35,13 @@
 * Study on resume sharing(public/private) feature
 * Making page layout of public resumes
 * Design on resume sharing feature
+
+2nd June 2010
+* Study on resume-design tool feature
+* Tried out few examples
+
+5th June 2010
+* Implemented "margin-width", "margin-color", "background-color" properties in resume-design tool
+* Tested various editing cases
+* Tested pdf compatibility
+

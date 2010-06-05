@@ -1,14 +1,36 @@
+<?php   header("Content-type: text/css");
+        if(!isset ($_COOKIE['user']))
+                $user=$_GET['id'];
+        else
+        {
+                $user=$_COOKIE['user'];
+                setcookie("user",$user,time()+3600);
+        }
+        include 'fetchdatabase.php';
+        $width=(int)$data['margin_width'];
+        $height=297-(2*$width);
+?>
+
         #body
-	{
-		margin-top:10px;
-		background-color: white;
-		min-height:677px;
-		padding:30px;
-                width: 690px;
+        {
+                background-color: <?=$data['background_color']?>;
+                margin-top: 10px;
+                margin-bottom: 10px;
                 margin-left: auto;
                 margin-right: auto;
+                width: 210mm;
+                padding-top: <?=$data['margin_width']?>;
+                padding-bottom: <?=$data['margin_width']?>;
+        }
+        #resume_body
+	{
+		margin-left: <?=$data['margin_width']?>;
+                margin-right: <?=$data['margin_width']?>;
+                min-height: <?=$height?>mm;
+		padding: 30px;
+                width: auto;
+                border: 1px solid <?=$data['margin_color']?>;
 	}
-
         #personal_info
         {
                 height: 200px;
@@ -50,6 +72,7 @@
         {
                 min-width: 150px;
                 height: 30px;
+                font-family: "Trebuchet MS", Helvetica, sans-serif;
         }
         
         h3
@@ -67,6 +90,7 @@
                 width: 480px;
                 vertical-align: top;
         }
+
         .section p
         {
                 margin-top: 5px;

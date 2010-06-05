@@ -21,12 +21,12 @@
 
 <head>
         <title>Resume Bakery - <?echo $data['first_name'].' '.$data['last_name'];?></title>
-        <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-        <link rel="stylesheet" type="text/css" href="mystyle.css" />
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="mystyle.php?id=<?echo $user;?>"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript">
                 $(document).ready(function(){
-                        $("#file_upload").hide();
+                        
                         <?
                         if(($data['gender']==NULL)||($data['dob']==NULL&&$data['marital_status']==NULL))
                             echo '$("#g").hide();';
@@ -138,10 +138,6 @@
                             section_show("awards");
                         }
                         ?>
-                        $("#profile_pic p").click(function(){
-                                $("#profile_pic p").hide();
-                                $("#file_upload").show();
-                        });
                         $("#edit").click(function(){
                                 window.location.replace("edit");
                         });
@@ -154,6 +150,7 @@
 
 	<div id="page">
             <div id="body">
+            <div id="resume_body">
                         <div id="personal_info">
                                 <div id="profile_pic">
                                         <img src="<?echo $data['profile_pic']?>" height="120" width="120">
@@ -221,7 +218,7 @@
                         </table>
 		</div>
 	</div>
-
+        </div>
 </body>
 
 </html>

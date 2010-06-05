@@ -67,6 +67,7 @@
 		font-size: 13px;
 		padding-bottom: 5px;
                 font-style: italic;
+                
 	}
         #preview
         {
@@ -82,7 +83,7 @@
         {
                 position: absolute;
                 top: 180px;
-                left: 840px;
+                left: 860px;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
                 cursor: pointer;
@@ -91,15 +92,46 @@
         #pdf
         {
                 position: absolute;
-                top: 200px;
-                left: 840px;
+                top: 220px;
+                left: 860px;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
                 font-weight: bold;
         }
         #pdf a
         {
+                color: red;
                 text-decoration: none;
+        }
+        #pdf a:visited
+        {
+                text-decoration: none;
+        }
+        #pdf a:hover
+        {
+                text-decoration: underline;
+        }
+        #design_resume
+        {
+                position: absolute;
+                top: 270px;
+                left: 860px;
+                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-size: 12px;
+                font-weight: bold;
+        }
+        #design_resume a
+        {
+                color: red;
+                text-decoration: none;
+        }
+        #design_resume a:visited
+        {
+                text-decoration: none;
+        }
+        #design_resume a:hover
+        {
+                text-decoration: underline;
         }
         #section_view
         {
@@ -118,7 +150,7 @@
         #share
         {
                 position: absolute;
-                top: 210px;
+                top: 200px;
                 left: 780px;
                 font-family: "Trebuchet MS", Helvetica, sans-serif;
                 font-size: 12px;
@@ -128,4 +160,17 @@
                 font-weight: bold;
                 color: brown;
                 cursor: pointer;
+        }
+        #share a
+        {
+                text-decoration: none;
+                color: red;
+        }
+        #share a:visited
+        {
+                text-decoration: none;
+        }
+        #share a:hover
+        {
+                text-decoration: underline;
         }
