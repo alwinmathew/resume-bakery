@@ -18,7 +18,7 @@
                 min-height: 271mm;
 		padding: 30px;
                 width: auto;
-                border: 1px solid <?=$data['margin_color']?>;
+                border: <?=$data['border_width']?>px solid <?=$data['margin_color']?>;
 	}
 
         #personal_info

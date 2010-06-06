@@ -26,54 +26,81 @@
                         });
                 }
                 $(document).ready(function(){
+                        var def_mgwidth,def_mgcolor,def_bdwidth,def_bgcolor;
+                        def_mgwidth=$("#resume_body").css("margin");
+                        def_mgcolor=$("#resume_body").css("border-color");
+                        def_bdwidth=$("#resume_body").css("border-width");
+                        def_bgcolor=$("#preview_popup").css("background-color");
                         $("#preview_popup").hide();
                         $("#show").click(function(){
                                 $("#page").fadeTo("fast",0.1);
                                 $("#control").hide();
-                                var width=$("#margin_width").val();
+                                var mgwidth=$("#margin_width").val();
                                 var mgcolor=$("#margin_color").val();
+                                var bdwidth=$("#border_width").val();
                                 var bgcolor=$("#background_color").val();
-                                if(width!="")
+                                if(mgwidth!="")
                                 {
-                                        width+="mm";
-                                        $("#resume_body").css("margin",width);
+                                        mgwidth+="mm";
+                                        $("#resume_body").css("margin",mgwidth);
                                 }
+                                else
+                                        $("#resume_body").css("margin",def_mgwidth);
                                 if(mgcolor!="")
                                 {
                                         mgcolor="#"+mgcolor;
-                                        $("#resume_body").css("border","1px solid "+mgcolor);
+                                        $("#resume_body").css("border-color",mgcolor);
                                 }
+                                else
+                                        $("#resume_body").css("border-color",def_mgcolor);
+                                if(bdwidth!="")
+                                {
+                                        $("#resume_body").css("border-width",bdwidth);
+                                }
+                                else
+                                        $("#resume_body").css("border-width",def_bdwidth);
                                 if(bgcolor!="")
                                 {
                                         bgcolor="#"+bgcolor;
                                         $("#preview_popup").css("background-color",bgcolor);
                                 }
+                                else
+                                        $("#preview_popup").css("background-color",def_bgcolor);
                                 $("#preview_popup").show();
+                                $("#popup_close").click(function(){
+                                        $("#preview_popup").hide();
+                                        $("#control").show();
+                                        $("#page").fadeTo("fast",1);
+                                });
                         });
                         $("#save").click(function(){
-                                var width=$("#margin_width").val();
+                                var mgwidth=$("#margin_width").val();
                                 var mgcolor=$("#margin_color").val();
+                                var bdwidth=$("#border_width").val();
                                 var bgcolor=$("#background_color").val();
-                                if(width!="")
+                                if(mgwidth!="")
                                 {
-                                        width+="mm";
-                                        update_info("margin_width",width);
+                                        mgwidth+="mm";
+                                        update_info("margin_width",mgwidth);
                                 }
                                 if(mgcolor!="")
                                 {
                                         mgcolor="#"+mgcolor;
                                         update_info("margin_color",mgcolor);
                                 }
+                                if(bdwidth!="")
+                                {
+                                        update_info("border_width",bdwidth);
+                                }
                                 if(bgcolor!="")
                                 {
                                         bgcolor="#"+bgcolor;
                                         update_info("background_color",bgcolor);
                                 }
-                        });
-                        $("#popup_close").click(function(){
-                                $("#preview_popup").hide();
-                                $("#control").show();
-                                $("#page").fadeTo("fast",1);
+                                def_mgwidth=mgwidth;
+                                def_mgcolor=mgcolor;
+                                def_bdwidth=bdwidth;
+                                def_bgcolor=bgcolor;
                         });
                         <?
                         if(($data['gender']==NULL)||($data['dob']==NULL&&$data['marital_status']==NULL))
@@ -214,14 +241,14 @@
                                             <td class="head">Margin color</td>
                                             <td class="field">: <input id="margin_color" class="color {required:false}" size="4" maxlength="6"></td>
                                         </tr>
-                                        <tr><td class="head">Line spacing</td>
-                                            <td class="field">: <input id="line_spacing" type="text" size="1" maxlength="2"> mm</td>
+                                        <tr><td class="head">Border width</td>
+                                            <td class="field">: <input id="border_width" type="text" size="1" maxlength="1"> px</td>
                                             <td class="head">Background color</td>
                                             <td class="field">: <input id="background_color" class="color {required:false}" size="4" maxlength="6"></td>
                                         </tr>
                                 </table>
-                                <div id="change">
-                                        <span id="show">Show Preview &nbsp;&nbsp;</span><span id="save">Save Changes</span>
+                                <div id="change"><br><br><br>
+                                        <span id="show">Show Preview &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span id="save">Save Changes</span>
                                 </div>
                         </div>
                         
