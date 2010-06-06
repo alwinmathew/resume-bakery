@@ -45,3 +45,7 @@
 * Tested various editing cases
 * Tested pdf compatibility
 
+6th June 2010
+* Added "border-width" property to resume-design tool
+* Tested pdf compatibility
+
