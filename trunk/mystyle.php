@@ -59,7 +59,7 @@
 	{
                 margin-left: 200px;
                 margin-top: -130px;
-		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
 	}
         #info table
@@ -72,12 +72,12 @@
         {
                 min-width: 150px;
                 height: 30px;
-                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-family: Trebuchet MS, Helvetica, sans-serif;
         }
         
         h3
         {
-                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: x-large;
         }
         .title
@@ -95,8 +95,8 @@
         {
                 margin-top: 5px;
                 margin-bottom: 5px;
-                font-size: small;
-                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-size: <?=$data['font_size']?>px;
+                font-family: <?=$data['font_family']?>;
                 min-height: 100px;
                 text-align: justify;
         }
@@ -107,7 +107,7 @@
         }
         #gender,#g,#dob,#d,#marital_status
         {
-                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
                 font-weight: bold;
         }

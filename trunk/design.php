@@ -26,19 +26,35 @@
                         });
                 }
                 $(document).ready(function(){
-                        var def_mgwidth,def_mgcolor,def_bdwidth,def_bgcolor;
+                        var def_font,def_ftsize,def_mgwidth,def_mgcolor,def_bdwidth,def_bgcolor;
+                        def_font=$(".section p").css("font-family");
+                        def_ftsize=$(".section p").css("font-size");
                         def_mgwidth=$("#resume_body").css("margin");
                         def_mgcolor=$("#resume_body").css("border-color");
                         def_bdwidth=$("#resume_body").css("border-width");
                         def_bgcolor=$("#preview_popup").css("background-color");
+                        document.getElementById("new_font").defaultSelected = true;
                         $("#preview_popup").hide();
                         $("#show").click(function(){
                                 $("#page").fadeTo("fast",0.1);
                                 $("#control").hide();
+                                var font=$("#font option:selected").val();
+                                var ftsize=$("#font_size").val();
                                 var mgwidth=$("#margin_width").val();
                                 var mgcolor=$("#margin_color").val();
                                 var bdwidth=$("#border_width").val();
                                 var bgcolor=$("#background_color").val();
+                                if(font!="default")
+                                        $(".section p").css("font-family",font);
+                                else
+                                        $(".section p").css("font-family",def_font);
+                                if(ftsize!="")
+                                {
+                                        ftsize+="px";
+                                        $(".section p").css("font-size",ftsize);
+                                }
+                                else
+                                        $(".section p").css("font-size",def_ftsize);
                                 if(mgwidth!="")
                                 {
                                         mgwidth+="mm";
@@ -74,10 +90,16 @@
                                 });
                         });
                         $("#save").click(function(){
+                                var font=$("#font option:selected").val();
+                                var ftsize=$("#font_size").val();
                                 var mgwidth=$("#margin_width").val();
                                 var mgcolor=$("#margin_color").val();
                                 var bdwidth=$("#border_width").val();
                                 var bgcolor=$("#background_color").val();
+                                if(font!="default")
+                                        update_info("font_family",font);
+                                if(ftsize!="")
+                                        update_info("font_size",ftsize);
                                 if(mgwidth!="")
                                 {
                                         mgwidth+="mm";
@@ -97,6 +119,11 @@
                                         bgcolor="#"+bgcolor;
                                         update_info("background_color",bgcolor);
                                 }
+                                $("#font_size").val("");
+                                $("#margin_width").val("");
+                                $("#border_width").val("");
+                                def_font=font;
+                                def_ftsize=ftsize;
                                 def_mgwidth=mgwidth;
                                 def_mgcolor=mgcolor;
                                 def_bdwidth=bdwidth;
@@ -233,8 +260,18 @@
                                     Header image &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <input type="file">
                                 </span>
                                 <span id="section_font">
-                                        Section font &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <input type="text">
-                                </span><br><br>
+                                        Section font &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 
+                                        <select id="font">
+                                            <option id="new_font" value="default">&lt;Change Font&gt;</option>
+                                            <option value='Arial Black, Gadget, sans-serif' style='font-family: Arial Black, Gadget, sans-serif;'>Arial Black</option>
+                                            <option value='Courier New, Courier, monospace' style='font-family: Courier New, Courier, monospace;'>Courier New</option>
+                                            <option value='Lucida Console, Monaco, monospace' style='font-family: Lucida Console, Monaco, monospace;'>Lucida Console</option>
+                                            <option value='Palatino Linotype, Book Antiqua, Palatino, serif' style='font-family: Palatino Linotype, Book Antiqua, Palatino, serif;'>Palatino Linotype</option>
+                                            <option value='Times New Roman, Times, serif' style='font-family: Times New Roman, Times, serif;'>Times New Roman</option>
+                                            <option value='Trebuchet MS, Helvetica, sans-serif' style='font-family: Trebuchet MS, Helvetica, sans-serif;'>Trebuchet MS</option>
+                                        </select>
+                                </span>
+                                <span><input id="font_size" type="text" size="1" maxlength="2"> px</span><br><br>
                                 <table>
                                         <tr><td class="head">Margin width</td>
                                             <td class="field">: <input  id="margin_width" type="text" size="1" maxlength="2"> mm</td>
