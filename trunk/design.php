@@ -19,10 +19,7 @@
                         $.ajax({
                                 type: 'POST',
                                 url: "updateinfo.php",
-                                data: "infotype=" +type +"&infovalue=" +value,
-                                success: function(){
-                                        
-                                }
+                                data: "infotype=" +type +"&infovalue=" +value
                         });
                 }
                 $(document).ready(function(){
@@ -45,9 +42,9 @@
                                 var bdwidth=$("#border_width").val();
                                 var bgcolor=$("#background_color").val();
                                 if(font!="default")
-                                        $(".section p").css("font-family",font);
+                                        $(".section p,#info").css("font-family",font);
                                 else
-                                        $(".section p").css("font-family",def_font);
+                                        $(".section p,#info").css("font-family",def_font);
                                 if(ftsize!="")
                                 {
                                         ftsize+="px";
@@ -256,11 +253,12 @@
 		</div>
 		<div id="body">
                         <div id="control">
-                                <span id="header_image">
-                                    Header image &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <input type="file">
-                                </span>
-                                <span id="section_font">
-                                        Section font &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 
+                                <table><tr>
+                                        <td class="head" id="header_image">
+                                            Header image </td><td class="field"> : <input type="file" size="8">
+                                </td>
+                                <td class="head" id="section_font">
+                                    Section font </td><td class="field"> :
                                         <select id="font">
                                             <option id="new_font" value="default">&lt;Change Font&gt;</option>
                                             <option value='Arial Black, Gadget, sans-serif' style='font-family: Arial Black, Gadget, sans-serif;'>Arial Black</option>
@@ -270,8 +268,7 @@
                                             <option value='Times New Roman, Times, serif' style='font-family: Times New Roman, Times, serif;'>Times New Roman</option>
                                             <option value='Trebuchet MS, Helvetica, sans-serif' style='font-family: Trebuchet MS, Helvetica, sans-serif;'>Trebuchet MS</option>
                                         </select>
-                                </span>
-                                <span><input id="font_size" type="text" size="1" maxlength="2"> px</span><br><br>
+                                <input id="font_size" type="text" size="1" maxlength="2"> px</td></tr></table>
                                 <table>
                                         <tr><td class="head">Margin width</td>
                                             <td class="field">: <input  id="margin_width" type="text" size="1" maxlength="2"> mm</td>
