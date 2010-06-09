@@ -49,6 +49,7 @@
         {
                 font-size: 34px;
                 font-weight: bold;
+                font-family: Trebuchet MS, Helvetica, sans-serif;
         }
         #status
         {
@@ -59,7 +60,7 @@
 	{
                 margin-left: 200px;
                 margin-top: -130px;
-		font-family: Trebuchet MS, Helvetica, sans-serif;
+		font-family: <?=$data['font_family']?>;
                 font-size: 12px;
 	}
         #info table
@@ -72,7 +73,6 @@
         {
                 min-width: 150px;
                 height: 30px;
-                font-family: Trebuchet MS, Helvetica, sans-serif;
         }
         
         h3

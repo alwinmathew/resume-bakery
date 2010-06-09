@@ -30,13 +30,13 @@ $html.='
                                         </div>
                                         <table>
                                         <tr>';
-$html.=($data['mobile']!=NULL)?('<td id="mobile">Mobile: '.$data['mobile'].'</td>'):'';
-$html.=($data['email']!=NULL)?('<td id="email">Email: '.$data['email'].'</td>'):'';
+$html.=($data['mobile']!=NULL)?('<td id="mobile" style="font-family: '.$data['font_family'].';">Mobile: '.$data['mobile'].'</td>'):'';
+$html.=($data['email']!=NULL)?('<td id="email" style="font-family: '.$data['font_family'].';">Email: '.$data['email'].'</td>'):'';
 $html.='</tr><tr>';
-$html.=($data['phone']!=NULL)?('<td id="phone">Phone: '.$data['phone'].'</td>'):'';
-$html.=($data['website']!=NULL)?('<td id="website">Website/Blog: '.$data['website'].'</td>'):'';
+$html.=($data['phone']!=NULL)?('<td id="phone" style="font-family: '.$data['font_family'].';">Phone: '.$data['phone'].'</td>'):'';
+$html.=($data['website']!=NULL)?('<td id="website" style="font-family: '.$data['font_family'].';">Website/Blog: '.$data['website'].'</td>'):'';
 $html.='</tr></table>';
-$html.=($data['address']!=NULL)?('<p id="address">'.$data['address'].'</p>'):'';
+$html.=($data['address']!=NULL)?('<p id="address" style="font-family: '.$data['font_family'].';">'.$data['address'].'</p>'):'';
 $html.='
                                 </div>
                         </div>
