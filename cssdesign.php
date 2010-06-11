@@ -32,8 +32,7 @@
                 margin-top: 15px;
 		width: 120px;
 		height: 120px;
-		background-color: white;
-                font-size: 10px;
+		font-size: 10px;
 	}
         #first_name,#last_name
         {

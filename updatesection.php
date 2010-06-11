@@ -5,7 +5,7 @@
     $value=$_POST['sectionvalue'];
     if($type=="sharing")
     {
-            $sql="SELECT * FROM sections WHERE username='$user'";
+            $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='general'";
             $result=mysql_query($sql);
             $sections=mysql_fetch_array($result);
             if($sections['sharing']=='1')
@@ -13,7 +13,7 @@
             else
                 $value='1';
     }
-    $sql="UPDATE sections SET $type='$value' WHERE username='$user'";
+    $sql="UPDATE sections SET $type='$value' WHERE username='$user' AND area_of_work='general'";
     $result=mysql_query($sql);
     die($value);
 ?>

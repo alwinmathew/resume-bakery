@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <link rel="stylesheet" type="text/css" href="editmystyle.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/ajaxupload.js"></script>
         <script type="text/javascript">
                 function update_info(type,value,fn)
                 {
@@ -21,6 +22,8 @@
                                 url: "updateinfo.php",
                                 data: "infotype=" +type +"&infovalue=" +value,
                                 success: function(){
+                                        if(type=="profile_pic")
+                                                return;
                                         $(".section div").hide();
                                         $(".info_edit").hide();
                                         $(fn).show();
@@ -62,8 +65,6 @@
                                                 $("#share span").html("Public");
                                             else
                                                 $("#share span").html("Private");
-                                            /*var share=(value=='1')?("Public"):("Private");
-                                            $("#share span").html(share);*/
                                             return;
                                         }
                                         var section="#"+type;
@@ -163,7 +164,7 @@
                 }
 
                 $(document).ready(function(){
-                        $("#file_upload").hide();
+                        $(".file_upload").hide();
                         refresh_info();
                         refresh_section();
                         document.getElementById("add_title").defaultSelected = true;
@@ -180,10 +181,30 @@
                                 option+=i+"'>"+i +"</option>";
                                 $("#dob_day").append(option);
                         }
-                        $("#profile_pic p").click(function(){
-                                refresh_info();
-                                $(this).hide();
-                                $("#file_upload").show();
+                        new AjaxUpload('upload', {
+                                action: 'addphoto.php',
+                                name: 'myphoto',
+                                autoSubmit: true,
+                                onSubmit : function(file,ext){
+                                        //disable upload button
+                                        this.disable();
+                                        if (!(ext && /^(jpg|png|jpeg|gif)$/i.test(ext))){
+                                                // extension is not allowed
+                                                $("#response").html("Invalid file extension!");
+                                                this.enable();
+                                                // cancel upload
+                                                return false;
+                                        }
+                                },
+                                onComplete: function(data){
+                                        // enable upload button
+                                        this.enable();
+                                        window.location.reload();
+                                }
+                        });
+                        $("#remove").click(function(){
+                                update_info("profile_pic","0","");
+                                window.location.reload();
                         });
                         $("#preview").click(function(){
                                 window.location.replace("preview");
@@ -354,19 +375,16 @@
 
 	<div id="page">
 		<div id="header">
-			<div id="sideline"><a href="logout.php" title="Log out">Logout</a></div>
+                        <div id="sideline">Welcome <b><?echo $user;?></b>&nbsp;|&nbsp;<a href="logout.php" title="Log out">Logout</a></div>
 			<div id="title">Resume-Bakery</div>
                         <div id="tagline">easy resume management</div>
 		</div>
 		<div id="body">
                         <div id="personal_info">
                                 <div id="profile_pic">
-                                        <img src="<?echo $data['profile_pic']?>" height="120" width="120">
-                                        <p align="center" style="cursor: pointer;"> Upload photo</p>
-                                        <form id="file_upload" action="addphoto.php" method="post" enctype="multipart/form-data" style="margin-top: 5px; background-color: white; color: red;">
-                                            <input id="pic" name="myphoto" type="file" size="3" style="margin-bottom: 3px;">
-                                            <input value="save" type="submit"><button id="cancel">cancel</button>
-                                        </form>
+                                        <span><img src="files/<?echo ($data['profile_pic']=="0")?"default":$user;?>" height="120" width="120"></span>
+                                        <p align="center"><span id="upload" style="cursor: pointer;">+ Upload</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="remove" style="cursor: pointer;">- Remove</span></p>
+                                        <p id="response" align="center" style="color: red;"></p>
                                 </div>
                                 <div id="info">
                                         <div class="name">

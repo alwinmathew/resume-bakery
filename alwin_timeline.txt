@@ -53,3 +53,10 @@
 * Added "section-font" property to resume-design tool
 * Tested pdf compatibility
 
+8th June 2010
+* Modified resume-design tool for easier implementation
+
+9th-11th June 2010
+* Study on file upload, profile pic management & removal of files
+* Design on profile pic upload
+* Tested pdf compatibility
