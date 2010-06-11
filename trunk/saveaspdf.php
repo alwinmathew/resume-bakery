@@ -3,19 +3,20 @@
 
 include 'session.php';
 include 'fetchdatabase.php';
-$sql="SELECT * FROM sections WHERE username='$user'";
+$sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='general'";
 $result=mysql_query($sql);
 $sections=mysql_fetch_array($result);
 
 $width=(int)$data['margin_width'];
 $height=297-(2*$width);
+$pic='files/'.$user;
 
 $html = '<div id="body" style="background-color: '.$data['background_color'].';padding-top: '.$data['margin_width'].';padding-left: '.$data['margin_width'].';padding-right: '.$data['margin_width'].';height: 297mm">
         <div id="resume_body" style="border: '.$data['border_width'].'px solid '.$data['margin_color'].';height: '.$height.'mm">
 	<div id="personal_info">
-                                <div id="profile_pic">
-                                        <img src="'.$data['profile_pic'].'" height="120" width="120">
-                                </div>
+                                <div id="profile_pic">';
+$html.=($data['profile_pic']!="0")?('<img src="'.$pic.'" height="120" width="120">'):'';
+$html.=                         '</div>
                                 <div id="info">
                                         <div class="name">
                                                 <span id="first_name">'.$data['first_name'].'</span>&nbsp;&nbsp;&nbsp;

@@ -11,10 +11,12 @@
         $sql="UPDATE personalinfo SET skills='$type' WHERE username='$user'";
         $result=mysql_query($sql);
     }*/
+    if($type=="profile_pic")
+            unlink("files/$user");
     if($data!="")
-            $sql="UPDATE personalinfo SET $type='$data' WHERE username='$user'";
+            $sql="UPDATE personalinfo SET $type='$data' WHERE username='$user' AND area_of_work='general'";
     else
-            $sql="UPDATE personalinfo SET $type=DEFAULT WHERE username='$user'";
+            $sql="UPDATE personalinfo SET $type=DEFAULT WHERE username='$user' AND area_of_work='general'";
     $result=mysql_query($sql);
     die;
 ?>

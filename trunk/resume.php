@@ -153,7 +153,7 @@
             <div id="resume_body">
                         <div id="personal_info">
                                 <div id="profile_pic">
-                                        <img src="<?echo $data['profile_pic']?>" height="120" width="120">
+                                        <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'" height="120" width="120">'):'';?>
                                 </div>
                                 <div id="info">
                                         <div class="name">
