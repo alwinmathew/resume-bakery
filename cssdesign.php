@@ -22,14 +22,13 @@
 	}
         #header_image
         {
-                float: right;
-                margin-right: <?=$data['margin_width']?>;
                 height: <?=$data['margin_width']-1?>mm;
                 margin-top: 0.5px;
                 margin-bottom: 0.5px;
         }
         #personal_info
         {
+                margin-top: <?=$data['margin_width']-1?>mm;
                 height: 200px;
         }
 

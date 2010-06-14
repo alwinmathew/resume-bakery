@@ -320,11 +320,11 @@
 	</div>
         <div id="preview_popup">
                 <div id="popup_close"></div>
-                <div id="image_header">
-                        <?echo (file_exists("tmp/$user"."_header"))?('<img id="header_image" src="tmp/'.$user.'_header">'):
-                               (($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header">'):'');?>
-                </div>
                 <div id="resume_body">
+                    <div id="image_header">
+                        <?echo (file_exists("tmp/$user"."_header"))?('<img id="header_image" align="right" src="tmp/'.$user.'_header">'):
+                               (($data['header_image']!="0")?('<img id="header_image" align="right" src="files/'.$user.'_header">'):'');?>
+                    </div>
                         <div id="personal_info">
                                 <div id="profile_pic">
                                         <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'" height="120" width="120">'):'';?>

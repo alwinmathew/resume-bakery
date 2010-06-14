@@ -144,8 +144,8 @@
 			<div id="tagline">easy resume management</div>
             </div>
             <div id="body">
-                    <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header">'):'';?>
             <div id="resume_body">
+                        <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header">'):'';?>
                         <div id="personal_info">
                                 <div id="profile_pic">
                                         <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'" height="120" width="120">'):'';?>
