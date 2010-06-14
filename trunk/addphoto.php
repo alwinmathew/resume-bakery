@@ -10,5 +10,12 @@
                 $result=mysql_query($sql);
         }
         move_uploaded_file($_FILES['myphoto']['tmp_name'],$target_path);
+
+        $image=new Imagick($target_path);
+        $image->setImageFormat('jpg');
+        $image->setImageResolution(120,120);
+        $image->setImageFileName($target_path."_temp");
+        $image->writeImage();
+        rename($target_path."_temp",$target_path);
         chmod($target_path,0755);
 ?>

@@ -3,7 +3,7 @@
         if($user=='')
             header("location: login");
         include 'fetchdatabase.php';
-        $sql="SELECT * FROM sections WHERE username='$user'";
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='general'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
         $id=$user;
@@ -150,6 +150,7 @@
 
 	<div id="page">
             <div id="body">
+                    <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header">'):'';?>
             <div id="resume_body">
                         <div id="personal_info">
                                 <div id="profile_pic">

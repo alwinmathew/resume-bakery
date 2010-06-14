@@ -31,6 +31,14 @@
                 width: auto;
                 border: <?=$data['border_width']?>px solid <?=$data['margin_color']?>;
 	}
+        #header_image
+        {
+                float: right;
+                margin-right: <?=$data['margin_width']?>;
+                height: <?=$data['margin_width']-1?>mm;
+                margin-top: <?=-$data['margin_width']+0.5?>mm;
+                margin-bottom: 0.5mm;
+        }
         #personal_info
         {
                 height: 200px;

@@ -1,7 +1,7 @@
 <?
         include 'session.php';
         include 'fetchdatabase.php';
-        $sql="SELECT * FROM sections WHERE username='$user'";
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='general'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
 ?>
@@ -19,7 +19,13 @@
                         $.ajax({
                                 type: 'POST',
                                 url: "updateinfo.php",
-                                data: "infotype=" +type +"&infovalue=" +value
+                                data: "infotype=" +type +"&infovalue=" +value,
+                                success: function(data){
+                                        if(value=="remove_temp"||value=="remove_header")
+                                                window.location.reload();
+                                        if(value=="status_temp")
+                                                return data;
+                                }
                         });
                 }
                 $(document).ready(function(){
@@ -32,6 +38,18 @@
                         def_bgcolor=$("#preview_popup").css("background-color");
                         document.getElementById("new_font").defaultSelected = true;
                         $("#preview_popup").hide();
+                        $(".remove").mouseover(function(){
+                                $(this).css('text-decoration','underline');
+                        });
+                        $(".remove").mouseout(function(){
+                                $(this).css('text-decoration','none');
+                        });
+                        $("#remove").click(function(){
+                                update_info("header_image","remove_temp");
+                        });
+                        $("#remove_header").click(function(){
+                                update_info("header_image","remove_header");
+                        });
                         $("#show").click(function(){
                                 $("#page").fadeTo("fast",0.1);
                                 $("#control").hide();
@@ -54,8 +72,10 @@
                                         $(".section p").css("font-size",def_ftsize);
                                 if(mgwidth!="")
                                 {
+                                        $("#header_image").css("height",(mgwidth-1)+"mm");
                                         mgwidth+="mm";
                                         $("#resume_body").css("margin",mgwidth);
+                                        $("#header_image").css("margin-right",mgwidth);
                                 }
                                 else
                                         $("#resume_body").css("margin",def_mgwidth);
@@ -79,6 +99,9 @@
                                 }
                                 else
                                         $("#preview_popup").css("background-color",def_bgcolor);
+
+                                if(update_info("header_image","status_temp"))
+                                        $("#image_header").html('<img id="header_image" src="tmp/'+'<?echo $user?>' +'_header">');
                                 $("#preview_popup").show();
                                 $("#popup_close").click(function(){
                                         $("#preview_popup").hide();
@@ -116,6 +139,7 @@
                                         bgcolor="#"+bgcolor;
                                         update_info("background_color",bgcolor);
                                 }
+                                update_info("header_image","check_header");
                                 $("#font_size").val("");
                                 $("#margin_width").val("");
                                 $("#border_width").val("");
@@ -253,10 +277,14 @@
 		</div>
 		<div id="body">
                         <div id="control">
-                                <table><tr>
-                                        <td class="head" id="header_image">
-                                            Header image </td><td class="field"> : <input type="file" size="8">
-                                </td>
+                                <table><tr><form id="uploadForm" action="addheader.php" method="post" enctype="multipart/form-data">
+                                                    <input type="hidden" name="MAX_FILE_SIZE" value="1024000" />
+                                                    <td class="head" id="head_image">Header image</td>
+                                                    <td class="field"> : <input type="file" name="myheader" size="7">
+                                                        <input type="submit" value="Submit" />&nbsp;<span id="remove" class="remove" style="color: red;font-size: 11px;cursor: pointer;">- remove</span><br>
+                                                        &nbsp;&nbsp;<span id="remove_header" class="remove" style="color: red;font-size: 11px;cursor: pointer;">- remove saved header</span>
+                                                    </td>
+                                           </form>
                                 <td class="head" id="section_font">
                                     Section font </td><td class="field"> :
                                         <select id="font">
@@ -268,7 +296,8 @@
                                             <option value='Times New Roman, Times, serif' style='font-family: Times New Roman, Times, serif;'>Times New Roman</option>
                                             <option value='Trebuchet MS, Helvetica, sans-serif' style='font-family: Trebuchet MS, Helvetica, sans-serif;'>Trebuchet MS</option>
                                         </select>
-                                <input id="font_size" type="text" size="1" maxlength="2"> px</td></tr></table>
+                                        <input id="font_size" type="text" size="1" maxlength="2"> px
+                                </td></tr></table>
                                 <table>
                                         <tr><td class="head">Margin width</td>
                                             <td class="field">: <input  id="margin_width" type="text" size="1" maxlength="2"> mm</td>
@@ -282,7 +311,7 @@
                                         </tr>
                                 </table>
                                 <div id="change"><br><br><br>
-                                        <span id="show">Show Preview &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span id="save">Save Changes</span>
+                                    <span id="show" title="Click to see Preview">Show Preview &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span id="save" title="Save Resume shown in Preview">Save Changes</span>
                                 </div>
                         </div>
                         
@@ -291,6 +320,10 @@
 	</div>
         <div id="preview_popup">
                 <div id="popup_close"></div>
+                <div id="image_header">
+                        <?echo (file_exists("tmp/$user"."_header"))?('<img id="header_image" src="tmp/'.$user.'_header">'):
+                               (($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header">'):'');?>
+                </div>
                 <div id="resume_body">
                         <div id="personal_info">
                                 <div id="profile_pic">

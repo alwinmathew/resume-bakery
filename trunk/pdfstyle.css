@@ -4,11 +4,16 @@
                 width: auto;
                 /*border: 1px solid red;*/
 	}
+        #header_image
+        {
+                float: right;
+                margin-top: 0.5mm;
+                margin-bottom: 0.5mm;
+        }
         #personal_info
         {
                 height: 200px;
         }
-
         #profile_pic
 	{
                 margin-left: 15px;

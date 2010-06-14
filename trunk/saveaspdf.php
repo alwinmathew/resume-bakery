@@ -9,9 +9,15 @@ $sections=mysql_fetch_array($result);
 
 $width=(int)$data['margin_width'];
 $height=297-(2*$width);
-$pic='files/'.$user;
+$pic="files/$user";
 
-$html = '<div id="body" style="background-color: '.$data['background_color'].';padding-top: '.$data['margin_width'].';padding-left: '.$data['margin_width'].';padding-right: '.$data['margin_width'].';height: 297mm">
+$html=' <htmlpageheader name="myHTMLHeader1">';
+$html.=($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header" style="margin-right: '.$data['margin_width'].';height: '.($data['margin_width']-1).'mm;">'):'';
+$html.='</htmlpageheader>
+        
+        <sethtmlpageheader name="myHTMLHeader1" page="O" value="on" show-this-page="1" />
+
+        <div id="body" style="background-color: '.$data['background_color'].';padding-top: '.$data['margin_width'].';padding-left: '.$data['margin_width'].';padding-right: '.$data['margin_width'].';height: 297mm">
         <div id="resume_body" style="border: '.$data['border_width'].'px solid '.$data['margin_color'].';height: '.$height.'mm">
 	<div id="personal_info">
                                 <div id="profile_pic">';
@@ -96,7 +102,7 @@ $html.='</table></div></div>';
 
 include("pdf/mpdf.php");
 
-$mpdf=new mPDF('win-1252','A4',0,'',0,0,0,0);
+$mpdf=new mPDF('win-1252','A4',0,'',0,0,0,0,0,0);
 
 $mpdf->useOnlyCoreFonts = true;
 
