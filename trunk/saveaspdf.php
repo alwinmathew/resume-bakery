@@ -11,15 +11,12 @@ $width=(int)$data['margin_width'];
 $height=297-(2*$width);
 $pic="files/$user";
 
-$html=' <htmlpageheader name="myHTMLHeader1">';
-$html.=($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header" style="margin-right: '.$data['margin_width'].';height: '.($data['margin_width']-1).'mm;">'):'';
-$html.='</htmlpageheader>
-        
-        <sethtmlpageheader name="myHTMLHeader1" page="O" value="on" show-this-page="1" />
 
-        <div id="body" style="background-color: '.$data['background_color'].';padding-top: '.$data['margin_width'].';padding-left: '.$data['margin_width'].';padding-right: '.$data['margin_width'].';height: 297mm">
-        <div id="resume_body" style="border: '.$data['border_width'].'px solid '.$data['margin_color'].';height: '.$height.'mm">
-	<div id="personal_info">
+
+$html=' <div id="body" style="background-color: '.$data['background_color'].';padding-top: '.$data['margin_width'].';padding-left: '.$data['margin_width'].';padding-right: '.$data['margin_width'].';height: 297mm">
+        <div id="resume_body" style="border: '.$data['border_width'].'px solid '.$data['margin_color'].';height: '.$height.'mm">';
+$html.=($data['header_image']!="0")?('<div id="image_header"><img id="header_image" src="files/'.$user.'_header" style="height: '.($data['margin_width']-1).'mm;"></div>'):'';
+$html.=	'<div id="personal_info">
                                 <div id="profile_pic">';
 $html.=($data['profile_pic']!="0")?('<img src="'.$pic.'" height="120" width="120">'):'';
 $html.=                         '</div>
