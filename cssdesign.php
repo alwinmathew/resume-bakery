@@ -20,7 +20,14 @@
                 width: auto;
                 border: <?=$data['border_width']?>px solid <?=$data['margin_color']?>;
 	}
-
+        #header_image
+        {
+                float: right;
+                margin-right: <?=$data['margin_width']?>;
+                height: <?=$data['margin_width']-1?>mm;
+                margin-top: 0.5px;
+                margin-bottom: 0.5px;
+        }
         #personal_info
         {
                 height: 200px;
@@ -218,6 +225,7 @@
                 /*border: 1px solid teal;*/
                 padding-top: 5px;
                 padding-bottom: 5px;
+                vertical-align: top;
         }
         .field
         {
@@ -225,5 +233,6 @@
                 width: 300px;
                 padding-top: 5px;
                 padding-bottom: 5px;
+                vertical-align: top;
         }
 

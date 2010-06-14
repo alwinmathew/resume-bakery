@@ -60,3 +60,9 @@
 * Study on file upload, profile pic management & removal of files
 * Design on profile pic upload
 * Tested pdf compatibility
+
+12th-15th June 2010
+* Study on header management & its pdf compatibility
+* Tried out few examples
+* Design on header management features
+* Tested pdf compatibility

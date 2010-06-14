@@ -1,7 +1,7 @@
 <?
         include 'session.php';
         include 'fetchdatabase.php';
-        $sql="SELECT * FROM sections WHERE username='$user'";
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='general'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
 ?>
@@ -207,7 +207,7 @@
                                 window.location.reload();
                         });
                         $("#preview").click(function(){
-                                window.location.replace("preview");
+                                window.location="preview";
                         });
                         $("#share span").click(function(){
                                 update_section("sharing","");
