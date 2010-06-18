@@ -101,7 +101,7 @@
                                         $("#preview_popup").css("background-color",def_bgcolor);
 
                                 if(update_info("header_image","status_temp"))
-                                        $("#image_header").html('<img id="header_image" src="tmp/'+'<?echo $user?>' +'_header">');
+                                        $("#image_header").html('<img id="header_image" src="tmp/'+'<?echo $user?>' +'_header.jpg">');
                                 $("#preview_popup").show();
                                 $("#popup_close").click(function(){
                                         $("#preview_popup").hide();
@@ -322,12 +322,12 @@
                 <div id="popup_close"></div>
                 <div id="resume_body">
                     <div id="image_header">
-                        <?echo (file_exists("tmp/$user"."_header"))?('<img id="header_image" align="right" src="tmp/'.$user.'_header">'):
-                               (($data['header_image']!="0")?('<img id="header_image" align="right" src="files/'.$user.'_header">'):'');?>
+                        <?echo (file_exists("tmp/$user"."_header.jpg"))?('<img id="header_image" align="right" src="tmp/'.$user.'_header.jpg">'):
+                               (($data['header_image']!="0")?('<img id="header_image" align="right" src="files/'.$user.'_header.jpg">'):'');?>
                     </div>
                         <div id="personal_info">
-                                <div id="profile_pic">
-                                        <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'" height="120" width="120">'):'';?>
+                                <div id="profile_pic" align="center">
+                                        <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
                                 </div>
                                 <div id="info">
                                         <div class="name">

@@ -151,10 +151,10 @@
 	<div id="page">
             <div id="body">
             <div id="resume_body">
-                        <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header">'):'';?>
+                        <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header.jpg">'):'';?>
                         <div id="personal_info">
-                                <div id="profile_pic">
-                                        <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'" height="120" width="120">'):'';?>
+                                <div id="profile_pic" align="center">
+                                        <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
                                 </div>
                                 <div id="info">
                                         <div class="name">

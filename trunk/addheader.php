@@ -2,7 +2,7 @@
         include 'session.php';
         include 'fetchdatabase.php';
 
-        $target_path="tmp/$user"."_header";
+        $target_path="tmp/$user"."_header.jpg";
 
        /* if($data['profile_pic']=="0")
         {
@@ -16,6 +16,7 @@
                 $image->setImageFileName($target_path."_temp");
                 $image->writeImage();
                 rename($target_path."_temp",$target_path);
+                system("convert $target_path -resize x80  $target_path");
                 chmod($target_path,0755);
                 header("Location: design");
         }

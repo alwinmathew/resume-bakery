@@ -9,16 +9,16 @@ $sections=mysql_fetch_array($result);
 
 $width=(int)$data['margin_width'];
 $height=297-(2*$width);
-$pic="files/$user";
+$pic="files/$user.jpg";
 
 
 
 $html=' <div id="body" style="background-color: '.$data['background_color'].';padding-top: '.$data['margin_width'].';padding-left: '.$data['margin_width'].';padding-right: '.$data['margin_width'].';height: 297mm">
         <div id="resume_body" style="border: '.$data['border_width'].'px solid '.$data['margin_color'].';height: '.$height.'mm">';
-$html.=($data['header_image']!="0")?('<div id="image_header"><img id="header_image" src="files/'.$user.'_header" style="height: '.($data['margin_width']-1).'mm;"></div>'):'';
+$html.=($data['header_image']!="0")?('<div id="image_header"><img id="header_image" src="files/'.$user.'_header.jpg"></div>'):'';
 $html.=	'<div id="personal_info">
-                                <div id="profile_pic">';
-$html.=($data['profile_pic']!="0")?('<img src="'.$pic.'" height="120" width="120">'):'';
+                                <div id="profile_pic" align="center">';
+$html.=($data['profile_pic']!="0")?('<img src="'.$pic.'">'):'';
 $html.=                         '</div>
                                 <div id="info">
                                         <div class="name">
