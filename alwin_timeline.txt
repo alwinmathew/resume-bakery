@@ -66,3 +66,7 @@
 * Tried out few examples
 * Design on header management features
 * Tested pdf compatibility
+
+16th-18th June 2010
+* Study on overall design
+* Modified overall implementation

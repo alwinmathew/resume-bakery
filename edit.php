@@ -72,15 +72,15 @@
                                         var sec="#sec_"+type;
                                         if(value=="1")
                                         {
-                                                $(section).show();
-                                                $(add).hide();
-                                                $(sec).show();
+                                                $(section).css("display","block");
+                                                $(add).css("display","none");
+                                                $(sec).css("display","block");
                                         }
                                         else
                                         {
-                                                $(section).hide();
-                                                $(add).show();
-                                                $(sec).hide();
+                                                $(section).css("display","none");
+                                                $(add).css("display","block");
+                                                $(sec).css("display","none");
                                         }
                                 }
                         });
@@ -249,123 +249,6 @@
                                 var section=id.substr(4);
                                 update_section(section,"0");
                         });
-                        
-                        
-                        <?
-                        function section_hide($type)
-                        {
-                                echo '$("#'.$type.'").hide();';
-                                echo '$("#sec_'.$type.'").hide();';
-                                echo '$("#add_'.$type.'").show();';
-                        }
-                        function section_show($type)
-                        {
-                                echo '$("#'.$type.'").show();';
-                                echo '$("#sec_'.$type.'").show();';
-                                echo '$("#add_'.$type.'").hide();';
-                        }
-                        if($data['summary']==NULL)
-                            echo '$("#summary p").html("Click to edit description");';
-                        if($data['skills']==NULL)
-                            echo '$("#skills p").html("Click to edit description");';
-                        if($data['experience']==NULL)
-                            echo '$("#experience p").html("Click to edit description");';
-                        if($data['studies']==NULL)
-                            echo '$("#studies p").html("Click to edit description");';
-                        if($data['interests']==NULL)
-                            echo '$("#interests p").html("Click to edit description");';
-                        if($data['hobbies']==NULL)
-                            echo '$("#hobbies p").html("Click to edit description");';
-                        if($data['languages']==NULL)
-                            echo '$("#languages p").html("Click to edit description");';
-                        if($data['certificates']==NULL)
-                            echo '$("#certificates p").html("Click to edit description");';
-                        if($data['publications']==NULL)
-                            echo '$("#publications p").html("Click to edit description");';
-                        if($data['awards']==NULL)
-                            echo '$("#awards p").html("Click to edit description");';
-
-                        if($sections['summary']=='0')
-                        {
-                            section_hide("summary");
-                        }
-                        else
-                        {
-                            section_show("summary");
-                        }
-                        if($sections['skills']=='0')
-                        {
-                            section_hide("skills");
-                        }
-                        else
-                        {
-                            section_show("skills");
-                        }
-                        if($sections['experience']=='0')
-                        {
-                            section_hide("experience");
-                        }
-                        else
-                        {
-                            section_show("experience");
-                        }
-                        if($sections['studies']=='0')
-                        {
-                            section_hide("studies");
-                        }
-                        else
-                        {
-                            section_show("studies");
-                        }
-                        if($sections['interests']=='0')
-                        {
-                            section_hide("interests");
-                        }
-                        else
-                        {
-                            section_show("interests");
-                        }
-                        if($sections['hobbies']=='0')
-                        {
-                            section_hide("hobbies");
-                        }
-                        else
-                        {
-                            section_show("hobbies");
-                        }
-                        if($sections['languages']=='0')
-                        {
-                            section_hide("languages");
-                        }
-                        else
-                        {
-                            section_show("languages");
-                        }
-                        if($sections['certificates']=='0')
-                        {
-                            section_hide("certificates");
-                        }
-                        else
-                        {
-                            section_show("certificates");
-                        }
-                        if($sections['publications']=='0')
-                        {
-                            section_hide("publications");
-                        }
-                        else
-                        {
-                            section_show("publications");
-                        }
-                        if($sections['awards']=='0')
-                        {
-                            section_hide("awards");
-                        }
-                        else
-                        {
-                            section_show("awards");
-                        }
-                        ?>
                 });
 
         </script>
@@ -381,10 +264,10 @@
 		</div>
 		<div id="body">
                         <div id="personal_info">
-                                <div id="profile_pic">
-                                        <span><img src="files/<?echo ($data['profile_pic']=="0")?"default":$user;?>" height="120" width="120"></span>
-                                        <p align="center"><span id="upload" style="cursor: pointer;">+ Upload</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="remove" style="cursor: pointer;">- Remove</span></p>
-                                        <p id="response" align="center" style="color: red;"></p>
+                                <div id="profile_pic" align="center">
+                                        <span><img src="files/<?echo ($data['profile_pic']=="0")?"default.jpg":$user.".jpg";?>"></span>
+                                        <p><span id="upload" style="cursor: pointer;">+ Upload</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="remove" style="cursor: pointer;">- Remove</span></p>
+                                        <p id="response" style="color: red;"></p>
                                 </div>
                                 <div id="info">
                                         <div class="name">
@@ -476,90 +359,90 @@
                                 </div>
                         </div>
                         <table>
-                            <tr class="section" id="summary">
+                            <tr class="section" id="summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Summary</h3></td>
-                                <td><p><?echo $data['summary'];?></p>
+                                <td><p><?echo ($data['summary']!=NULL)?$data['summary']:"Click to edit description";?></p>
                                     <div class="summary_edit">
                                         <textarea id="edit_summary" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="skills">
+                            <tr class="section" id="skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Skills</h3></td>
-                                <td><p><?echo $data['skills'];?></p>
+                                <td><p><?echo ($data['skills']!=NULL)?$data['skills']:"Click to edit description";?></p>
                                     <div class="skills_edit">
                                         <textarea id="edit_skills" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="experience">
+                            <tr class="section" id="experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Experience</h3></td>
-                                <td><p><?echo $data['experience'];?></p>
+                                <td><p><?echo ($data['experience']!=NULL)?$data['experience']:"Click to edit description";?></p>
                                     <div class="experience_edit">
                                         <textarea id="edit_experience" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="studies">
+                            <tr class="section" id="studies" style="display: <?echo ($sections['studies']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Studies</h3></td>
-                                <td><p><?echo $data['studies'];?></p>
+                                <td><p><?echo ($data['studies']!=NULL)?$data['studies']:"Click to edit description";?></p>
                                     <div class="studies_edit">
                                         <textarea id="edit_studies" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="interests">
+                            <tr class="section" id="interests" style="display: <?echo ($sections['interests']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Interests</h3></td>
-                                <td><p><?echo $data['interests'];?></p>
+                                <td><p><?echo ($data['interests']!=NULL)?$data['interests']:"Click to edit description";?></p>
                                     <div class="interests_edit">
                                         <textarea id="edit_interests" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="hobbies">
+                            <tr class="section" id="hobbies" style="display: <?echo ($sections['hobbies']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Hobbies</h3></td>
-                                <td><p><?echo $data['hobbies'];?></p>
+                                <td><p><?echo ($data['hobbies']!=NULL)?$data['hobbies']:"Click to edit description";?></p>
                                     <div class="hobbies_edit">
                                         <textarea id="edit_hobbies" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="languages">
+                            <tr class="section" id="languages" style="display: <?echo ($sections['languages']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Languages</h3></td>
-                                <td><p><?echo $data['languages'];?></p>
+                                <td><p><?echo ($data['languages']!=NULL)?$data['languages']:"Click to edit description";?></p>
                                     <div class="languages_edit">
                                         <textarea id="edit_languages" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="certificates">
+                            <tr class="section" id="certificates" style="display: <?echo ($sections['certificates']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Certificates</h3></td>
-                                <td><p><?echo $data['certificates'];?></p>
+                                <td><p><?echo ($data['certificates']!=NULL)?$data['certificates']:"Click to edit description";?></p>
                                     <div class="certificates_edit">
                                         <textarea id="edit_certificates" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="publications">
+                            <tr class="section" id="publications" style="display: <?echo ($sections['publications']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Publications</h3></td>
-                                <td><p><?echo $data['publications'];?></p>
+                                <td><p><?echo ($data['publications']!=NULL)?$data['publications']:"Click to edit description";?></p>
                                     <div class="publications_edit">
                                         <textarea id="edit_publications" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="section" id="awards">
+                            <tr class="section" id="awards" style="display: <?echo ($sections['awards']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Awards</h3></td>
-                                <td><p><?echo $data['awards'];?></p>
+                                <td><p><?echo ($data['awards']!=NULL)?$data['awards']:"Click to edit description";?></p>
                                     <div class="awards_edit">
                                         <textarea id="edit_awards" cols="60" rows="8"></textarea>
                                         <button class="save">save</button><button class="cancel">cancel</button>
@@ -570,28 +453,28 @@
 		</div>
             <div id="preview">Preview</div>
             <div id="section_view">
-                <p class="sec_views" id="sec_summary">- Summary</p>
-                <p class="sec_views" id="sec_skills">- Skills</p>
-                <p class="sec_views" id="sec_experience">- Experience</p>
-                <p class="sec_views" id="sec_studies">- Studies</p>
-                <p class="sec_views" id="sec_interests">- Interests</p>
-                <p class="sec_views" id="sec_hobbies">- Hobbies</p>
-                <p class="sec_views" id="sec_languages">- Languages</p>
-                <p class="sec_views" id="sec_certificates">- Certificates</p>
-                <p class="sec_views" id="sec_publications">- Publications</p>
-                <p class="sec_views" id="sec_awards">- Awards</p>
+                <p class="sec_views" id="sec_summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">- Summary</p>
+                <p class="sec_views" id="sec_skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">- Skills</p>
+                <p class="sec_views" id="sec_experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">- Experience</p>
+                <p class="sec_views" id="sec_studies" style="display: <?echo ($sections['studies']!="0")?"block":"none";?>;">- Studies</p>
+                <p class="sec_views" id="sec_interests" style="display: <?echo ($sections['interests']!="0")?"block":"none";?>;">- Interests</p>
+                <p class="sec_views" id="sec_hobbies" style="display: <?echo ($sections['hobbies']!="0")?"block":"none";?>;">- Hobbies</p>
+                <p class="sec_views" id="sec_languages" style="display: <?echo ($sections['languages']!="0")?"block":"none";?>;">- Languages</p>
+                <p class="sec_views" id="sec_certificates" style="display: <?echo ($sections['certificates']!="0")?"block":"none";?>;">- Certificates</p>
+                <p class="sec_views" id="sec_publications" style="display: <?echo ($sections['publications']!="0")?"block":"none";?>;">- Publications</p>
+                <p class="sec_views" id="sec_awards" style="display: <?echo ($sections['awards']!="0")?"block":"none";?>;">- Awards</p>
                 <select name="add_section">
-                    <option id="add_title">add Section</option>
-                    <option class="add_new" id="add_summary">Summary</option>
-                    <option class="add_new" id="add_skills">Skills</option>
-                    <option class="add_new" id="add_experience">Experience</option>
-                    <option class="add_new" id="add_studies">Studies</option>
-                    <option class="add_new" id="add_interests">Interests</option>
-                    <option class="add_new" id="add_hobbies">Hobbies</option>
-                    <option class="add_new" id="add_languages">Languages</option>
-                    <option class="add_new" id="add_certificates">Certificates</option>
-                    <option class="add_new" id="add_publications">Publications</option>
-                    <option class="add_new" id="add_awards">Awards</option>
+                    <option id="add_title">+ add Section</option>
+                    <option class="add_new" id="add_summary" style="display: <?echo ($sections['summary']=="0")?"block":"none";?>;">Summary</option>
+                    <option class="add_new" id="add_skills" style="display: <?echo ($sections['skills']=="0")?"block":"none";?>;">Skills</option>
+                    <option class="add_new" id="add_experience" style="display: <?echo ($sections['experience']=="0")?"block":"none";?>;">Experience</option>
+                    <option class="add_new" id="add_studies" style="display: <?echo ($sections['studies']=="0")?"block":"none";?>;">Studies</option>
+                    <option class="add_new" id="add_interests" style="display: <?echo ($sections['interests']=="0")?"block":"none";?>;">Interests</option>
+                    <option class="add_new" id="add_hobbies" style="display: <?echo ($sections['hobbies']=="0")?"block":"none";?>;">Hobbies</option>
+                    <option class="add_new" id="add_languages" style="display: <?echo ($sections['languages']=="0")?"block":"none";?>;">Languages</option>
+                    <option class="add_new" id="add_certificates" style="display: <?echo ($sections['certificates']=="0")?"block":"none";?>;">Certificates</option>
+                    <option class="add_new" id="add_publications" style="display: <?echo ($sections['publications']=="0")?"block":"none";?>;">Publications</option>
+                    <option class="add_new" id="add_awards" style="display: <?echo ($sections['awards']=="0")?"block":"none";?>;">Awards</option>
                 </select>
             </div>
             <div id="share">Your Resume is : <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br>
