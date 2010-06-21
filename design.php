@@ -150,118 +150,6 @@
                                 def_bdwidth=bdwidth;
                                 def_bgcolor=bgcolor;
                         });
-                        <?
-                        if(($data['gender']==NULL)||($data['dob']==NULL&&$data['marital_status']==NULL))
-                            echo '$("#g").hide();';
-                        if($data['dob']==NULL||$data['marital_status']==NULL)
-                            echo '$("#d").hide();';
-                        if($data['gender']==NULL)
-                            echo '$("#gender").hide();';
-                        if($data['dob']==NULL)
-                            echo '$("#dob").hide();';
-                        if($data['marital_status']==NULL)
-                            echo '$("#marital_status").hide();';
-                        if($data['phone']==NULL)
-                            echo '$("#phone").hide();';
-                        if($data['email']==NULL)
-                            echo '$("#email").hide();';
-                        if($data['mobile']==NULL)
-                            echo '$("#mobile").hide();';
-                        if($data['website']==NULL)
-                            echo '$("#website").hide();';
-                        if($data['address']==NULL)
-                            echo '$("#address").hide();';
-
-                        function section_hide($type)
-                        {
-                                echo '$("#'.$type.'").hide();';
-                        }
-                        function section_show($type)
-                        {
-                                echo '$("#'.$type.'").show();';
-                        }
-                        if($sections['summary']=='0')
-                        {
-                            section_hide("summary");
-                        }
-                        else
-                        {
-                            section_show("summary");
-                        }
-                        if($sections['skills']=='0')
-                        {
-                            section_hide("skills");
-                        }
-                        else
-                        {
-                            section_show("skills");
-                        }
-                        if($sections['experience']=='0')
-                        {
-                            section_hide("experience");
-                        }
-                        else
-                        {
-                            section_show("experience");
-                        }
-                        if($sections['studies']=='0')
-                        {
-                            section_hide("studies");
-                        }
-                        else
-                        {
-                            section_show("studies");
-                        }
-                        if($sections['interests']=='0')
-                        {
-                            section_hide("interests");
-                        }
-                        else
-                        {
-                            section_show("interests");
-                        }
-                        if($sections['hobbies']=='0')
-                        {
-                            section_hide("hobbies");
-                        }
-                        else
-                        {
-                            section_show("hobbies");
-                        }
-                        if($sections['languages']=='0')
-                        {
-                            section_hide("languages");
-                        }
-                        else
-                        {
-                            section_show("languages");
-                        }
-                        if($sections['certificates']=='0')
-                        {
-                            section_hide("certificates");
-                        }
-                        else
-                        {
-                            section_show("certificates");
-                        }
-                        if($sections['publications']=='0')
-                        {
-                            section_hide("publications");
-                        }
-                        else
-                        {
-                            section_show("publications");
-                        }
-                        if($sections['awards']=='0')
-                        {
-                            section_hide("awards");
-                        }
-                        else
-                        {
-                            section_show("awards");
-                        }
-                        ?>
-                        
                 });
 
         </script>
@@ -310,8 +198,9 @@
                                             <td class="field">: <input id="background_color" class="color {required:false}" size="4" maxlength="6"></td>
                                         </tr>
                                 </table>
-                                <div id="change"><br><br><br>
-                                    <span id="show" title="Click to see Preview">Show Preview &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span id="save" title="Save Resume shown in Preview">Save Changes</span>
+                                <div id="change" align="center"><br><br><br>
+                                    <span id="show" title="Click to see Preview">Show Preview</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="save" title="Save Resume shown in Preview">Save Changes</span><br><br>
+                                    <span id="template" title="Save Resume design as Template">Save as Template</span>
                                 </div>
                         </div>
                         
@@ -333,59 +222,64 @@
                                         <div class="name">
                                                 <span id="first_name"><?echo $data['first_name']?></span>&nbsp;&nbsp;&nbsp;
                                                 <span id="last_name"><?echo $data['last_name']?><br></span>
-                                                <span id="gender"><?echo $data['gender']=='M'?'Male':'Female';?></span><span id="g">, </span>
-                                                <span id="dob"><?echo $data['dob'];?></span><span id="d">, </span>
-                                                <span id="marital_status"><?echo $data['marital_status']=='S'?'Single':'Married';?></span>
+                                                <?
+                                                    if($data['gender']!=NULL)
+                                                        echo '<span id="gender">'.(($data['gender']=='M')?'Male':'Female').'</span>';
+                                                    echo (($data['gender']==NULL)||($data['dob']==NULL&&$data['marital_status']==NULL))?'':'<span id="g">, </span>';
+                                                    echo ($data['dob']!=NULL)?('<span id="dob">'.$data['dob'].'</span>'):'';
+                                                    echo ($data['dob']==NULL||$data['marital_status']==NULL)?'':'<span id="d">, </span>';
+                                                    if($data['marital_status']!=NULL)
+                                                        echo '<span id="marital_status">'.(($data['marital_status']=='S')?'Single':'Married').'</span>';
+                                                ?>
                                         </div>
                                         <table>
-                                        <tr><td id="mobile"><?echo "Mobile: ".$data['mobile'];?></td>
-                                            <td id="email"><?echo "Email: ".$data['email'];?></td></tr>
+                                        <tr><?echo ($data['mobile']!=NULL)?'<td id="mobile">Mobile: '.$data['mobile'].'</td>':'';
+                                            echo ($data['email']!=NULL)?'<td id="email">Email: '.$data['email'].'</td>':'';?></tr>
 
-                                        <tr><td id="phone"><?echo "Phone: ".$data['phone'];?></td>
-                                            <td id="website"><?echo "Website/Blog: ".$data['website'];?></td></tr>
+                                        <tr><?echo ($data['phone']!=NULL)?'<td id="phone">Phone: '.$data['phone'].'</td>':'';
+                                            echo ($data['website']!=NULL)?'<td id="website">Website/blog: '.$data['website'].'</td>':'';?></tr>
                                         </table>
-                                        <p id="address"><?echo $data['address'];?></p>
-
+                                        <?echo ($data['address']!=NULL)?'<p id="address">'.$data['address'].'</p>':'';?>
                                     </div>
                         </div>
                         <table>
-                                <tr class="section" id="summary">
+                                <tr class="section" id="summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Summary</h3></td>
                                         <td class="data"><p><?echo $data['summary'];?></p></td>
                                 </tr>
-                                <tr class="section" id="skills">
+                                <tr class="section" id="skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Skills</h3></td>
                                         <td class="data"><p><?echo $data['skills'];?></p></td>
                                 </tr>
-                                <tr class="section" id="experience">
+                                <tr class="section" id="experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Experience</h3></td>
                                         <td class="data"><p><?echo $data['experience'];?></p></td>
                                 </tr>
-                                <tr class="section" id="studies">
+                                <tr class="section" id="studies" style="display: <?echo ($sections['studies']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Studies</h3></td>
                                         <td class="data"><p><?echo $data['studies'];?></p></td>
                                 </tr>
-                                <tr class="section" id="interests">
+                                <tr class="section" id="interests" style="display: <?echo ($sections['interests']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Interests</h3></td>
                                         <td class="data"><p><?echo $data['interests'];?></p></td>
                                 </tr>
-                                <tr class="section" id="hobbies">
+                                <tr class="section" id="hobbies" style="display: <?echo ($sections['hobbies']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Hobbies</h3></td>
                                         <td class="data"><p><?echo $data['hobbies'];?></p></td>
                                 </tr>
-                                <tr class="section" id="languages">
+                                <tr class="section" id="languages" style="display: <?echo ($sections['languages']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Languages</h3></td>
                                         <td class="data"><p><?echo $data['languages'];?></p></td>
                                 </tr>
-                                <tr class="section" id="certificates">
+                                <tr class="section" id="certificates" style="display: <?echo ($sections['certificates']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Certificates</h3></td>
                                         <td class="data"><p><?echo $data['certificates'];?></p></td>
                                 </tr>
-                                <tr class="section" id="publications">
+                                <tr class="section" id="publications" style="display: <?echo ($sections['publications']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Publications</h3></td>
                                         <td class="data"><p><?echo $data['publications'];?></p></td>
                                 </tr>
-                                <tr class="section" id="awards">
+                                <tr class="section" id="awards" style="display: <?echo ($sections['awards']!="0")?"block":"none";?>;">
                                         <td class="title"><h3>Awards</h3></td>
                                         <td class="data"><p><?echo $data['awards'];?></p></td>
                                 </tr>

@@ -16,7 +16,7 @@
                 $image->setImageFileName($target_path."_temp");
                 $image->writeImage();
                 rename($target_path."_temp",$target_path);
-                system("convert $target_path -resize x80  $target_path");
+                system("convert $target_path -resize x60  $target_path");
                 chmod($target_path,0755);
                 header("Location: design");
         }
