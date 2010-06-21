@@ -262,7 +262,7 @@
 			<div id="title">Resume-Bakery</div>
                         <div id="tagline">easy resume management</div>
 		</div>
-		<div id="body">
+		<div id="resume_body">
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">
                                         <span><img src="files/<?echo ($data['profile_pic']=="0")?"default.jpg":$user.".jpg";?>"></span>
@@ -288,7 +288,7 @@
                                                 <span class="info_edit" id="gender_edit">
                                                     <select id="add_gender">
                                                         <option>--</option>
-                                                        <option id="male">Male</option>
+                                                        <option selected id="male">Male</option>
                                                         <option id="female">Female</option>
                                                     </select><br>
                                                     <button class="save">save</button><button class="cancel">cancel</button>
@@ -322,7 +322,7 @@
                                                 <span class="info_edit" id="marital_status_edit">
                                                     <select id="add_marital_status">
                                                         <option>--</option>
-                                                        <option id="single">Single</option>
+                                                        <option selected id="single">Single</option>
                                                         <option id="married">Married</option>
                                                     </select><br>
                                                     <button class="save">save</button><button class="cancel">cancel</button>
@@ -464,7 +464,7 @@
                 <p class="sec_views" id="sec_publications" style="display: <?echo ($sections['publications']!="0")?"block":"none";?>;">- Publications</p>
                 <p class="sec_views" id="sec_awards" style="display: <?echo ($sections['awards']!="0")?"block":"none";?>;">- Awards</p>
                 <select name="add_section">
-                    <option id="add_title">+ add Section</option>
+                    <option selected id="add_title">+ add Section</option>
                     <option class="add_new" id="add_summary" style="display: <?echo ($sections['summary']=="0")?"block":"none";?>;">Summary</option>
                     <option class="add_new" id="add_skills" style="display: <?echo ($sections['skills']=="0")?"block":"none";?>;">Skills</option>
                     <option class="add_new" id="add_experience" style="display: <?echo ($sections['experience']=="0")?"block":"none";?>;">Experience</option>
@@ -479,6 +479,9 @@
             </div>
             <div id="share">Your Resume is : <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br>
                 <a href="resume?id=<?echo $user;?>">View your public resume</a>
+            </div>
+            <div style="float: right;color: green;" onclick="">
+                    Create Group
             </div>
 	</div>
 

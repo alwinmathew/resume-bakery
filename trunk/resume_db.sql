@@ -38,6 +38,37 @@ LOCK TABLES `abc` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `groups`
+--
+
+DROP TABLE IF EXISTS `groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groups` (
+  `grp_name` varchar(50) NOT NULL,
+  `grp_key` varchar(32) NOT NULL,
+  `owner` varchar(32) NOT NULL,
+  `header_image` char(1) NOT NULL DEFAULT '0',
+  `font_family` varchar(60) NOT NULL DEFAULT 'Trebuchet MS, Helvetica, sans-serif',
+  `font_size` varchar(2) NOT NULL DEFAULT '12',
+  `margin_width` varchar(4) NOT NULL DEFAULT '8mm',
+  `margin_color` varchar(10) NOT NULL DEFAULT 'white',
+  `border_width` char(1) NOT NULL DEFAULT '0',
+  `background_color` varchar(10) NOT NULL DEFAULT 'white',
+  PRIMARY KEY (`grp_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groups`
+--
+
+LOCK TABLES `groups` WRITE;
+/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `members`
 --
 
@@ -109,7 +140,7 @@ CREATE TABLE `personalinfo` (
 
 LOCK TABLES `personalinfo` WRITE;
 /*!40000 ALTER TABLE `personalinfo` DISABLE KEYS */;
-INSERT INTO `personalinfo` VALUES ('alwin','general','Alwin','Mathew','M','2006-06-03','M','0484-2295565','91 8891406276','alwinmathew316@gmail.com',NULL,'XI/673H, Puthenpurackal House, Kunnumpuram, Thrikkakara, Cochin - 682021','1','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses kj','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses sdfg agda ','',NULL,'The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ',NULL,NULL,NULL,NULL,'1','Times New Roman, Times, serif','14','12mm','#4A36FF','2','#FFFFFF');
+INSERT INTO `personalinfo` VALUES ('alwin','general','Alwin','Mathew','M','1989-09-08','S','0484-2295565','91 8891406276','alwinmathew316@gmail.com',NULL,'XI/673H, Puthenpurackal House, Kunnumpuram, Thrikkakara, Cochin - 682021','1','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses kj','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses sdfg agda ','',NULL,'The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ',NULL,NULL,NULL,NULL,'1','Lucida Console, Monaco, monospace','12','12mm','#4A36FF','2','#FFFFFF');
 /*!40000 ALTER TABLE `personalinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,6 +178,37 @@ LOCK TABLES `sections` WRITE;
 INSERT INTO `sections` VALUES ('alwin','general','1','1','1','0','0','1','0','0','0','0','1'),('ancy','general','1','1','0','0','0','0','0','0','0','0','0');
 /*!40000 ALTER TABLE `sections` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `templates`
+--
+
+DROP TABLE IF EXISTS `templates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `templates` (
+  `template_name` varchar(50) NOT NULL,
+  `template_key` varchar(32) NOT NULL,
+  `owner` varchar(32) NOT NULL,
+  `header_image` char(1) NOT NULL DEFAULT '0',
+  `font_family` varchar(60) NOT NULL DEFAULT 'Trebuchet MS, Helvetica, sans-serif',
+  `font_size` varchar(2) NOT NULL DEFAULT '12',
+  `margin_width` varchar(4) NOT NULL DEFAULT '8mm',
+  `margin_color` varchar(10) NOT NULL DEFAULT 'white',
+  `border_width` char(1) NOT NULL DEFAULT '0',
+  `background_color` varchar(10) NOT NULL DEFAULT 'white',
+  PRIMARY KEY (`template_key`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `templates`
+--
+
+LOCK TABLES `templates` WRITE;
+/*!40000 ALTER TABLE `templates` DISABLE KEYS */;
+/*!40000 ALTER TABLE `templates` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -157,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-06-18 22:47:22
+-- Dump completed on 2010-06-21 12:39:19

@@ -70,3 +70,8 @@
 16th-18th June 2010
 * Study on overall design
 * Modified overall implementation
+
+19th-21st June 2010
+* Removed the use of php elements inside js
+* Study on group management & template sharing
+* Introduced group info into database

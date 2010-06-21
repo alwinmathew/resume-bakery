@@ -34,13 +34,12 @@
         #header_image
         {
                 float: right;
-                height: <?=$data['margin_width']-1?>mm;
                 margin-top: 0.5px;
                 margin-bottom: 0.5px;
         }
         #personal_info
         {
-                margin-top: <?=$data['margin_width']-1?>mm;
+                margin-top: <?=($data['header_image']!="0")?60+10:"0"?>px;
                 height: 200px;
         }
 

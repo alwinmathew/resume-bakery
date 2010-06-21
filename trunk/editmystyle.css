@@ -1,4 +1,4 @@
-        #body
+        #resume_body
 	{
 		margin-top:10px;
 		background-color: white;/*#b8dbe6;*/
@@ -44,7 +44,7 @@
                 color: teal;
                 
         }
-        #info td
+        #info table td
         {
                 min-width: 165px;
                 height: 30px;
@@ -55,7 +55,7 @@
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: x-large;
         }
-        td
+        #resume_body td
         {
                 border-top: 1px dotted gray;
         }
