@@ -1,10 +1,14 @@
 <?php   header("Content-type: text/css");
         include 'session.php';
         include 'fetchdatabase.php';
+        $id=$data['template_id'];
+        $sql="SELECT * FROM templates WHERE template_key='$id'";
+        $result=mysql_query($sql);
+        $templates=mysql_fetch_array($result);
 ?>
         #preview_popup
         {
-                background-color: <?=$data['background_color']?>;
+                background-color: <?=$templates['background_color']?>;
                 top: 20px;
                 left: 340px;
                 width: 210mm;
@@ -14,20 +18,23 @@
         }
         #resume_body
 	{
-		margin: <?=$data['margin_width']?>;
+		margin: <?=$templates['margin_width']?>;
                 min-height: 271mm;
 		padding: 30px;
                 width: auto;
-                border: <?=$data['border_width']?>px solid <?=$data['margin_color']?>;
+                border: <?=$templates['border_width']?>px solid <?=$templates['margin_color']?>;
 	}
         #header_image
         {
                 margin-top: 0.5px;
                 margin-bottom: 0.5px;
+                <?if($templates['margin_width']<8)
+                        echo 'margin-right: '.(8-$templates['margin_width']).'mm;';
+                ?>
         }
         #personal_info
         {
-                margin-top: <?=($data['header_image']!="0")?60+10:"0"?>px;
+                margin-top: <?=(file_exists("tmp/$user"."_header.jpg")||$templates['header_image']!="0")?60+10:"0"?>px;
                 height: 200px;
         }
 
@@ -54,7 +61,7 @@
 	{
                 margin-left: 200px;
                 margin-top: -130px;
-		font-family: <?=$data['font_family']?>;
+		font-family: <?=$templates['font_family']?>;
                 font-size: 12px;
 	}
         #info table
@@ -88,8 +95,8 @@
         {
                 margin-top: 5px;
                 margin-bottom: 5px;
-                font-size: <?=$data['font_size']?>px;
-                font-family: <?=$data['font_family']?>;
+                font-size: <?=$templates['font_size']?>px;
+                font-family: <?=$templates['font_family']?>;
                 min-height: 100px;
                 text-align: justify;
         }

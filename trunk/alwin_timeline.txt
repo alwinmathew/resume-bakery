@@ -75,3 +75,8 @@
 * Removed the use of php elements inside js
 * Study on group management & template sharing
 * Introduced group info into database
+
+22nd-23rd June 2010
+* Design on multiple templates & template sharing
+* Implemented design on multiple templates
+* Tested pdf compatibility
