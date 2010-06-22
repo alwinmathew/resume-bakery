@@ -4,6 +4,13 @@
         $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='general'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
+        $id=$data['template_id'];
+        $sql="SELECT * FROM templates WHERE template_key='$id' AND users='$user'";
+        $result=mysql_query($sql);
+        $templates=mysql_fetch_array($result);
+        $sql="SELECT template_name,template_key FROM templates WHERE users='$user'";
+        $result=mysql_query($sql);
+        
 ?>
 
 <html>
@@ -14,12 +21,18 @@
         <link rel="stylesheet" type="text/css" media="screen" href="mystyle.php"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript">
-                $(document).ready(function(){
-                        $("#edit").click(function(){
-                                window.location="edit";
+                function change_template()
+                {
+                        var id=$("#user_templates option:selected").val();
+                        $.ajax({
+                                type: 'POST',
+                                url: "updatetemplate.php",
+                                data: "type=change_template&value=" +id,
+                                success: function(){
+                                        window.location.reload();
+                                }
                         });
-                });
-
+                }
         </script>
 </head>
 
@@ -33,7 +46,7 @@
             </div>
             <div id="body">
             <div id="resume_body">
-                        <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header.jpg">'):'';?>
+                        <?echo ($templates['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header.jpg">'):'';?>
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">
                                         <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
@@ -105,9 +118,22 @@
                                 </tr>
                         </table>
 		</div>
-            <div id="edit">Edit</div>
+            <div id="edit" onclick='window.location="edit";'>Edit</div>
             <div id="pdf"><a href="saveaspdf">Save as PDF</a></div>
+            <div id="new_template" onclick='window.location="design?type=new";'>Create new template</div>
             <div id="design_resume"><a href="design">Design your Resume</a></div>
+            <div class="templates">Choose your Template :
+                <select id="user_templates" onchange="change_template();">
+                        <?
+                            while($user_templates=mysql_fetch_array($result))
+                            {
+                                    echo '<option'.(($user_templates['template_key']==$id)?' selected ':'').' value="'.$user_templates['template_key'].'">'.$user_templates['template_name'].'</option>';
+                            }
+                        ?>
+                        
+                </select>
+            </div>
+
 	</div>
         </div>
 </body>

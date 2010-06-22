@@ -480,9 +480,6 @@
             <div id="share">Your Resume is : <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br>
                 <a href="resume?id=<?echo $user;?>">View your public resume</a>
             </div>
-            <div style="float: right;color: green;" onclick="">
-                    Create Group
-            </div>
 	</div>
 
 </body>

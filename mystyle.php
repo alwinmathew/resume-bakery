@@ -7,39 +7,46 @@
                 setcookie("user",$user,time()+3600);
         }
         include 'fetchdatabase.php';
-        $width=(int)$data['margin_width'];
+        $id=$data['template_id'];
+        $sql="SELECT * FROM templates WHERE template_key='$id'";
+        $result=mysql_query($sql);
+        $templates=mysql_fetch_array($result);
+        $width=(int)$templates['margin_width'];
         $height=297-(2*$width);
 ?>
 
         #body
         {
-                background-color: <?=$data['background_color']?>;
+                background-color: <?=$templates['background_color']?>;
                 margin-top: 10px;
                 margin-bottom: 10px;
                 margin-left: auto;
                 margin-right: auto;
                 width: 210mm;
-                padding-top: <?=$data['margin_width']?>;
-                padding-bottom: <?=$data['margin_width']?>;
+                padding-top: <?=$templates['margin_width']?>;
+                padding-bottom: <?=$templates['margin_width']?>;
         }
         #resume_body
 	{
-		margin-left: <?=$data['margin_width']?>;
-                margin-right: <?=$data['margin_width']?>;
+		margin-left: <?=$templates['margin_width']?>;
+                margin-right: <?=$templates['margin_width']?>;
                 min-height: <?=$height?>mm;
 		padding: 30px;
                 width: auto;
-                border: <?=$data['border_width']?>px solid <?=$data['margin_color']?>;
+                border: <?=$templates['border_width']?>px solid <?=$templates['margin_color']?>;
 	}
         #header_image
         {
                 float: right;
                 margin-top: 0.5px;
                 margin-bottom: 0.5px;
+                <?if($templates['margin_width']<8)
+                        echo 'margin-right: '.(8-$templates['margin_width']).'mm;';
+                ?>
         }
         #personal_info
         {
-                margin-top: <?=($data['header_image']!="0")?60+10:"0"?>px;
+                margin-top: <?=($templates['header_image']!="0")?60+10:"0"?>px;
                 height: 200px;
         }
 
@@ -66,7 +73,7 @@
 	{
                 margin-left: 200px;
                 margin-top: -130px;
-		font-family: <?=$data['font_family']?>;
+		font-family: <?=$templates['font_family']?>;
                 font-size: 12px;
 	}
         #info table
@@ -101,8 +108,8 @@
         {
                 margin-top: 5px;
                 margin-bottom: 5px;
-                font-size: <?=$data['font_size']?>px;
-                font-family: <?=$data['font_family']?>;
+                font-size: <?=$templates['font_size']?>px;
+                font-family: <?=$templates['font_family']?>;
                 min-height: 100px;
                 text-align: justify;
         }

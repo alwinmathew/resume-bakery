@@ -181,7 +181,7 @@
 	</style>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
-`
+
                 $(document).ready(function(){
                         $("#popup").hide();
                 	$("#login_form").submit(function(){

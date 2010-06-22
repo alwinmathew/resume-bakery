@@ -123,13 +123,7 @@ CREATE TABLE `personalinfo` (
   `certificates` varchar(2000) DEFAULT NULL,
   `publications` varchar(2000) DEFAULT NULL,
   `awards` varchar(2000) DEFAULT NULL,
-  `header_image` char(1) NOT NULL DEFAULT '0',
-  `font_family` varchar(60) NOT NULL DEFAULT 'Trebuchet MS, Helvetica, sans-serif',
-  `font_size` varchar(2) NOT NULL DEFAULT '12',
-  `margin_width` varchar(4) NOT NULL DEFAULT '8mm',
-  `margin_color` varchar(10) NOT NULL DEFAULT 'white',
-  `border_width` char(1) NOT NULL DEFAULT '0',
-  `background_color` varchar(10) NOT NULL DEFAULT 'white',
+  `template_id` varchar(16) NOT NULL DEFAULT 'default',
   PRIMARY KEY (`username`,`area_of_work`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -140,7 +134,7 @@ CREATE TABLE `personalinfo` (
 
 LOCK TABLES `personalinfo` WRITE;
 /*!40000 ALTER TABLE `personalinfo` DISABLE KEYS */;
-INSERT INTO `personalinfo` VALUES ('alwin','general','Alwin','Mathew','M','1989-09-08','S','0484-2295565','91 8891406276','alwinmathew316@gmail.com',NULL,'XI/673H, Puthenpurackal House, Kunnumpuram, Thrikkakara, Cochin - 682021','1','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses kj','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses sdfg agda ','',NULL,'The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ',NULL,NULL,NULL,NULL,'1','Lucida Console, Monaco, monospace','12','12mm','#4A36FF','2','#FFFFFF');
+INSERT INTO `personalinfo` VALUES ('alwin','general','Alwin','Mathew','M','1989-09-08','S','0484-2295565','91 8891406276','alwinmathew316@gmail.com',NULL,'XI/673H, Puthenpurackal House, Kunnumpuram, Thrikkakara, Cochin - 682021','1','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses kj','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses sdfg agda ','',NULL,'The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ',NULL,NULL,NULL,NULL,'d5e9992641c0cfcc');
 /*!40000 ALTER TABLE `personalinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,9 +181,10 @@ DROP TABLE IF EXISTS `templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `templates` (
-  `template_name` varchar(50) NOT NULL,
-  `template_key` varchar(32) NOT NULL,
+  `template_name` varchar(32) NOT NULL,
+  `template_key` varchar(16) NOT NULL,
   `owner` varchar(32) NOT NULL,
+  `users` varchar(32) NOT NULL,
   `header_image` char(1) NOT NULL DEFAULT '0',
   `font_family` varchar(60) NOT NULL DEFAULT 'Trebuchet MS, Helvetica, sans-serif',
   `font_size` varchar(2) NOT NULL DEFAULT '12',
@@ -207,6 +202,7 @@ CREATE TABLE `templates` (
 
 LOCK TABLES `templates` WRITE;
 /*!40000 ALTER TABLE `templates` DISABLE KEYS */;
+INSERT INTO `templates` VALUES ('default','default','','','0','Trebuchet MS, Helvetica, sans-serif','12','8mm','white','0','white'),('classic','ceb21a04c015355c','alwin','alwin','0','Palatino Linotype, Book Antiqua, Palatino, serif','12','8mm','#525DFF','2','#FFF89C'),('modern','0e74611411d39cfc','alwin','alwin','0','Trebuchet MS, Helvetica, sans-serif','12','8mm','#FFF461','8','#B8B5FF'),('testing 3','d5e9992641c0cfcc','alwin','alwin','0','Times New Roman, Times, serif','14','8mm','#FFF347','2','#FF0820');
 /*!40000 ALTER TABLE `templates` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -219,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-06-21 12:39:19
+-- Dump completed on 2010-06-23  1:29:14
