@@ -46,7 +46,7 @@
         }
         #personal_info
         {
-                margin-top: <?=($templates['header_image']!="0")?60+10:"0"?>px;
+                margin-top: <?=($data['header_image']!="0")?60+10:"0"?>px;
                 height: 200px;
         }
 

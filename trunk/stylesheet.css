@@ -114,7 +114,7 @@
         #new_template
         {
                 position: absolute;
-                top: 340px;
+                top: 410px;
                 left: 860px;
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
@@ -131,10 +131,20 @@
                 font-weight: bold;
                 cursor: pointer;
         }
+        #remove_template
+        {
+                position: absolute;
+                top: 340px;
+                left: 860px;
+                font-family: Trebuchet MS, Helvetica, sans-serif;
+                font-size: 12px;
+                font-weight: bold;
+                cursor: pointer;
+        }
         #design_resume
         {
                 position: absolute;
-                top: 410px;
+                top: 480px;
                 left: 860px;
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
