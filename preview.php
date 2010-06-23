@@ -33,6 +33,18 @@
                                 }
                         });
                 }
+                function remove_template()
+                {
+                        var id=$("#user_templates option:selected").val();
+                        $.ajax({
+                                type: 'POST',
+                                url: "updatetemplate.php",
+                                data: "type=remove_template&value=" +id,
+                                success: function(){
+                                        window.location.reload();
+                                }
+                        });
+                }
         </script>
 </head>
 
@@ -46,7 +58,7 @@
             </div>
             <div id="body">
             <div id="resume_body">
-                        <?echo ($templates['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header.jpg">'):'';?>
+                        <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header.jpg">'):'';?>
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">
                                         <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
@@ -133,7 +145,7 @@
                         
                 </select>
             </div>
-
+            <div id="remove_template" onclick="remove_template();">Remove this template</div>
 	</div>
         </div>
 </body>

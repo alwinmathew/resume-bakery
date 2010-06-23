@@ -25,6 +25,20 @@
                                 type: 'POST',
                                 url: "updatetemplate.php",
                                 data: "type=" +type +"&value=" +value,
+                                success: function(){
+//                                        if(value=="remove_temp"||value=="remove_header")
+//                                                window.location.reload();
+//                                        if(value=="status_temp")
+//                                                return data;
+                                }
+                        });
+                }
+                function update_info(type,value)
+                {
+                        $.ajax({
+                                type: 'POST',
+                                url: "updateinfo.php",
+                                data: "infotype=" +type +"&infovalue=" +value,
                                 success: function(data){
                                         if(value=="remove_temp"||value=="remove_header")
                                                 window.location.reload();
@@ -66,7 +80,7 @@
                                 bgcolor="#"+bgcolor;
                                 update_template("background_color",bgcolor);
                         }
-                        update_template("header_image","check_header");
+                        update_info("header_image","check_header");
                         window.location="preview";
                 }
                 $(document).ready(function(){
@@ -85,10 +99,10 @@
                                 $(this).css('text-decoration','none');
                         });
                         $("#remove").click(function(){
-                                update_template("header_image","remove_temp");
+                                update_info("header_image","remove_temp");
                         });
                         $("#remove_header").click(function(){
-                                update_template("header_image","remove_header");
+                                update_info("header_image","remove_header");
                         });
                         $("#show").click(function(){
                                 $("#page").fadeTo("fast",0.1);
@@ -143,7 +157,7 @@
                                 else
                                         $("#preview_popup").css("background-color",def_bgcolor);
                                         
-                                if(update_template("header_image","status_temp"))
+                                if(update_info("header_image","status_temp"))
                                         $("#image_header").html('<img id="header_image" src="tmp/'+'<?echo $user?>' +'_header.jpg">');
                                 $("#preview_popup").show();
                                 $("#popup_close").click(function(){
@@ -162,7 +176,7 @@
 	<div id="page">
 		<div id="header">
 			<div id="sideline">Welcome <b><?echo $user;?></b>&nbsp;|&nbsp;<a href="logout.php" title="Log out">Logout</a></div>
-                        <div id="title" class="color">Resume-Bakery</div>
+                        <div id="title">Resume-Bakery</div>
                         <div id="tagline">easy resume management</div>
 		</div>
 		<div id="body">
@@ -195,18 +209,18 @@
                                             <option value='Times New Roman, Times, serif' style='font-family: Times New Roman, Times, serif;'>Times New Roman</option>
                                             <option value='Trebuchet MS, Helvetica, sans-serif' style='font-family: Trebuchet MS, Helvetica, sans-serif;'>Trebuchet MS</option>
                                         </select>
-                                        <input id="font_size" type="text" size="1" maxlength="2" value="<?=$templates['font_size']?>"> px
+                                        <input id="font_size" type="text" size="1" maxlength="2" value="<?echo ($param)?'12':$templates['font_size']?>"> px
                                 </td></tr>
                                 
                                         <tr><td class="head">Margin width</td>
-                                            <td class="field">: <input  id="margin_width" type="text" size="1" maxlength="2" value="<?=(int)$templates['margin_width']?>"> mm</td>
+                                            <td class="field">: <input  id="margin_width" type="text" size="1" maxlength="2" value="<?echo ($param)?'8':(int)$templates['margin_width']?>"> mm</td>
                                             <td class="head">Margin color</td>
-                                            <td class="field">: <input id="margin_color" class="color {required:true}" size="4" maxlength="6" value="<?=$templates['margin_color']?>"></td>
+                                            <td class="field">: <input id="margin_color" class="color {required:false}" size="4" maxlength="6" value="<?echo ($param)?'FFFFFF':$templates['margin_color']?>"></td>
                                         </tr>
                                         <tr><td class="head">Border width</td>
-                                            <td class="field">: <input id="border_width" type="text" size="1" maxlength="1" value="<?=$templates['border_width']?>"> px</td>
+                                            <td class="field">: <input id="border_width" type="text" size="1" maxlength="1" value="<?echo ($param)?'0':$templates['border_width']?>"> px</td>
                                             <td class="head">Background color</td>
-                                            <td class="field">: <input id="background_color" class="color {required:true}" size="4" maxlength="6" value="<?=$templates['background_color']?>"></td>
+                                            <td class="field">: <input id="background_color" class="color {required:false}" size="4" maxlength="6" value="<?echo ($param)?'FFFFFF':$templates['background_color']?>"></td>
                                         </tr>
                                 </table>
                                 <div id="change" align="center"><br><br><br>
@@ -222,7 +236,7 @@
                 <div id="resume_body">
                     <div id="image_header">
                         <?echo (file_exists("tmp/$user"."_header.jpg"))?('<img id="header_image" align="right" src="tmp/'.$user.'_header.jpg">'):
-                               (($templates['header_image']!="0")?('<img id="header_image" align="right" src="files/'.$user.'_header.jpg">'):'');?>
+                               (($data['header_image']!="0")?('<img id="header_image" align="right" src="files/'.$user.'_header.jpg">'):'');?>
                     </div>
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">

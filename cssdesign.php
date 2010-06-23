@@ -34,7 +34,7 @@
         }
         #personal_info
         {
-                margin-top: <?=(file_exists("tmp/$user"."_header.jpg")||$templates['header_image']!="0")?60+10:"0"?>px;
+                margin-top: <?=(file_exists("tmp/$user"."_header.jpg")||$data['header_image']!="0")?60+10:"0"?>px;
                 height: 200px;
         }
 
