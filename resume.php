@@ -43,7 +43,7 @@
 	<div id="page">
             <div id="body">
             <div id="resume_body">
-                        <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header.jpg">'):'';?>
+                        <?echo ($templates['header_image']!="0")?('<img id="header_image" src="files/'.$templates['template_key'].'_header.jpg">'):'';?>
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">
                                         <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>

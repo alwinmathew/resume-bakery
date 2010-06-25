@@ -19,7 +19,7 @@ $header_pos=($templates['margin_width']<8)?'style="margin-right: '.(8-$templates
 
 $html=' <div id="body" style="background-color: '.$templates['background_color'].';padding-top: '.$templates['margin_width'].';padding-left: '.$templates['margin_width'].';padding-right: '.$templates['margin_width'].';height: 297mm">
         <div id="resume_body" style="border: '.$templates['border_width'].'px solid '.$templates['margin_color'].';height: '.$height.'mm">';
-$html.=($data['header_image']!="0")?('<div id="image_header"><img id="header_image" src="files/'.$user.'_header.jpg" '.$header_pos.'></div>'):'';
+$html.=($templates['header_image']!="0")?('<div id="image_header"><img id="header_image" src="files/'.$templates['template_key'].'_header.jpg" '.$header_pos.'></div>'):'';
 $html.=	'<div id="personal_info">
                                 <div id="profile_pic" align="center">';
 $html.=($data['profile_pic']!="0")?('<img src="'.$pic.'">'):'';

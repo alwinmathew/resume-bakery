@@ -5,7 +5,7 @@
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
         $id=$data['template_id'];
-        $sql="SELECT * FROM templates WHERE template_key='$id' AND users='$user'";
+        $sql="SELECT * FROM templates WHERE template_key='$id'";
         $result=mysql_query($sql);
         $templates=mysql_fetch_array($result);
         $sql="SELECT template_name,template_key FROM templates WHERE users='$user'";
@@ -21,29 +21,35 @@
         <link rel="stylesheet" type="text/css" media="screen" href="mystyle.php"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript">
-                function change_template()
+                function update_template(type)
                 {
                         var id=$("#user_templates option:selected").val();
                         $.ajax({
                                 type: 'POST',
                                 url: "updatetemplate.php",
-                                data: "type=change_template&value=" +id,
+                                data: "type=" +type+"&value=" +id,
                                 success: function(){
                                         window.location.reload();
                                 }
                         });
                 }
-                function remove_template()
+                function add_template()
                 {
-                        var id=$("#user_templates option:selected").val();
-                        $.ajax({
-                                type: 'POST',
-                                url: "updatetemplate.php",
-                                data: "type=remove_template&value=" +id,
-                                success: function(){
-                                        window.location.reload();
-                                }
-                        });
+                        var key=$("#shared_key").val();
+                        if(key!="")
+                        {
+                                $.ajax({
+                                        type: 'POST',
+                                        url: "updatetemplate.php",
+                                        data: "type=add_shared&value=" +key,
+                                        success: function(data){
+                                                if(data=="success")
+                                                        window.location.reload();
+                                        }
+                                });
+                        }
+                        $("#add_share").css("display","none");
+                        $("#add_template").show();
                 }
         </script>
 </head>
@@ -58,7 +64,7 @@
             </div>
             <div id="body">
             <div id="resume_body">
-                        <?echo ($data['header_image']!="0")?('<img id="header_image" src="files/'.$user.'_header.jpg">'):'';?>
+                        <?echo ($templates['header_image']!="0")?('<img id="header_image" src="files/'.$templates['template_key'].'_header.jpg">'):'';?>
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">
                                         <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
@@ -133,9 +139,11 @@
             <div id="edit" onclick='window.location="edit";'>Edit</div>
             <div id="pdf"><a href="saveaspdf">Save as PDF</a></div>
             <div id="new_template" onclick='window.location="design?type=new";'>Create new template</div>
+            <div class="share_temp" id="add_template" onclick='$(this).hide();$("#add_share").css("display","block");'>Add shared template</div>
+            <div class="share_temp" id="add_share" style="display: none;">Enter template key: <input id="shared_key" type="text" size="14" maxlength="16"><button id="addshare_ok" onclick="add_template();">OK</button></div>
             <div id="design_resume"><a href="design">Design your Resume</a></div>
             <div class="templates">Choose your Template :
-                <select id="user_templates" onchange="change_template();">
+                <select id="user_templates" onchange="update_template('change');">
                         <?
                             while($user_templates=mysql_fetch_array($result))
                             {
@@ -145,7 +153,7 @@
                         
                 </select>
             </div>
-            <div id="remove_template" onclick="remove_template();">Remove this template</div>
+            <div id="remove_template" onclick="update_template('remove');">Remove this template</div>
 	</div>
         </div>
 </body>

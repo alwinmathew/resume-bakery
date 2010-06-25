@@ -34,7 +34,15 @@
         }
         #personal_info
         {
-                margin-top: <?=(file_exists("tmp/$user"."_header.jpg")||$data['header_image']!="0")?60+10:"0"?>px;
+                margin-top: <?  if(file_exists("tmp/$user"."_header.jpg"))
+                                    echo 60+10;
+                                else if(!$param)
+                                    if($templates['header_image']!="0")
+                                        echo 60+10;
+                                    else
+                                        echo 0;
+                                else
+                                    echo 0;?>px;
                 height: 200px;
         }
 
