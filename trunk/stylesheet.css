@@ -121,6 +121,16 @@
                 font-weight: bold;
                 cursor: pointer;
         }
+        .share_temp
+        {
+                position: absolute;
+                top: 480px;
+                left: 860px;
+                font-family: Trebuchet MS, Helvetica, sans-serif;
+                font-size: 12px;
+                font-weight: bold;
+                cursor: pointer;
+        }
         .templates
         {
                 position: absolute;
@@ -141,10 +151,21 @@
                 font-weight: bold;
                 cursor: pointer;
         }
+        #share_template
+        {
+                position: absolute;
+                top: 180px;
+                left: 5px;
+                width: 60px;
+                font-family: Trebuchet MS, Helvetica, sans-serif;
+                font-size: 12px;
+                font-weight: bold;
+                cursor: pointer;
+        }
         #design_resume
         {
                 position: absolute;
-                top: 480px;
+                top: 550px;
                 left: 860px;
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;

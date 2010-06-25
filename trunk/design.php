@@ -26,20 +26,6 @@
                                 url: "updatetemplate.php",
                                 data: "type=" +type +"&value=" +value,
                                 success: function(){
-//                                        if(value=="remove_temp"||value=="remove_header")
-//                                                window.location.reload();
-//                                        if(value=="status_temp")
-//                                                return data;
-                                }
-                        });
-                }
-                function update_info(type,value)
-                {
-                        $.ajax({
-                                type: 'POST',
-                                url: "updateinfo.php",
-                                data: "infotype=" +type +"&infovalue=" +value,
-                                success: function(data){
                                         if(value=="remove_temp"||value=="remove_header")
                                                 window.location.reload();
                                         if(value=="status_temp")
@@ -56,7 +42,13 @@
                         var bdwidth=$("#border_width").val();
                         var bgcolor=$("#background_color").val();
                         if(type)
+                        {
                                 update_template("new",name);
+                                if ($("#read_only").is(':checked'))
+                                        update_template("read_only","1");
+                                else
+                                        update_template("read_only","0");
+                        }
                         if(font!="default")
                                 update_template("font_family",font);
                         if(ftsize!="")
@@ -80,7 +72,7 @@
                                 bgcolor="#"+bgcolor;
                                 update_template("background_color",bgcolor);
                         }
-                        update_info("header_image","check_header");
+                        update_template("header_image","check_header");
                         window.location="preview";
                 }
                 $(document).ready(function(){
@@ -99,10 +91,10 @@
                                 $(this).css('text-decoration','none');
                         });
                         $("#remove").click(function(){
-                                update_info("header_image","remove_temp");
+                                update_template("header_image","remove_temp");
                         });
                         $("#remove_header").click(function(){
-                                update_info("header_image","remove_header");
+                                update_template("header_image","remove_header");
                         });
                         $("#show").click(function(){
                                 $("#page").fadeTo("fast",0.1);
@@ -156,9 +148,9 @@
                                 }
                                 else
                                         $("#preview_popup").css("background-color",def_bgcolor);
-                                        
-                                if(update_info("header_image","status_temp"))
-                                        $("#image_header").html('<img id="header_image" src="tmp/'+'<?echo $user?>' +'_header.jpg">');
+                                var user=$("#sideline b").html();
+                                if(update_template("header_image","status_temp"))
+                                        $("#image_header").html('<img id="header_image" src="tmp/'+user +'_header.jpg">');
                                 $("#preview_popup").show();
                                 $("#popup_close").click(function(){
                                         $("#preview_popup").hide();
@@ -184,12 +176,9 @@
                                 <h3><?echo ($param)?"New Template":"Edit template : ".$templates['template_name'];?> ?</h3>
 
                                 <table>
-                                    <?
-                                        echo ($param)?
-                                        '<tr><td class="head">Template Name</td>
-                                            <td class="field"> : <input id="template_name" type="text" maxlength="32"></td>
-                                        </tr>':'';
-                                    ?>
+                                    <tr><td class="head">Template Name</td>
+                                        <td class="field"> : <input id="template_name" type="text" maxlength="32"></td>
+                                    </tr>
                                     <tr><form id="uploadForm" action="addheader.php" method="post" enctype="multipart/form-data">
                                                     <input type="hidden" name="MAX_FILE_SIZE" value="1024000" />
                                                     <td class="head" id="head_image">Header image</td>
@@ -197,9 +186,9 @@
                                                         <input type="submit" value="Submit" />&nbsp;<span id="remove" class="remove" style="color: red;font-size: 11px;cursor: pointer;">- remove</span><br>
                                                         &nbsp;&nbsp;<span id="remove_header" class="remove" style="color: red;font-size: 11px;cursor: pointer;">- remove saved header</span>
                                                     </td>
-                                           </form>
-                                <td class="head" id="section_font">
-                                    Section font </td><td class="field"> :
+                                        </form>
+                                        <td class="head" id="section_font">Section font </td>
+                                        <td class="field"> :
                                         <select id="font">
                                             <option selected id="new_font" value="default">&lt;Change Font&gt;</option>
                                             <option value='Arial Black, Gadget, sans-serif' style='font-family: Arial Black, Gadget, sans-serif;'>Arial Black</option>
@@ -210,18 +199,24 @@
                                             <option value='Trebuchet MS, Helvetica, sans-serif' style='font-family: Trebuchet MS, Helvetica, sans-serif;'>Trebuchet MS</option>
                                         </select>
                                         <input id="font_size" type="text" size="1" maxlength="2" value="<?echo ($param)?'12':$templates['font_size']?>"> px
-                                </td></tr>
-                                
-                                        <tr><td class="head">Margin width</td>
-                                            <td class="field">: <input  id="margin_width" type="text" size="1" maxlength="2" value="<?echo ($param)?'8':(int)$templates['margin_width']?>"> mm</td>
-                                            <td class="head">Margin color</td>
-                                            <td class="field">: <input id="margin_color" class="color {required:false}" size="4" maxlength="6" value="<?echo ($param)?'FFFFFF':$templates['margin_color']?>"></td>
-                                        </tr>
-                                        <tr><td class="head">Border width</td>
-                                            <td class="field">: <input id="border_width" type="text" size="1" maxlength="1" value="<?echo ($param)?'0':$templates['border_width']?>"> px</td>
-                                            <td class="head">Background color</td>
-                                            <td class="field">: <input id="background_color" class="color {required:false}" size="4" maxlength="6" value="<?echo ($param)?'FFFFFF':$templates['background_color']?>"></td>
-                                        </tr>
+                                        </td>
+                                    </tr>
+                                    <tr><td class="head">Margin width</td>
+                                        <td class="field">: <input  id="margin_width" type="text" size="1" maxlength="2" value="<?echo ($param)?'8':(int)$templates['margin_width']?>"> mm</td>
+                                        <td class="head">Margin color</td>
+                                        <td class="field">: <input id="margin_color" class="color {required:false}" size="4" maxlength="6" value="<?echo ($param)?'FFFFFF':$templates['margin_color']?>"></td>
+                                    </tr>
+                                    <tr><td class="head">Border width</td>
+                                        <td class="field">: <input id="border_width" type="text" size="1" maxlength="1" value="<?echo ($param)?'0':$templates['border_width']?>"> px</td>
+                                        <td class="head">Background color</td>
+                                        <td class="field">: <input id="background_color" class="color {required:false}" size="4" maxlength="6" value="<?echo ($param)?'FFFFFF':$templates['background_color']?>"></td>
+                                    </tr>
+                                    <?
+                                    echo ($param)?
+                                    '<tr><td class="head">Set template as Read-only</td>
+                                         <td class="field">: <input id="read_only" checked type="checkbox" value="read"></td>
+                                     </tr>':'';
+                                    ?>
                                 </table>
                                 <div id="change" align="center"><br><br><br>
                                     <span id="show" title="Click to see Preview">Show Preview</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="save" title="Save Template" onclick="save_template(<?echo ($param)?"true":"false";?>);">Save <?echo ($param)?"Template":"Changes";?></span>
@@ -235,8 +230,11 @@
                 <div id="popup_close"></div>
                 <div id="resume_body">
                     <div id="image_header">
-                        <?echo (file_exists("tmp/$user"."_header.jpg"))?('<img id="header_image" align="right" src="tmp/'.$user.'_header.jpg">'):
-                               (($data['header_image']!="0")?('<img id="header_image" align="right" src="files/'.$user.'_header.jpg">'):'');?>
+                        <?  if(file_exists("tmp/$user"."_header.jpg"))
+                                    echo '<img id="header_image" align="right" src="tmp/'.$user.'_header.jpg">';
+                            else if(!$param)
+                                    if($templates['header_image']!="0")
+                                            echo '<img id="header_image" align="right" src="files/'.$templates['template_key'].'_header.jpg">';?>
                     </div>
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">

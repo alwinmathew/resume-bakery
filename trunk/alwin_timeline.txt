@@ -80,3 +80,9 @@
 * Design on multiple templates & template sharing
 * Implemented design on multiple templates
 * Tested pdf compatibility
+
+24th-26th June 2010
+* Design on write-enabled & write-protected option for shared templates
+* Group template management implemented using template sharing
+* Tried out few examples
+* Tested pdf compatibility
