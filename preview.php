@@ -141,7 +141,7 @@
             <div id="new_template" onclick='window.location="design?type=new";'>Create new template</div>
             <div class="share_temp" id="add_template" onclick='$(this).hide();$("#add_share").css("display","block");'>Add shared template</div>
             <div class="share_temp" id="add_share" style="display: none;">Enter template key: <input id="shared_key" type="text" size="14" maxlength="16"><button id="addshare_ok" onclick="add_template();">OK</button></div>
-            <div id="design_resume"><a href="design">Design your Resume</a></div>
+            <div id="design_resume" style="display: <?echo ($templates['owner']==$user)?"block":"none";?>;"><a href="design">Design your Resume</a></div>
             <div class="templates">Choose your Template :
                 <select id="user_templates" onchange="update_template('change');">
                         <?

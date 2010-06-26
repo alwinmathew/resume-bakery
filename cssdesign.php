@@ -34,15 +34,6 @@
         }
         #personal_info
         {
-                margin-top: <?  if(file_exists("tmp/$user"."_header.jpg"))
-                                    echo 60+10;
-                                else if(!$param)
-                                    if($templates['header_image']!="0")
-                                        echo 60+10;
-                                    else
-                                        echo 0;
-                                else
-                                    echo 0;?>px;
                 height: 200px;
         }
 
@@ -230,6 +221,16 @@
                 font-size: 14px;
                 font-weight: bold;
                 cursor: pointer;
+        }
+        #preview
+        {
+                position: absolute;
+                top: 180px;
+                left: 860px;
+                font-family: Trebuchet MS, Helvetica, sans-serif;
+                font-size: 12px;
+                cursor: pointer;
+                font-weight: bold;
         }
         .head
         {
