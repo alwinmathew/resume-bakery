@@ -18,7 +18,6 @@
                 rename($target_path."_temp",$target_path);
                 system("convert $target_path -resize x60  $target_path");
                 chmod($target_path,0755);
-                header("Location: ".$_SERVER['HTTP_REFERER']);
         }
         else
                 die("error!");

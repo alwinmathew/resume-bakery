@@ -196,7 +196,7 @@
                                                 return false;
                                         }
                                 },
-                                onComplete: function(data){
+                                onComplete: function(){
                                         // enable upload button
                                         this.enable();
                                         window.location.reload();

@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="cssdesign.php"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jscolor/jscolor.js"></script>
+        <script type="text/javascript" src="js/ajaxupload.js"></script>
         <script type="text/javascript">
                 function update_template(type,value)
                 {
@@ -158,6 +159,28 @@
                                         $("#page").fadeTo("fast",1);
                                 });
                         });
+                        new AjaxUpload('header_upload', {
+                                action: 'addheader.php',
+                                name: 'myheader',
+                                autoSubmit: true,
+                                onSubmit : function(file,ext){
+                                        //disable upload button
+                                        this.disable();
+                                        if (!(ext && /^(jpg|png|jpeg|gif)$/i.test(ext))){
+                                                // extension is not allowed
+                                                $("#response").html("Invalid file extension!");
+                                                this.enable();
+                                                // cancel upload
+                                                return false;
+                                        }
+                                },
+                                onComplete: function(){
+                                        // enable upload button
+                                        this.enable();
+                                        $("#image_header").load("design.php #image_header");
+                                        $("#personal_info").load("design.php #personal_info");
+                                }
+                        });
                 });
 
         </script>
@@ -176,17 +199,15 @@
                                 <h3><?echo ($param)?"New Template":"Edit template : ".$templates['template_name'];?> ?</h3>
 
                                 <table>
-                                    <tr><td class="head">Template Name</td>
+                                    <?echo ($param)?' <tr><td class="head">Template Name</td>
                                         <td class="field"> : <input id="template_name" type="text" maxlength="32"></td>
-                                    </tr>
-                                    <tr><form id="uploadForm" action="addheader.php" method="post" enctype="multipart/form-data">
-                                                    <input type="hidden" name="MAX_FILE_SIZE" value="1024000" />
-                                                    <td class="head" id="head_image">Header image</td>
-                                                    <td class="field"> : <input type="file" name="myheader" size="7">
-                                                        <input type="submit" value="Submit" />&nbsp;<span id="remove" class="remove" style="color: red;font-size: 11px;cursor: pointer;">- remove</span><br>
+                                    </tr>':'';?>
+                                    <tr>            <td class="head" id="head_image">Header image</td>
+                                                    <td class="field"> : <span id="header_upload" style="cursor: pointer;">Upload</span>
+                                                        <p id="response" style="color: red;"></p>
+                                                        <span id="remove" class="remove" style="color: red;font-size: 11px;cursor: pointer;">- remove</span><br>
                                                         &nbsp;&nbsp;<span id="remove_header" class="remove" style="color: red;font-size: 11px;cursor: pointer;">- remove saved header</span>
                                                     </td>
-                                        </form>
                                         <td class="head" id="section_font">Section font </td>
                                         <td class="field"> :
                                         <select id="font">
@@ -224,19 +245,27 @@
                         </div>
                         
 		</div>
-
+                <div id="preview" onclick="window.location='preview';">Preview</div>
 	</div>
         <div id="preview_popup">
                 <div id="popup_close"></div>
                 <div id="resume_body">
-                    <div id="image_header">
+                        <div id="image_header">
                         <?  if(file_exists("tmp/$user"."_header.jpg"))
                                     echo '<img id="header_image" align="right" src="tmp/'.$user.'_header.jpg">';
                             else if(!$param)
                                     if($templates['header_image']!="0")
                                             echo '<img id="header_image" align="right" src="files/'.$templates['template_key'].'_header.jpg">';?>
-                    </div>
-                        <div id="personal_info">
+                        </div>
+                        <div id="personal_info" style="margin-top: <?  if(file_exists("tmp/$user"."_header.jpg"))
+                                    echo 60+10;
+                                else if(!$param)
+                                    if($templates['header_image']!="0")
+                                        echo 60+10;
+                                    else
+                                        echo 0;
+                                else
+                                    echo 0;?>px;">
                                 <div id="profile_pic" align="center">
                                         <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
                                 </div>
