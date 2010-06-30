@@ -323,10 +323,11 @@ html
 
 
 #preview,#preview_edit
-{
-        color:maroon;
+{       
+        color:red;
         font-family: Trebuchet MS, Helvetica, sans-serif;
-        font-size: 18px;
+        font-size: 13px;
+        font-weight: bold;
         cursor: pointer;
         padding: 10px;
 }
@@ -394,7 +395,7 @@ html
         font-family: Trebuchet MS, Helvetica, sans-serif;
         font-size: 13px;
         font-weight: bold;
-        color: teal;
+        color: #330033;
         padding: 10px;
 }
 .sec_views
@@ -412,13 +413,14 @@ html
 #share span
 {
         font-weight: bold;
-        color: brown;
+        color:blue;
+		border-bottom:2px solid black ;
         cursor: pointer;
 }
 #share a
 {
         text-decoration: none;
-        color: red;
+        color: maroon;
 }
 #share a:visited
 {
