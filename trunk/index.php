@@ -107,7 +107,7 @@
         }
         $(document).ready(function(){
                 if(load_page()==null)
-                        $("#rightsidebar").html('<div align="justify"><font face="palatino, times, times new roman" size=3><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br></font></div><img src="images/res.jpg"/> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
+                        $("#rightsidebar").html('<div align="justify"><font face="palatino, times, times new roman" size=3><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br></font></div><div align="center"><img src="images/res.jpg"></div> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
                 height(32);
                 $("#login_form").submit(function(){
                         var username=$("#login_username").val();
@@ -188,7 +188,7 @@
                         <a href="#">HELP</a>
                 </div>
                 <br>
-                <div id="user" style="float: right;color: maroon;font-size: 10px;display: none;"><span>Welcome <b style="color: blue;font-weight: bold;"></b></span>&nbsp; | &nbsp;<span id="logout" style="cursor: pointer;color: maroon;" onclick="logout();">Log Out</span></div>
+                <div id="user" style="float: right;color: maroon;font-size: 10px;display: none;"><span>Welcome <b style="color: red;font-weight: bold;font-size: 12px;"></b></span>&nbsp; | &nbsp;<span id="logout" style="cursor: pointer;color: maroon;" onclick="logout();">Log Out</span></div>
                 <img src="images/abc.png"/>&nbsp;&nbsp;&nbsp;
                 <img style="vertical-align: super;" src="images/arrow.gif"/>&nbsp;&nbsp;&nbsp;&nbsp;
                 <img src="images/a.png" onmouseover="this.src='images/amouse.png';" onmouseout="this.src='images/a.png';" />

@@ -213,10 +213,10 @@
             </div>
             <div id="rightbar">
 
-            <div id="preview" onclick="load_preview();">Preview &nbsp;&nbsp;&nbsp;<img src="images/w1.jpg"/></div>
+            <div id="preview" onclick="load_preview();">Preview &nbsp;&nbsp;&nbsp;<img src="images/preview.jpg"/></div>
 		<hr>
             <div id="section_view">		<img src="images/redball.gif"/>
-		<span style="color:red"> SECTIONS </span><br><br>
+		<span style="color:red;vertical-align: top;"> SECTIONS </span><br><br>
                 <p class="sec_views" id="sec_summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">- Summary</p>
                 <p class="sec_views" id="sec_skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">- Skills</p>
                 <p class="sec_views" id="sec_experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">- Experience</p>
@@ -245,9 +245,9 @@
 
 
 
-            <div id="share"><img src="images/redball.gif"/>&nbsp;&nbsp;Your Resume is  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br></br><br></br>
-		<img src="images/r.jpg"/>
-                <a href="resume?id=<?echo $user;?>">View your public resume</a>
+                  <div id="share">Your Resume is <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br><br><br>
+                <img src="images/r.jpg">
+                <a style="float: right;width: 90px;font-size: 14px;" href="resume?id=<?echo $user;?>">View your public resume</a>
             </div>
             </div>
 	</div>

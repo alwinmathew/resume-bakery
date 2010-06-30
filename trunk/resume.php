@@ -28,7 +28,7 @@
 <head>
         <title>Resume Bakery - <?echo $data['first_name'].' '.$data['last_name'];?></title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
-        <link rel="stylesheet" type="text/css" media="screen" href="mystyle.php?id=<?echo $user;?>"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="mystyle.php"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript">
                 function height()
@@ -51,7 +51,7 @@
 </head>
 
 <body>
-
+    <div id="page_body">
         <div id="tp">
                 <div align="center">
                         <a href="#">TIPS FOR A GOOD RESUME</a>
@@ -68,8 +68,13 @@
         </div>
 
 
-        <div id="rightsidebar">
-                You are viewing
+        <div id="rightsidebar" style="color: maroon;text-align: justify;">
+                <?
+                    if($sections['sharing']=='1')
+                            echo "You are currently viewing <b>$user</b>'s public resume.";
+                    else
+                            echo "This is how your resume would look like if it is made public.";
+                ?>
         </div>
         <div id="container" align="center">
                 <div id="preview_body" style="background-color: <?=$templates['background_color']?>;padding-top: <?=$templates['margin_width']?>;padding-bottom: <?=$templates['margin_width']?>;">
@@ -161,7 +166,7 @@
         <div id="footer">
                 Copright Reserved
 	</div>
-
+    </div>
 </body>
 
 </html>
