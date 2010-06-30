@@ -280,7 +280,57 @@ html
         height:220px;
         position: fixed;
 }
+#headpopup {
+background-color:#F0DFBE;
+border:2px solid maroon;
+left:350px;
+margin-bottom:70px;
+margin-left:2px;
+margin-right:auto;
+padding:20px 8px 8px;
+position:fixed;
+top:auto;
+width:450px;
+}
 
+
+#headpopup1 {
+background-color:#F0DFBE;
+border:2px solid maroon;
+left:350px;
+margin-bottom:70px;
+margin-left:2px;
+margin-right:auto;
+padding:20px 8px 8px;
+position:fixed;
+top:auto;
+width:450px;
+}
+
+#headpopup2 {
+background-color:#F0DFBE;
+border:2px solid maroon;
+left:350px;
+margin-bottom:70px;
+margin-left:2px;
+margin-right:auto;
+padding:20px 8px 8px;
+position:fixed;
+top:auto;
+width:450px;
+}
+#headpopup3 {
+background-color:#F0DFBE;
+border:2px solid maroon;
+left:350px;
+margin-bottom:70px;
+margin-left:2px;
+margin-right:auto;
+padding:20px 8px 8px;
+position:fixed;
+top:auto;
+width:450px;
+}
 #popup button
 {
         width: 100px;
@@ -309,6 +359,52 @@ html
         text-align:center;
         top:-15px;
 }
+#headpopup_close
+{
+        width:16px;
+        height:16px;
+        position:relative;
+        cursor:pointer;
+        background: url('images/cancel.png');
+        left:210px;
+        text-align:center;
+        top:-15px;
+}
+
+#headpopup_close1
+{
+        width:16px;
+        height:16px;
+        position:relative;
+        cursor:pointer;
+        background: url('images/cancel.png');
+        left:210px;
+        text-align:center;
+        top:-15px;
+}
+#headpopup_close2
+{
+        width:16px;
+        height:16px;
+        position:relative;
+        cursor:pointer;
+        background: url('images/cancel.png');
+        left:210px;
+        text-align:center;
+        top:-15px;
+}
+#headpopup_close3
+{
+        width:16px;
+        height:16px;
+        position:relative;
+        cursor:pointer;
+        background: url('images/cancel.png');
+        left:210px;
+        text-align:center;
+        top:-15px;
+}
+
 
 
 #error_login, #error_signup
