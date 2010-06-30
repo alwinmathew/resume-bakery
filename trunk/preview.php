@@ -115,7 +115,7 @@
 	</div>
         <div id="preview_rightbar">
             <div id="preview_edit" onclick='load_edit();'>Edit</div>
-            <div id="preview_pdf"><a href="saveaspdf">Save as PDF</a></div>
+            <div id="preview_pdf"><a href="saveaspdf">Save as PDF </a><img src="images/pdf.jpg" height="30" style="vertical-align: bottom;"></div>
             <div id="preview_new_template" onclick='load_design("?type=new");'>Create new template</div>
             <div class="preview_share_temp" id="preview_add_template">Add shared template</div>
             <div class="preview_share_temp" id="preview_add_share" style="display: none;">Enter template key: <input id="preview_shared_key" type="text" size="14" maxlength="16"><button id="preview_addshare_ok">OK</button></div>
@@ -135,7 +135,8 @@
             <?
                 if($templates['template_key']!="default")
                     echo   '<div id="preview_share_template">Share this template</div>
-                            <div id="preview_remove_template">Remove this template</div>';
+                            <div id="preview_remove_template">Remove this template</div>
+                            <div id="share_key" style="display: none;color: maroon;font-size: 13px;padding: 10px;">Template Key# : <br><span style="font-weight: bold;text-align: center;">'.$templates['template_key'].'</span><br><br>Pass on this key to share this template with your friends.</div>';
             ?>
         </div>
         </div>

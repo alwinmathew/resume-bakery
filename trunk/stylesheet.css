@@ -188,7 +188,7 @@ html
 	width:160px;
 	background:#F0DFBE;
 	border-right: 1px solid #C7A317;
-	
+	padding: 10px;
 }
 #leftsidebar a
 {
@@ -369,6 +369,7 @@ html
 {
         float: left;
         width: 60px;
+        color: maroon;
         text-align: justify;
         font-family: Trebuchet MS, Helvetica, sans-serif;
         font-size: 13px;
@@ -380,6 +381,7 @@ html
 {
         float: right;
         width: 71px;
+        color: maroon;
         text-align: justify;
         font-family: Trebuchet MS, Helvetica, sans-serif;
         font-size: 13px;
