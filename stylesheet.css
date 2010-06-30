@@ -324,7 +324,7 @@ html
 
 #preview,#preview_edit
 {       
-        color:red;
+        color:maroon;
         font-family: Trebuchet MS, Helvetica, sans-serif;
         font-size: 13px;
         font-weight: bold;
@@ -334,12 +334,12 @@ html
 #preview_pdf
 {
         font-family: Trebuchet MS, Helvetica, sans-serif;
-        font-size: 18px;
+	color:#330033;
         padding: 10px;
 }
 #preview_pdf a
 {
-        color: red;
+        color:#330033;
         text-decoration: none;
 }
 #preview_pdf a:visited
@@ -353,12 +353,20 @@ html
 }
 #preview_new_template,#preview_design_resume,.preview_share_temp
 {
-        color:maroon;
+        color:#330033;
         font-family: Trebuchet MS, Helvetica, sans-serif;
-        font-size: 18px;
+        font-size: 13px;
         cursor: pointer;
         padding: 10px;
 }
+#preview_new_template,#preview_design_resume,.preview_share_temp a:hover
+{
+	color:#330033;
+        text-decoration:none;
+        padding: 10px;
+}
+
+
 .preview_templates
 {
         font-family: Trebuchet MS, Helvetica, sans-serif;
