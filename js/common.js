@@ -276,6 +276,16 @@ function preview_page_js()
                 $("#preview_user_templates").change(function(){
                         update_template('change');
                 });
+                $("#preview_share_template").click(function(){
+                        $(this).hide();
+                        $("#preview_remove_template").hide();
+                        $("#share_key").css("display","block");
+                });
+                $("#hide_share").click(function(){
+                        $("#share_key").css("display","none");
+                        $("#preview_share_template").show();
+                        $("#preview_remove_template").show();
+                });
                 $("#preview_remove_template").click(function(){
                         update_template('remove');
                 });
@@ -367,9 +377,9 @@ function design_page_js()
                 $(".remove").mouseout(function(){
                         $(this).css('text-decoration','none');
                 });
-                $("#remove").click(function(){
-                        update_template("header_image","remove_temp");
-                });
+//                $("#remove").click(function(){
+//                        update_template("header_image","remove_temp");
+//                });
                 $("#remove_header").click(function(){
                         update_template("header_image","remove_header");
                 });
