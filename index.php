@@ -215,9 +215,9 @@
                         </div><br>
                         <span style="color:#C7A317">home >></span> <br>
                         <img src="images/goldLine.gif"><br><br>
+                        <div align="justify">
                         <font face="palatino, times, times new roman" size=3>
-                        This is an ultimate Resume management system that help you to create resumes as u dream,this helps you to market yourself well. It improves
-                        your chances of landing on a dream job. There are only four stages for this easy resume creation:<br><br>&nbsp;&nbsp;&nbsp;
+                            Resume Bakery is an ultimate resume management system that helps you to create resumes as u wish. This helps you to market yourself well. It improves your chances of landing on a dream job. There are only four stages for this easy resume creation :</div><br><br>&nbsp;&nbsp;&nbsp;
                         <span style="color:maroon"><b>Step one : Create Resume</b></span> <hr><br><br> to put picture here after developing create page<br><br>&nbsp;&nbsp;&nbsp;&nbsp;     <b><span style="color:maroon">Step two : Generate resume </span></b><hr><br><br>picture<br><br> 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span style="color:maroon">Step three : Print or send</span></b>  <hr><br><br>picture<br><br>
                         </font>
                         <hr>

@@ -57,7 +57,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES ('alwin','8d10344331a7ac7665c83d8956bfc992'),('melwin','8d10344331a7ac7665c83d8956bfc992'),('neenu','736b19f69aaca691fecd8400294cc383');
+INSERT INTO `members` VALUES ('alwin','8d10344331a7ac7665c83d8956bfc992'),('neenu','736b19f69aaca691fecd8400294cc383');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +103,7 @@ CREATE TABLE `personalinfo` (
 
 LOCK TABLES `personalinfo` WRITE;
 /*!40000 ALTER TABLE `personalinfo` DISABLE KEYS */;
-INSERT INTO `personalinfo` VALUES ('alwin','Alwin','Mathew','M','1989-09-08','S','0484-2295565','91 8891406276','alwinmathew316@gmail.com',NULL,'XI/673H, Puthenpurackal House, Kunnumpuram, Thrikkakara, Cochin - 682021','1','0','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses kjdghdsfhssh sdghsd sfggsg23421423','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses sdfg agda tfh sdhsdghs ',NULL,NULL,'The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ',NULL,NULL,NULL,NULL,'ff7c7037aecb0dd4'),('neenu','firstname','lastname',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'ff7c7037aecb0dd4'),('melwin','firstname','lastname',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'default');
+INSERT INTO `personalinfo` VALUES ('alwin','Alwin','Mathew','M','1989-09-08','S','0484-2295565','91 8891406276','alwinmathew316@gmail.com',NULL,'XI/673H, Puthenpurackal House, Kunnumpuram, Thrikkakara, Cochin - 682021','1','0','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses ','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses kjdghdsfhssh sdghsd sfggsg23421423\n\ngdgdgsg dfs    gftsfgg\ng sdfgdfs','The weakened economy coupled with a rising unemployment rate has swelled the \njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses sdfg agda tfh sdhsdghs \n\ndfgd \n\n\n\ndghdhgh dghdh dgh     dgfdgdhdh \n\ndghdh',NULL,NULL,'The weakened economy coupled with a rising unemployment rate has swelled the dfghdhh dh\njob seeking market, giving employers a bigger pool to choose from and workers fmore \npeople to compete with. In an effort to stand out in a crowd of many, unemployed uses \nsfgs\n\n\ndghd  d    dgh df\ndg',NULL,NULL,NULL,NULL,'ff7c7037aecb0dd4'),('neenu','firstname','lastname',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'ff7c7037aecb0dd4');
 /*!40000 ALTER TABLE `personalinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,7 +137,7 @@ CREATE TABLE `sections` (
 
 LOCK TABLES `sections` WRITE;
 /*!40000 ALTER TABLE `sections` DISABLE KEYS */;
-INSERT INTO `sections` VALUES ('alwin','1','1','1','0','0','1','0','0','0','0','1'),('ancy','1','1','0','0','0','0','0','0','0','0','0'),('neenu','0','0','1','0','0','1','0','0','0','0','0'),('melwin','0','0','0','0','0','0','0','0','0','0','0');
+INSERT INTO `sections` VALUES ('alwin','1','1','1','0','0','1','0','0','0','0','1'),('neenu','0','0','1','0','0','1','0','0','0','0','0');
 /*!40000 ALTER TABLE `sections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `templates` (
 
 LOCK TABLES `templates` WRITE;
 /*!40000 ALTER TABLE `templates` DISABLE KEYS */;
-INSERT INTO `templates` VALUES ('default','default','','','1','0','Trebuchet MS, Helvetica, sans-serif','12','8mm','white','0','white'),('test1','ff7c7037aecb0dd4','alwin','neenu','1','0','Palatino Linotype, Book Antiqua, Palatino, serif','12','8mm','#FF5E24','1','#7893FF'),('test1','ff7c7037aecb0dd4','alwin','alwin','1','0','Palatino Linotype, Book Antiqua, Palatino, serif','12','8mm','#FF5E24','1','#7893FF');
+INSERT INTO `templates` VALUES ('default','default','','','1','0','Trebuchet MS, Helvetica, sans-serif','12','8mm','white','0','white'),('test1','ff7c7037aecb0dd4','alwin','neenu','1','1','Trebuchet MS, Helvetica, sans-serif','12','8mm','#FF5E24','1','#7893FF'),('test1','ff7c7037aecb0dd4','alwin','alwin','1','1','Trebuchet MS, Helvetica, sans-serif','12','8mm','#FF5E24','1','#7893FF');
 /*!40000 ALTER TABLE `templates` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -184,4 +184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-07-01  0:16:39
+-- Dump completed on 2010-07-01  2:11:07

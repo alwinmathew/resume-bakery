@@ -5,13 +5,13 @@
     $value=$_POST['infovalue'];
 
     //$field=$_POST['field'];
-   /* if($field!="text")
-    {
-        $type=str_replace(' p','',$type);
-        $value=str_replace(' ','&nbsp;',$value);
-        $sql="UPDATE personalinfo SET skills='$type' WHERE username='$user'";
-        $result=mysql_query($sql);
-    }*/
+//    if($field!="text")
+//    {
+//        $type=str_replace(' p','',$type);
+//        $value=str_replace(' ','&nbsp;',$value);
+//        $sql="UPDATE personalinfo SET skills='$type' WHERE username='$user'";
+//        $result=mysql_query($sql);
+//    }
 
     
 

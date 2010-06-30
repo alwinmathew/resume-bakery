@@ -7,10 +7,10 @@ function edit_page_js()
                         url: "updateinfo.php",
                         data: "infotype=" +type +"&infovalue=" +value,
                         success: function(){
+                                $(".section div").css("display","none");
+                                $(".info_edit").css("display","none");
                                 if(type=="profile_pic")
                                         return;
-                                $(".section div").hide();
-                                $(".info_edit").hide();
                                 $(fn).show();
                                 if(type=="dob")
                                 {
@@ -33,6 +33,7 @@ function edit_page_js()
                                             value="lastname";
                                     }
                                 $(fn).html(value);
+                                height(32);
                         }
                 });
         }
@@ -73,15 +74,15 @@ function edit_page_js()
         }
         function refresh_info()
         {
-                $(".info_edit").hide();
+                $(".info_edit").css("display","none");
                 $("#first_name,#last_name,#info p").show();
-                $("#file_upload").hide();
-                $("#design_profile_pic p").show();
+                $("#response").html("");
         }
         function refresh_section()
         {
-                $(".section div").hide();
+                $(".section div").css("display","none");
                 $(".section p").show();
+                height(32);
         }
         function edit_info(type)
         {
@@ -94,7 +95,7 @@ function edit_page_js()
                 if(data.substr(0,5)=="+ add"||data=="firstname"||data=="lastname")
                     data="";
                 $(fn).hide();
-                $(edit).show();
+                $(edit).css("display","block");
                 $(sec).val(data);
                 $(".save").click(function(){
                         if(type=="gender"||type=="marital_status")
@@ -118,9 +119,10 @@ function edit_page_js()
                 refresh_section();
                 if(data=="Click to edit description")
                     data="";
-                $(edit).show();
+                $(edit).css("display","block");
                 $(fn).hide();
                 $(sec).val(data);
+                height(32);
                 $(".save").click(function(){
                         data=$(sec).val();
                         update_info(type,data,fn);
@@ -154,7 +156,6 @@ function edit_page_js()
                 height(32);
                 var user=readCookie("user");
                 $("#user b").html(user);
-                $(".file_upload").hide();
                 refresh_info();
                 refresh_section();
                 var i;
