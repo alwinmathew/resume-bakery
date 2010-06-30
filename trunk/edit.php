@@ -1,7 +1,7 @@
 <?
         include 'session.php';
         include 'fetchdatabase.php';
-        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='general'";
+        $sql="SELECT * FROM sections WHERE username='$user'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
 ?>
@@ -216,7 +216,7 @@
             <div id="preview" onclick="load_preview();">Preview &nbsp;&nbsp;&nbsp;<img src="images/preview.jpg"/></div>
 		<hr>
             <div id="section_view">		<img src="images/redball.gif"/>
-		<span style="color:red;vertical-align: top;"> SECTIONS </span><br><br>
+		<span style="color:red;vertical-align: top;font-size: 14px;"> SECTIONS </span><br><br>
                 <p class="sec_views" id="sec_summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">- Summary</p>
                 <p class="sec_views" id="sec_skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">- Skills</p>
                 <p class="sec_views" id="sec_experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">- Experience</p>
