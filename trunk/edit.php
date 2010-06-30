@@ -10,248 +10,6 @@
 
 <head>
         <title>edit - Resume Bakery</title>
-        <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-        <link rel="stylesheet" type="text/css" href="editmystyle.css" />
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/ajaxupload.js"></script>
-        <script type="text/javascript">
-                function update_info(type,value,fn)
-                {
-                        $.ajax({
-                                type: 'POST',
-                                url: "updateinfo.php",
-                                data: "infotype=" +type +"&infovalue=" +value,
-                                success: function(){
-                                        if(type=="profile_pic")
-                                                return;
-                                        $(".section div").hide();
-                                        $(".info_edit").hide();
-                                        $(fn).show();
-                                        if(type=="dob")
-                                        {
-                                                if(value=="")
-                                                    $(fn).html("+ add date of birth");
-                                                else
-                                                    $(fn).html($("#dob_day option:selected").val()+" "+$("#dob_month option:selected").html()+" "+$("#dob_year option:selected").val());
-                                                return;
-                                        }
-                                        if(value=="")
-                                            if(fn.indexOf(" p")>=0)
-                                                value="Click to edit description";
-                                            else
-                                            {
-                                                value=(type=="marital_status")?"+ add marital status":"+ add "+type;
-                                                value=value+(type=="website"?"/blog URL":"");
-                                                if(type=="first_name")
-                                                    value="firstname";
-                                                else if(type=="last_name")
-                                                    value="lastname";
-                                            }
-                                        $(fn).html(value);
-                                }
-                        });
-                }
-
-                function update_section(type,value)
-                {
-                        $.ajax({
-                                type: 'POST',
-                                url: "updatesection.php",
-                                data: "sectiontype=" +type +"&sectionvalue=" +value,
-                                success: function(data){
-                                        if(type=="sharing")
-                                        {
-                                            if(data=="1")
-                                                $("#share span").html("Public");
-                                            else
-                                                $("#share span").html("Private");
-                                            return;
-                                        }
-                                        var section="#"+type;
-                                        var add="#add_"+type;
-                                        var sec="#sec_"+type;
-                                        if(value=="1")
-                                        {
-                                                $(section).css("display","block");
-                                                $(add).css("display","none");
-                                                $(sec).css("display","block");
-                                        }
-                                        else
-                                        {
-                                                $(section).css("display","none");
-                                                $(add).css("display","block");
-                                                $(sec).css("display","none");
-                                        }
-                                }
-                        });
-                }
-                function refresh_info()
-                {
-                        $(".info_edit").hide();
-                        $("#first_name,#last_name,#info p").show();
-                        $("#file_upload").hide();
-                        $("#profile_pic p").show();
-                }
-                function refresh_section()
-                {
-                        $(".section div").hide();
-                        $(".section p").show();
-                }
-                function edit_info(type)
-                {
-                        var edit="#"+type +"_edit";
-                        var sec="#edit_"+type;
-                        var fn="#"+type;
-                        var selection="#add_"+type;
-                        var data=$(fn).html();
-                        refresh_info();
-                        if(data.substr(0,5)=="+ add"||data=="firstname"||data=="lastname")
-                            data="";
-                        $(fn).hide();
-                        $(edit).show();
-                        $(sec).val(data);
-                        $(".save").click(function(){
-                                if(type=="gender"||type=="marital_status")
-                                        data=$(selection+" option:selected").val();
-                                else
-                                        data=$(sec).val();
-                                if(data=="--")
-                                        data="";
-                                update_info(type,data,fn);
-                        });
-                        $(".cancel").click(function(){
-                                refresh_info();
-                        });
-                }
-                function edit_section(type)
-                {
-                        var edit="."+type +"_edit";
-                        var sec="#edit_"+type;
-                        var fn="#"+type +" p";
-                        var data=$(fn).html();
-                        refresh_section();
-                        if(data=="Click to edit description")
-                            data="";
-                        $(edit).show();
-                        $(fn).hide();
-                        $(sec).val(data);
-                        $(".save").click(function(){
-                                data=$(sec).val();
-                                update_info(type,data,fn);
-                        });
-                        $(".cancel").click(function(){
-                                refresh_section();
-                        });
-                }
-                function edit_date()
-                {
-                        var day,month,year,value;
-                        refresh_info();
-                        $("#dob").hide();
-                        $("#dob_edit").show();
-                        $(".save").click(function(){
-                                day=$("#dob_day option:selected").val();
-                                month=$("#dob_month option:selected").val();
-                                year=$("#dob_year option:selected").val();
-                                value=year+"-"+month+"-"+day;
-                                if(day=="--"||month=="--"||year=="--")
-                                    value="";
-                                update_info("dob",value,"#dob");
-                        });
-                        $(".cancel").click(function(){
-                                refresh_info();
-                        });
-                }
-
-                $(document).ready(function(){
-                        $(".file_upload").hide();
-                        refresh_info();
-                        refresh_section();
-                        document.getElementById("add_title").defaultSelected = true;
-                        document.getElementById("male").defaultSelected = true;
-                        document.getElementById("single").defaultSelected = true;
-                        var i;
-                        for(i=2010;i>=1900;i--)
-                                $("#dob_year").append("<option value='"+i +"'>"+i +"</option>");
-                        for(i=1;i<=31;i++)
-                        {
-                                var option="<option value='";
-                                if(i<10)
-                                    option+="0";
-                                option+=i+"'>"+i +"</option>";
-                                $("#dob_day").append(option);
-                        }
-                        new AjaxUpload('upload', {
-                                action: 'addphoto.php',
-                                name: 'myphoto',
-                                autoSubmit: true,
-                                onSubmit : function(file,ext){
-                                        //disable upload button
-                                        this.disable();
-                                        if (!(ext && /^(jpg|png|jpeg|gif)$/i.test(ext))){
-                                                // extension is not allowed
-                                                $("#response").html("Invalid file extension!");
-                                                this.enable();
-                                                // cancel upload
-                                                return false;
-                                        }
-                                },
-                                onComplete: function(){
-                                        // enable upload button
-                                        this.enable();
-                                        window.location.reload();
-                                }
-                        });
-                        $("#remove").click(function(){
-                                update_info("profile_pic","0","");
-                                window.location.reload();
-                        });
-                        $("#preview").click(function(){
-                                window.location="preview";
-                        });
-                        $("#share span").click(function(){
-                                update_section("sharing","");
-                        });
-                        $("#first_name,#last_name,#info td,.section p").mouseover(function(){
-                                $(this).css("background-color", "#ffffdd");
-                        });
-                        $("#first_name,#last_name,#info td,.section p").mouseout(function(){
-                                $(this).css("background-color", "white");
-                        });
-                        
-                        $("#personal_info,#section_view").click(function(){
-                                refresh_section();
-                        });
-                        $(".section,#section_view").click(function(){
-                                refresh_info();
-                        });
-
-                        $(".fields").click(function(){
-                                var id=$(this).attr("id");
-                                edit_info(id);
-                        });
-                        $("#dob").click(function(){
-                                edit_date();
-                        });
-                        $(".section").mouseover(function(){
-                                var id=$(this).attr("id");
-                                $("p").click(function(){
-                                        edit_section(id);
-                                });
-                        });
-                        $(".add_new").click(function(){
-                                var id=$(this).attr("id");
-                                var section=id.substr(4);
-                                update_section(section,"1");
-                        });
-                        $(".sec_views").click(function(){
-                                var id=$(this).attr("id");
-                                var section=id.substr(4);
-                                update_section(section,"0");
-                        });
-                });
-
-        </script>
 </head>
 
 <body>
@@ -262,7 +20,8 @@
 			<div id="title">Resume-Bakery</div>
                         <div id="tagline">easy resume management</div>
 		</div>
-		<div id="resume_body">
+            <div id="resume_body">
+                <div align="center">
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">
                                         <span><img src="files/<?echo ($data['profile_pic']=="0")?"default.jpg":$user.".jpg";?>"></span>
@@ -270,7 +29,7 @@
                                         <p id="response" style="color: red;"></p>
                                 </div>
                                 <div id="info">
-                                        <div class="name">
+                                        <div class="name" align="left">
                                                 <span class="fields" id="first_name"><?echo $data['first_name'];?></span>
                                                 <span class="info_edit" id="first_name_edit">
                                                     <input id="edit_first_name" type="text">
@@ -363,7 +122,7 @@
                                 <td class="title"><h3>Summary</h3></td>
                                 <td><p><?echo ($data['summary']!=NULL)?$data['summary']:"Click to edit description";?></p>
                                     <div class="summary_edit">
-                                        <textarea id="edit_summary" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_summary" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -372,7 +131,7 @@
                                 <td class="title"><h3>Skills</h3></td>
                                 <td><p><?echo ($data['skills']!=NULL)?$data['skills']:"Click to edit description";?></p>
                                     <div class="skills_edit">
-                                        <textarea id="edit_skills" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_skills" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -381,7 +140,7 @@
                                 <td class="title"><h3>Experience</h3></td>
                                 <td><p><?echo ($data['experience']!=NULL)?$data['experience']:"Click to edit description";?></p>
                                     <div class="experience_edit">
-                                        <textarea id="edit_experience" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_experience" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -390,7 +149,7 @@
                                 <td class="title"><h3>Studies</h3></td>
                                 <td><p><?echo ($data['studies']!=NULL)?$data['studies']:"Click to edit description";?></p>
                                     <div class="studies_edit">
-                                        <textarea id="edit_studies" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_studies" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -399,7 +158,7 @@
                                 <td class="title"><h3>Interests</h3></td>
                                 <td><p><?echo ($data['interests']!=NULL)?$data['interests']:"Click to edit description";?></p>
                                     <div class="interests_edit">
-                                        <textarea id="edit_interests" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_interests" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -408,7 +167,7 @@
                                 <td class="title"><h3>Hobbies</h3></td>
                                 <td><p><?echo ($data['hobbies']!=NULL)?$data['hobbies']:"Click to edit description";?></p>
                                     <div class="hobbies_edit">
-                                        <textarea id="edit_hobbies" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_hobbies" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -417,7 +176,7 @@
                                 <td class="title"><h3>Languages</h3></td>
                                 <td><p><?echo ($data['languages']!=NULL)?$data['languages']:"Click to edit description";?></p>
                                     <div class="languages_edit">
-                                        <textarea id="edit_languages" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_languages" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -426,7 +185,7 @@
                                 <td class="title"><h3>Certificates</h3></td>
                                 <td><p><?echo ($data['certificates']!=NULL)?$data['certificates']:"Click to edit description";?></p>
                                     <div class="certificates_edit">
-                                        <textarea id="edit_certificates" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_certificates" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -435,7 +194,7 @@
                                 <td class="title"><h3>Publications</h3></td>
                                 <td><p><?echo ($data['publications']!=NULL)?$data['publications']:"Click to edit description";?></p>
                                     <div class="publications_edit">
-                                        <textarea id="edit_publications" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_publications" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
@@ -444,14 +203,16 @@
                                 <td class="title"><h3>Awards</h3></td>
                                 <td><p><?echo ($data['awards']!=NULL)?$data['awards']:"Click to edit description";?></p>
                                     <div class="awards_edit">
-                                        <textarea id="edit_awards" cols="60" rows="8"></textarea>
+                                        <textarea id="edit_awards" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
                                 </td>
                             </tr>
                         </table>
 		</div>
-            <div id="preview">Preview</div>
+            </div>
+            <div id="rightbar">
+            <div id="preview" onclick="load_preview();">Preview</div>
             <div id="section_view">
                 <p class="sec_views" id="sec_summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">- Summary</p>
                 <p class="sec_views" id="sec_skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">- Skills</p>
@@ -479,6 +240,7 @@
             </div>
             <div id="share">Your Resume is : <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br>
                 <a href="resume?id=<?echo $user;?>">View your public resume</a>
+            </div>
             </div>
 	</div>
 

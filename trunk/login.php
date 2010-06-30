@@ -44,7 +44,7 @@
 	{
 		text-decoration:none;
 		font-size: 14px;
-		font-style: bold;
+		font-weight: bold;
 		color: #12b2e7;
 	}
 

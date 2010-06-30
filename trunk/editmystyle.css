@@ -4,7 +4,6 @@
 		background-color: white;/*#b8dbe6;*/
 		min-height:677px;
 		padding:30px;
-                margin-right: 150px;
 	}
 
         #personal_info
@@ -17,6 +16,9 @@
 		width: 120px;
 		height: 120px;
                 font-size: 10px;
+                float: left;
+                padding-left: 40px;
+                padding-top: 10px;
 	}
         .name
         {
@@ -30,8 +32,7 @@
         }
 	#info
 	{
-                margin-left: 200px;
-                margin-top: -120px;
+                float: right;
 		font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
                 /*white-space: pre;*/
