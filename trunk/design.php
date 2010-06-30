@@ -28,7 +28,7 @@
 		<div id="body_design">
                         <div id="control">
                                 <div id="preview" onclick="load_preview();">Preview</div>
-                                <h3 align="left"><?echo ($param)?"New Template":"Edit template : ".$templates['template_name'];?> ?</h3>
+                                <h3 align="left"><?echo ($param)?"New Template":"Edit template : ".$templates['template_name'];?></h3>
 
                                 <table>
                                     <?echo ($param)?' <tr><td class="head">Template Name</td>
