@@ -136,7 +136,7 @@
                         return false;
                 });
                 $("#register").click(function(){
-                        $("#container").fadeTo("fast",0.1);
+                        $("#page_body").fadeTo("fast",0.1);
                         $("#popup").css("display","block");
                 });
                 $("#popup_close").click(function(){
@@ -144,7 +144,7 @@
                         $("#signup_username").val("");
                         $("#signup_password").val("");
                         $("#error_signup").html("");
-                        $("#container").fadeTo("fast",1);
+                        $("#page_body").fadeTo("fast",1);
                 });
                 $("#signup_form").submit(function(){
                         var username=$("#signup_username").val();
@@ -261,7 +261,11 @@
                 </div>
         </div>
 
-        <div id="popup" style="display: none;">
+        <div id="footer">
+                Copright Reserved
+	</div>
+    </div>
+    <div id="popup" style="display: none;">
                 <div id="popup_close"></div>
                 <div id="sign_up" style='font-family: "Trebuchet MS", Helvetica, sans-serif;'>
                     <form id="signup_form">
@@ -278,11 +282,6 @@
                     <p id="error_signup"></p>
                 </div>
         </div>
-
-        <div id="footer">
-                Copright Reserved
-	</div>
-    </div>
 </body>
 
 </html>
