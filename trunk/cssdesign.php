@@ -75,6 +75,7 @@
         }
         .design_section p
         {
+                white-space: pre-wrap;
                 margin-top: 5px;
                 margin-bottom: 5px;
                 min-height: 100px;

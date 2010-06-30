@@ -31,20 +31,20 @@
                                 <div id="info">
                                         <div class="name" align="left">
                                                 <span class="fields" id="first_name"><?echo $data['first_name'];?></span>
-                                                <span class="info_edit" id="first_name_edit">
+                                                <span class="info_edit" id="first_name_edit" style="display: none;">
                                                     <input id="edit_first_name" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span>
                                                 &nbsp;
                                                 <span class="fields" id="last_name"><?echo $data['last_name'];?></span>
-                                                <span class="info_edit" id="last_name_edit">
+                                                <span class="info_edit" id="last_name_edit" style="display: none;">
                                                     <input id="edit_last_name" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span>
                                         </div>
                                         <table>
                                             <tr><td><p class="fields" id="gender"><?echo $data['gender']==NULL?'+ add gender':($data['gender']=='M'?'Male':'Female');?></p>
-                                                <span class="info_edit" id="gender_edit">
+                                                <span class="info_edit" id="gender_edit" style="display: none;">
                                                     <select id="add_gender">
                                                         <option>--</option>
                                                         <option selected id="male">Male</option>
@@ -53,7 +53,7 @@
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td>
                                                 <td><p id="dob"><?echo $data['dob']==NULL?'+ add date of birth':date('d M Y',strtotime($data['dob']));?></p>
-                                                <span class="info_edit" id="dob_edit">
+                                                <span class="info_edit" id="dob_edit" style="display: none;">
                                                     <select id="dob_day">
                                                             <option>--</option>
                                                     </select>
@@ -78,7 +78,7 @@
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td>
                                                 <td><p class="fields" id="marital_status"><?echo $data['marital_status']==NULL?'+ add marital status':($data['marital_status']=='S'?'Single':'Married');?></p>
-                                                <span class="info_edit" id="marital_status_edit">
+                                                <span class="info_edit" id="marital_status_edit" style="display: none;">
                                                     <select id="add_marital_status">
                                                         <option>--</option>
                                                         <option selected id="single">Single</option>
@@ -88,29 +88,29 @@
                                                 </span></td></tr>
                                         
                                             <tr><td><p class="fields" id="phone"><?echo $data['phone']==NULL?'+ add phone':$data['phone'];?></p>
-                                                <span class="info_edit" id="phone_edit">
+                                                <span class="info_edit" id="phone_edit" style="display: none;">
                                                     <input id="edit_phone" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td>
                                                 <td><p class="fields" id="email"><?echo $data['email']==NULL?'+ add email':$data['email'];?></p>
-                                                <span class="info_edit" id="email_edit">
+                                                <span class="info_edit" id="email_edit" style="display: none;">
                                                     <input id="edit_email" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td></tr>
                                         
                                             <tr><td><p class="fields" id="mobile"><?echo $data['mobile']==NULL?'+ add mobile':$data['mobile'];?></p>
-                                                <span class="info_edit" id="mobile_edit">
+                                                <span class="info_edit" id="mobile_edit" style="display: none;">
                                                     <input id="edit_mobile" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td>
                                                 <td><p class="fields" id="website"><?echo $data['website']==NULL?'+ add website/blog URL':$data['website'];?></p>
-                                                <span class="info_edit" id="website_edit">
+                                                <span class="info_edit" id="website_edit" style="display: none;">
                                                     <input id="edit_website" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td></tr>
                                         
                                             <tr><td><p class="fields" id="address"><?echo $data['address']==NULL?'+ add address':$data['address'];?></p>
-                                                <span class="info_edit" id="address_edit">
+                                                <span class="info_edit" id="address_edit" style="display: none;">
                                                     <input id="edit_address" type="text">
                                                     <button class="save">save</button><button class="cancel">cancel</button>
                                                 </span></td></tr>
@@ -121,7 +121,7 @@
                             <tr class="section" id="summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Summary</h3></td>
                                 <td><p><?echo ($data['summary']!=NULL)?$data['summary']:"Click to edit description";?></p>
-                                    <div class="summary_edit">
+                                    <div class="summary_edit" style="display: none;">
                                         <textarea id="edit_summary" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -130,7 +130,7 @@
                             <tr class="section" id="skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Skills</h3></td>
                                 <td><p><?echo ($data['skills']!=NULL)?$data['skills']:"Click to edit description";?></p>
-                                    <div class="skills_edit">
+                                    <div class="skills_edit" style="display: none;">
                                         <textarea id="edit_skills" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -139,7 +139,7 @@
                             <tr class="section" id="experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Experience</h3></td>
                                 <td><p><?echo ($data['experience']!=NULL)?$data['experience']:"Click to edit description";?></p>
-                                    <div class="experience_edit">
+                                    <div class="experience_edit" style="display: none;">
                                         <textarea id="edit_experience" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -148,7 +148,7 @@
                             <tr class="section" id="studies" style="display: <?echo ($sections['studies']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Studies</h3></td>
                                 <td><p><?echo ($data['studies']!=NULL)?$data['studies']:"Click to edit description";?></p>
-                                    <div class="studies_edit">
+                                    <div class="studies_edit" style="display: none;">
                                         <textarea id="edit_studies" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -157,7 +157,7 @@
                             <tr class="section" id="interests" style="display: <?echo ($sections['interests']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Interests</h3></td>
                                 <td><p><?echo ($data['interests']!=NULL)?$data['interests']:"Click to edit description";?></p>
-                                    <div class="interests_edit">
+                                    <div class="interests_edit" style="display: none;">
                                         <textarea id="edit_interests" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -166,7 +166,7 @@
                             <tr class="section" id="hobbies" style="display: <?echo ($sections['hobbies']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Hobbies</h3></td>
                                 <td><p><?echo ($data['hobbies']!=NULL)?$data['hobbies']:"Click to edit description";?></p>
-                                    <div class="hobbies_edit">
+                                    <div class="hobbies_edit" style="display: none;">
                                         <textarea id="edit_hobbies" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -175,7 +175,7 @@
                             <tr class="section" id="languages" style="display: <?echo ($sections['languages']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Languages</h3></td>
                                 <td><p><?echo ($data['languages']!=NULL)?$data['languages']:"Click to edit description";?></p>
-                                    <div class="languages_edit">
+                                    <div class="languages_edit" style="display: none;">
                                         <textarea id="edit_languages" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -184,7 +184,7 @@
                             <tr class="section" id="certificates" style="display: <?echo ($sections['certificates']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Certificates</h3></td>
                                 <td><p><?echo ($data['certificates']!=NULL)?$data['certificates']:"Click to edit description";?></p>
-                                    <div class="certificates_edit">
+                                    <div class="certificates_edit" style="display: none;">
                                         <textarea id="edit_certificates" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -193,7 +193,7 @@
                             <tr class="section" id="publications" style="display: <?echo ($sections['publications']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Publications</h3></td>
                                 <td><p><?echo ($data['publications']!=NULL)?$data['publications']:"Click to edit description";?></p>
-                                    <div class="publications_edit">
+                                    <div class="publications_edit" style="display: none;">
                                         <textarea id="edit_publications" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
@@ -202,7 +202,7 @@
                             <tr class="section" id="awards" style="display: <?echo ($sections['awards']!="0")?"block":"none";?>;">
                                 <td class="title"><h3>Awards</h3></td>
                                 <td><p><?echo ($data['awards']!=NULL)?$data['awards']:"Click to edit description";?></p>
-                                    <div class="awards_edit">
+                                    <div class="awards_edit" style="display: none;">
                                         <textarea id="edit_awards" cols="65" rows="8"></textarea><br>
                                         <button class="save">save</button><button class="cancel">cancel</button>
                                     </div>
