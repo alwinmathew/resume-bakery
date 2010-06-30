@@ -26,18 +26,15 @@
 	// Mysql_num_row is counting table row
 	$count=mysql_num_rows($result);
 	// If result matched $myusername and $mypassword, table row must be 1 row
-        $status="success";
-	if($count==0)
+        if($count==0)
         {
             $sql="INSERT INTO $user_tbl VALUES('$myusername','$mypassword')";
             $result=mysql_query($sql);
-            $sql="INSERT INTO $data_tbl (username,area_of_work) VALUES('$myusername','general')";
+            $sql="INSERT INTO $data_tbl (username) VALUES('$myusername')";
             $result=mysql_query($sql);
-            $sql="INSERT INTO $section_tbl (username,area_of_work) VALUES('$myusername','general')";
+            $sql="INSERT INTO $section_tbl (username) VALUES('$myusername')";
             $result=mysql_query($sql);
+            die("success");
         }
-        else
-            $status="error";
-
-        die($status);
+        die("error");
 ?>

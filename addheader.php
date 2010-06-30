@@ -4,11 +4,6 @@
 
         $target_path="tmp/$user"."_header.jpg";
 
-       /* if($data['profile_pic']=="0")
-        {
-                $sql="UPDATE $tbl_name SET profile_pic='1' WHERE username='$user' AND area_of_work='general'";
-                $result=mysql_query($sql);
-        }*/
         if(move_uploaded_file($_FILES['myheader']['tmp_name'],$target_path))
         {
                 $image=new Imagick($target_path);

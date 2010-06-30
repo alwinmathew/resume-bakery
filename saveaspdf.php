@@ -3,7 +3,7 @@
 
 include 'session.php';
 include 'fetchdatabase.php';
-$sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='general'";
+$sql="SELECT * FROM sections WHERE username='$user'";
 $result=mysql_query($sql);
 $sections=mysql_fetch_array($result);
 $id=$data['template_id'];

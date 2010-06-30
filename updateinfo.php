@@ -18,9 +18,9 @@
     if($type=="profile_pic"&&$value=="0")
             unlink("files/$user.jpg");
     if($value!="")
-            $sql="UPDATE personalinfo SET $type='$value' WHERE username='$user' AND area_of_work='general'";
+            $sql="UPDATE personalinfo SET $type='$value' WHERE username='$user'";
     else
-            $sql="UPDATE personalinfo SET $type=DEFAULT WHERE username='$user' AND area_of_work='general'";
+            $sql="UPDATE personalinfo SET $type=DEFAULT WHERE username='$user'";
     $result=mysql_query($sql);
     die;
 ?>
