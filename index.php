@@ -139,6 +139,22 @@
                         $("#page_body").fadeTo("fast",0.1);
                         $("#popup").css("display","block");
                 });
+
+$("#tips").click(function(){
+                        $("#headpopup").css("display","block");
+                });		
+		
+		$("#sample").click(function(){
+                        $("#headpopup1").css("display","block");
+                });		
+
+		$("#about").click(function(){
+                        $("#headpopup2").css("display","block");
+                });		
+
+		$("#help").click(function(){
+                        $("#headpopup3").css("display","block");
+                });		
                 $("#popup_close").click(function(){
                         $("#popup").css("display","none");
                         $("#signup_username").val("");
@@ -146,6 +162,23 @@
                         $("#error_signup").html("");
                         $("#page_body").fadeTo("fast",1);
                 });
+
+		  $("#headpopup_close").click(function(){
+                        $("#headpopup").css("display","none");
+                });
+		
+
+		  $("#headpopup_close1").click(function(){
+                        $("#headpopup1").css("display","none");
+                });
+  $("#headpopup_close2").click(function(){
+                        $("#headpopup2").css("display","none");
+                });
+  $("#headpopup_close3").click(function(){
+                        $("#headpopup3").css("display","none");
+                });
+
+
                 $("#signup_form").submit(function(){
                         var username=$("#signup_username").val();
                         var password=$("#signup_password").val();
@@ -182,10 +215,10 @@
     
         <div id="tp">
                 <div id="topbar" align="center">
-                        <a href="#">TIPS FOR A GOOD RESUME</a>
-                        <a href="#">SAMPLE RESUME</a>
-                        <a href="#">ABOUT US</a>
-                        <a href="#">HELP</a>
+                        <a id="tips" title="Register as new user" onclick='$("#headpopup").show();'> TIPS FOR A GOOD RESUME</a>
+ <a id="sample" title="Register as new user" onclick='$("#headpopup1").show();'> SAMPLE RESUME</a>
+                         <a id="about" title="Register as new user" onclick='$("#headpopup2").show();'> ABOUT US </a>
+ <a id="help" title="Register as new user" onclick='$("#headpopup3").show();'> HELP </a>
                 </div>
                 <br>
                 <div id="user" style="float: right;color: maroon;font-size: 10px;display: none;"><span>Welcome <b style="color: red;font-weight: bold;font-size: 12px;"></b></span>&nbsp; | &nbsp;<span id="logout" style="cursor: pointer;color: maroon;" onclick="logout();">Log Out</span></div>
@@ -282,6 +315,29 @@
                     <p id="error_signup"></p>
                 </div>
         </div>
+        <div id="headpopup" style="display: none;">
+
+                <div id="headpopup_close"></div>    <img src="images/redball.gif"/>Leaving out Job Objective! If you don't show a sense of direction, employers won't be interested.<br></br><img src="images/redball.gif"/>Remove everything that starts with "responsibilities included" and replace it with on-the-job accomplishments. <br></br><img src="images/redball.gif"/>Your address, contact details should be neatly presented, with date of birth, nationality and marital status also possible here.   <br></br><img src="images/redball.gif"/>Employers are usually more interested in activities which require you to show team commitment or personal initiative and drive.</div>  
+
+<div id="headpopup1" style="display: none;">
+
+<div id="headpopup_close1"></div>hiiiiiiiiii
+</div>
+
+<div id="headpopup2" style="display: none;">
+
+<div id="headpopup_close2"></div>We provide you with a Smart and Efficient Resume mangenmet software . This Resume management tool helps to make u a sucessful individual by helping you to land on your dream job . We provide options to Edit Resume, Modify Resume, Save Resume and Generate Resume. There are additional options to maintain Groups , Design your own template , Share Resume etc You haven't tried it yet :-)
+</div>
+
+<div id="headpopup3" style="display: none;">
+
+<div id="headpopup_close3"></div>CONTACT US<br></br>
+<img src="images/redball.gif"/>sarathlakshman@gmail.com<br>
+<img src="images/redball.gif"/>alwinmathew316@gmail.com<br>
+<img src="images/redball.gif"/>neenujacob123@gmail.com
+
+</div>
+
 </body>
 
 </html>
