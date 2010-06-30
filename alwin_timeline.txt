@@ -86,3 +86,8 @@
 * Group template management implemented using template sharing
 * Tried out few examples
 * Tested pdf compatibility
+
+27th-30th June 2010
+* Design on overall project template
+* Modification based on new project design
+* Tested new design

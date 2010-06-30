@@ -1,49 +1,34 @@
-<?php   header("Content-type: text/css");
-        include 'session.php';
-        include 'fetchdatabase.php';
-        $id=$data['template_id'];
-        $sql="SELECT * FROM templates WHERE template_key='$id'";
-        $result=mysql_query($sql);
-        $templates=mysql_fetch_array($result);
-?>
+<?php   header("Content-type: text/css");?>
         #preview_popup
         {
-                background-color: <?=$templates['background_color']?>;
-                top: 20px;
-                left: 340px;
                 width: 210mm;
-                min-height: 297mm;
-                border: 2px solid teal;
-                position: absolute;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: auto;
+                margin-right: auto;
         }
-        #resume_body
+        #design_body
 	{
-		margin: <?=$templates['margin_width']?>;
-                min-height: 271mm;
 		padding: 30px;
                 width: auto;
-                border: <?=$templates['border_width']?>px solid <?=$templates['margin_color']?>;
 	}
         #header_image
         {
                 margin-top: 0.5px;
                 margin-bottom: 0.5px;
-                <?if($templates['margin_width']<8)
-                        echo 'margin-right: '.(8-$templates['margin_width']).'mm;';
-                ?>
         }
-        #personal_info
+        #design_personal_info
         {
                 height: 200px;
         }
 
-        #profile_pic
+        #design_profile_pic
 	{
+                float: left;
                 margin-left: 15px;
                 margin-top: 15px;
 		width: 120px;
 		height: 120px;
-		font-size: 10px;
 	}
         #first_name,#last_name
         {
@@ -56,20 +41,18 @@
                 font-size: 10px;
                 font-weight: bold;
         }
-	#info
+	#design_info
 	{
                 margin-left: 200px;
-                margin-top: -130px;
-		font-family: <?=$templates['font_family']?>;
                 font-size: 12px;
 	}
-        #info table
+        #design_info table
         {
                 padding-top: 10px;
                 font-size: 12px;
                 width: 400px;
         }
-        #info td
+        #design_info td
         {
                 min-width: 150px;
                 height: 30px;
@@ -80,108 +63,36 @@
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: x-large;
         }
-        .title
+        .design_title
         {
                 width: 192px;
                 vertical-align: top;
         }
-        .data
+        .design_data
         {
                 width: 480px;
                 vertical-align: top;
         }
-        .section p
+        .design_section p
         {
                 margin-top: 5px;
                 margin-bottom: 5px;
-                font-size: <?=$templates['font_size']?>px;
-                font-family: <?=$templates['font_family']?>;
                 min-height: 100px;
                 text-align: justify;
         }
-        .section td
+        .design_section td
         {
                 height: 100px;
                 border-top: 1px dotted gray;
         }
-        #gender,#g,#dob,#d,#marital_status
+        #design_gender,#design_g,#design_dob,#design_d,#design_marital_status
         {
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
                 font-weight: bold;
         }
 
-
-
-
-        body
-	{
-                background: url('images/header_repeat.jpg') repeat-x left top;
-	}
-
-        #page
-	{
-		background-color: #e6e6e6;
-                width: 900px;
-		margin-top: 20px;
-		margin-bottom: 20px;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 10px;
-		position: relative;
-	}
-        #header
-	{
-		background: url('images/dot.gif') repeat-x left bottom;
-	}
-
-	#sideline
-	{
-		text-align: right;
-		font-size: 12px;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-
-	#sideline a
-	{
-		text-decoration: none;
-		color: #1272c1;
-	}
-	#sideline a:visited
-	{
-		text-decoration: none;
-		color: #1272c1;
-	}
-	#sideline a:hover
-	{
-		text-decoration:none;
-		font-size: 14px;
-		font-weight: bold;
-		color: #12b2e7;
-	}
-
-	#title
-	{
-		font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-		font-size: 50px;
-		padding-left: 20px;
-		padding-top: 10px;
-	}
-	#title a
-	{
-		text-decoration: none;
-		color: black;
-	}
-
-	#tagline
-	{
-		padding-left: 22px;
-		font-family: Trebuchet MS, Helvetica, sans-serif;
-		font-size: 13px;
-		padding-bottom: 5px;
-                font-style: italic;
-	}
-        #body
+        #body_design
 	{
 		margin-top:10px;
                 margin-bottom: 10px;
@@ -192,29 +103,16 @@
                 margin-left: auto;
                 margin-right: auto;
 	}
-        #popup_close
-        {
-                width: 16px;
-                height: 16px;
-                position: inherit;
-                cursor: pointer;
-                background: url('images/cancel.png');
-                right: 2px;
-                text-align: center;
-                top: 2px;
-        }
         #control
         {
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
-                margin-top: 20px;
-                margin-bottom: 20px;
         }
         #control table
         {
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
-                width: 800px;
+                width: inherit;
         }
         #change span
         {
@@ -222,7 +120,7 @@
                 font-weight: bold;
                 cursor: pointer;
         }
-        #preview
+        #design_preview
         {
                 position: absolute;
                 top: 180px;
@@ -234,7 +132,8 @@
         }
         .head
         {
-                min-width: 100px;
+                float: left;
+                width: 80px;
                 /*border: 1px solid teal;*/
                 padding-top: 5px;
                 padding-bottom: 5px;
@@ -242,8 +141,9 @@
         }
         .field
         {
+                float: right;
                 /*border: 1px solid red;*/
-                width: 300px;
+                width: 80px;
                 padding-top: 5px;
                 padding-bottom: 5px;
                 vertical-align: top;
