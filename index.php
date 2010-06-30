@@ -107,7 +107,7 @@
         }
         $(document).ready(function(){
                 if(load_page()==null)
-                        $("#rightsidebar").html('<font face="palatino, times, times new roman" size=3><a href="#"><b>Design  Template</b></a><br>You can create layouts of your resumes. This help to keep up identity. Be different and attractive.<br><br><a href="#"><b>Manage   Groups</b></a><br>Maintain groups. Admin have options to set a common template for all users.                <br><br><a href="#"><b>Create Resume</b></a><br>Its very easy to customize and update your resume to suit your needs .                <br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><br><br><br><br><br><br></font>');
+                        $("#rightsidebar").html('<div align="justify"><font face="palatino, times, times new roman" size=3><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br></font></div><img src="images/res.jpg"/> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
                 height(32);
                 $("#login_form").submit(function(){
                         var username=$("#login_username").val();
@@ -201,8 +201,13 @@
                 
         </div>
         <div id="container" align="center">
-                <div id="leftsidebar" align="left">
-                        Why to choose Resume bakery.
+                <div id="leftsidebar" align="justify">
+                        <p align="center"><b>Why to choose Resume Bakery?</b></p><br>
+                        <div align="center"><img src="images/aa.jpg"></div>
+		        <p style="color:red; text-align: center;"><br><br>Are you confused?</p><br><br>
+			<img src="images/redball.gif"/> Resume Bakery takes stress out of your job search.<br>
+                        <img src="images/redball.gif"/> It create resumes based on your current career level, background and career objectives.<br><br><br><br><br>
+                        <p align="center"><b>Be confident </b></p><div align="center"><img src="images/ss.jpeg"/><br>Find Your Dream Job<br>With a Good Resume</div>
                 </div>
                 <div id="middlesidebar" align="left">
                         <div id="heading">
@@ -213,7 +218,7 @@
                         <font face="palatino, times, times new roman" size=3>
                         This is an ultimate Resume management system that help you to create resumes as u dream,this helps you to market yourself well. It improves
                         your chances of landing on a dream job. There are only four stages for this easy resume creation:<br><br>&nbsp;&nbsp;&nbsp;
-                        <span style="color:maroon"><b>Step one : Create Resume</b></span> <hr><br><br> to put picture here after developing create 		page<br>	<br>&nbsp;&nbsp;&nbsp;&nbsp;     <b><span style="color:maroon">Step two : Generate resume </span></b><hr><br><br>picture<br><br> 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span style="color:maroon">Step three : Print or send</span></b>  <hr><br><br>picture<br><br>
+                        <span style="color:maroon"><b>Step one : Create Resume</b></span> <hr><br><br> to put picture here after developing create page<br><br>&nbsp;&nbsp;&nbsp;&nbsp;     <b><span style="color:maroon">Step two : Generate resume </span></b><hr><br><br>picture<br><br> 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span style="color:maroon">Step three : Print or send</span></b>  <hr><br><br>picture<br><br>
                         </font>
                         <hr>
                         <br><br>
