@@ -116,12 +116,15 @@
             
 	</div>
         <div id="preview_rightbar">
-            <div><span id="preview_edit" onclick='load_edit();'>Edit</span><img src="images/edit.jpg" style="vertical-align: text-bottom;"></div>
-            <div id="preview_pdf"><a href="saveaspdf">Save as PDF </a><img src="images/pdf.jpg" style="vertical-align: bottom;"></div>
-            <div id="preview_new_template" onclick='load_design("?type=new");'>Create new template</div>
-            <div class="preview_share_temp" id="preview_add_template">Add shared template</div>
+ <div id="preview_edit" onclick='load_edit();'>Edit Resume<img src="images/edit.jpg"/></div><hr>
+           
+
+	             <div id="preview_pdf"><img src="images/redball.gif"/><span style="color:red; font-size: 14px"><b> PUBLISH</b> </span><br><br>    <a href="saveaspdf">Generate PDF </a><img src="images/pdf.jpg" height="30" style="vertical-align: bottom;"><hr><br><img src="images/redball.gif"/><span style="color:red; font-size: 14px"><b>&nbsp;TEMPLATE</b> </span><br><br><img src="images/resume.jpeg"/>   </div>
+            <div id="preview_new_template" onclick='load_design("?type=new");'><a>Create new template</a></div>
+            <div class="preview_share_temp" id="preview_add_template"><img src="images/green.gif"/> Add shared template</div>
             <div class="preview_share_temp" id="preview_add_share" style="display: none;">Enter template key: <input id="preview_shared_key" type="text" size="14" maxlength="16"><button id="preview_addshare_ok">OK</button></div>
-            <div id="preview_design_resume" onclick="load_design('');" style="display: <?echo ($templates['owner']==$user)?"block":"none";?>;">Design your template</div>
+
+ <div id="preview_design_resume" onclick="load_design('');" style="display: <?echo ($templates['owner']==$user)?"block":"none";?>;">Design your template</div>
             <div class="preview_templates">Choose your template :
                 <select id="preview_user_templates">
                         <option value="default">&lt;default&gt;</option>
