@@ -37,7 +37,6 @@
                                     <tr>            <td class="head" id="head_image">Header image</td>
                                     <td class="field"> : <span id="header_upload" style="cursor: pointer;text-decoration: underline;color: maroon;">Upload</span></td>
                                                         <tr><td><p id="response" style="color: red;"></p>
-                                                        <span id="remove" class="remove" style="color: red;font-size: 11px;cursor: pointer;float: left;">- remove</span>
                                                         <span id="remove_header" class="remove" style="color: red;font-size: 11px;cursor: pointer;">- remove saved header</span>
                                                     </td>
                                     </tr>
@@ -84,8 +83,8 @@
                         
 		</div>
 	</div>
-        <div id="preview_popup" style="background-color: <?=$templates['background_color']?>;padding-top: <?=$templates['margin_width']?>;padding-bottom: <?=$templates['margin_width']?>;">
-                <div id="design_body" style="border: <?=$templates['border_width']?>px solid <?=$templates['margin_color']?>;margin-left: <?=$templates['margin_width']?>;margin-right: <?=$templates['margin_width']?>;min-height: <?$width=(int)$templates['margin_width'];$height=297-(2*$width);echo $height;?>mm">
+        <div id="preview_popup" style="background-color: <?=($param)?"#FFFFFF":$templates['background_color']?>;padding-top: <?=($param)?"8mm":$templates['margin_width']?>;padding-bottom: <?=($param)?"8mm":$templates['margin_width']?>;">
+                <div id="design_body" style="border: <?=($param)?"0":$templates['border_width']?>px solid <?=($param)?"#FFFFFF":$templates['margin_color']?>;margin-left: <?=($param)?"8mm":$templates['margin_width']?>;margin-right: <?=($param)?"8mm":$templates['margin_width']?>;min-height: <?$width=($param)?8:(int)$templates['margin_width'];$height=297-(2*$width);echo $height;?>mm">
                         <div id="image_header">
                         <?  if(file_exists("tmp/$user"."_header.jpg"))
                             {
@@ -116,7 +115,7 @@
                                 <div id="design_profile_pic" align="center">
                                         <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
                                 </div>
-                                <div id="design_info" align="left" style="font-family: <?=$templates['font_family']?>;">
+                                <div id="design_info" align="left" style="font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;">
                                         <div class="design_name">
                                                 <span id="first_name"><?echo $data['first_name']?></span>&nbsp;&nbsp;
                                                 <span id="last_name"><?echo $data['last_name']?><br></span>
@@ -143,43 +142,43 @@
                         <table>
                                 <tr class="design_section" id="summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Summary</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['summary'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['summary'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Skills</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['skills'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['skills'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Experience</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['experience'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['experience'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="studies" style="display: <?echo ($sections['studies']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Studies</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['studies'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['studies'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="interests" style="display: <?echo ($sections['interests']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Interests</h3></td>
-                                        <td class="design_data"><p><?echo $data['interests'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['interests'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="hobbies" style="display: <?echo ($sections['hobbies']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Hobbies</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['hobbies'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['hobbies'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="languages" style="display: <?echo ($sections['languages']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Languages</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['languages'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['languages'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="certificates" style="display: <?echo ($sections['certificates']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Certificates</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['certificates'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['certificates'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="publications" style="display: <?echo ($sections['publications']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Publications</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['publications'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['publications'];?></p></td>
                                 </tr>
                                 <tr class="design_section" id="awards" style="display: <?echo ($sections['awards']!="0")?"block":"none";?>;">
                                         <td class="design_title"><h3>Awards</h3></td>
-                                        <td class="design_data"><p style="font-size: <?=$templates['font_size']?>px;font-family: <?=$templates['font_family']?>;"><?echo $data['awards'];?></p></td>
+                                        <td class="design_data"><p style="font-size: <?=($param)?"12":$templates['font_size']?>px;font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;"><?echo $data['awards'];?></p></td>
                                 </tr>
                         </table>
                  </div>
