@@ -150,6 +150,10 @@ function edit_page_js()
         }
 
         $(document).ready(function(){
+                $("#user").css("display","block");
+                height(32);
+                var user=readCookie("user");
+                $("#user b").html(user);
                 $(".file_upload").hide();
                 refresh_info();
                 refresh_section();
@@ -265,6 +269,10 @@ function preview_page_js()
                 $("#preview_add_template").show();
         }
         $(document).ready(function(){
+                $("#user").css("display","block");
+                height(31);
+                var user=readCookie("user");
+                $("#user b").html(user);
                 $("#preview_user_templates").change(function(){
                         update_template('change');
                 });
@@ -283,14 +291,6 @@ function preview_page_js()
 
 function design_page_js()
 {
-//                        popup_close=preview_close
-//                        resume_body=design_body
-//                        profile_pic=design_
-//                        personal_info=design_
-//                        info=design_
-//                        section=design_section
-//                        title=design_
-//                        data=design_
         function update_template(type,value)
         {
                 $.ajax({
@@ -350,6 +350,10 @@ function design_page_js()
         $(document).ready(function(){
                 new jscolor.color(document.getElementById('margin_color'), {});
                 new jscolor.color(document.getElementById('background_color'), {});
+                $("#user").css("display","block");
+                height(32);
+                var user=readCookie("user");
+                $("#user b").html(user);
                 var def_font,def_ftsize,def_mgwidth,def_mgcolor,def_bdwidth,def_bgcolor;
                 def_font=$(".design_section p").css("font-family");
                 def_ftsize=$(".design_section p").css("font-size");
@@ -424,9 +428,9 @@ function design_page_js()
                         }
                         else
                                 $("#preview_popup").css("background-color",def_bgcolor);
-                        var user=$("#sideline b").html();
-                        if(update_template("header_image","status_temp"))
-                                $("#image_header").html('<img id="header_image" src="tmp/'+user +'_header.jpg">');
+//                        var user=$("#user b").html();
+//                        if(update_template("header_image","status_temp"))
+//                                $("#image_header").html('<img id="header_image" src="tmp/'+user +'_header.jpg">');
                 });
                 $("#save").click(function(){
                         if(page=="design?type=new")

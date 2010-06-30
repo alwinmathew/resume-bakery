@@ -29,8 +29,6 @@
                 createPageCookie(page);
                 $("#container").load("edit.php #resume_body",function(){
                         edit_page_js();
-                        $("#user").css("display","block");
-                        height(32);
                 });
                 $("#rightsidebar").load("edit.php #rightbar",function(){
                         edit_page_js();
@@ -42,8 +40,6 @@
                 createPageCookie(page);
                 $("#container").load("preview.php #preview_body",function(){
                         preview_page_js();
-                        $("#user").css("display","block");
-                        height(31);
                 });
                 $("#rightsidebar").load("preview.php #preview_rightbar",function(){
                         preview_page_js();
@@ -55,7 +51,6 @@
                 createPageCookie(page);
                 $("#container").load("design.php"+param +" #preview_popup",function(){
                         design_page_js();
-                        $("#user").css("display","block");
                 });
                 $("#rightsidebar").load("design.php"+param +" #control",function(){
                         design_page_js();
@@ -68,9 +63,9 @@
 		var expires = "; expires="+date.toGMTString();
                 document.cookie="page="+type+expires+"; path=/";
         }
-        function readPageCookie()
+        function readCookie(type)
         {
-                var nameEQ="page=";
+                var nameEQ=type+"=";
                 var ca = document.cookie.split(';');
                 for(var i=0;i<ca.length;i++)
                 {
@@ -84,7 +79,7 @@
         }
         function load_page()
         {
-                var page=readPageCookie();
+                var page=readCookie("page");
                 if(page==null)
                         return null;
                 if(page=="edit")
@@ -193,11 +188,11 @@
                         <a href="#">HELP</a>
                 </div>
                 <br>
-                <div id="user" style="float: right;color: maroon;font-size: 10px;display: none;"><span>Welcome <b style="color: blue;font-weight: bold;"></b></span><span id="logout" style="cursor: pointer;color: maroon;" onclick="logout();">Log Out</span></div>
+                <div id="user" style="float: right;color: maroon;font-size: 10px;display: none;"><span>Welcome <b style="color: blue;font-weight: bold;"></b></span>&nbsp; | &nbsp;<span id="logout" style="cursor: pointer;color: maroon;" onclick="logout();">Log Out</span></div>
                 <img src="images/abc.png"/>&nbsp;&nbsp;&nbsp;
                 <img style="vertical-align: super;" src="images/arrow.gif"/>&nbsp;&nbsp;&nbsp;&nbsp;
                 <img src="images/a.png" onmouseover="this.src='images/amouse.png';" onmouseout="this.src='images/a.png';" />
-                <br>
+                <br><br>
                 <marquee style="color: brown;">Easy and Smart Resume generator. &nbsp;&nbsp;Experience it.</marquee>
         </div>
 
