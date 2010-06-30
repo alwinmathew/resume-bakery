@@ -216,9 +216,9 @@ $("#tips").click(function(){
         <div id="tp">
                 <div id="topbar" align="center">
                         <a id="tips" title="Register as new user" onclick='$("#headpopup").show();'> TIPS FOR A GOOD RESUME</a>
- <a id="sample" title="Register as new user" onclick='$("#headpopup1").show();'> SAMPLE RESUME</a>
+ 			<a id="sample" title="Register as new user" onclick='$("#headpopup1").show();'> SAMPLE RESUME</a>
                          <a id="about" title="Register as new user" onclick='$("#headpopup2").show();'> ABOUT US </a>
- <a id="help" title="Register as new user" onclick='$("#headpopup3").show();'> HELP </a>
+			 <a id="help" title="Register as new user" onclick='$("#headpopup3").show();'> HELP </a>
                 </div>
                 <br>
                 <div id="user" style="float: right;color: maroon;font-size: 10px;display: none;"><span>Welcome <b style="color: red;font-weight: bold;font-size: 12px;"></b></span>&nbsp; | &nbsp;<span id="logout" style="cursor: pointer;color: maroon;" onclick="logout();">Log Out</span></div>
@@ -251,7 +251,7 @@ $("#tips").click(function(){
                         <div align="justify">
                         <font face="palatino, times, times new roman" size=3>
                             Resume Bakery is an ultimate resume management system that helps you to create resumes as u wish. This helps you to market yourself well. It improves your chances of landing on a dream job. There are only four stages for this easy resume creation :</div><br><br>&nbsp;&nbsp;&nbsp;
-                        <span style="color:maroon"><b>Step one : Create Resume</b></span> <hr><br><br> to put picture here after developing create page<br><br>&nbsp;&nbsp;&nbsp;&nbsp;     <b><span style="color:maroon">Step two : Generate resume </span></b><hr><br><br>picture<br><br> 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span style="color:maroon">Step three : Print or send</span></b>  <hr><br><br>picture<br><br>
+                        <span style="color:maroon"><b>Step one : Create Resume</b></span>   <hr><br><br> <img src="images/edit1.png"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;     <b><span style="color:maroon">Step two : Preview resume </span></b><hr><br><br><img src="images/design1.png"><br><br> 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span style="color:maroon">Step three : Design Template</span></b>  <hr><br><br><img src="images/preview1.png"><br><br>
                         </font>
                         <hr>
                         <br><br>
