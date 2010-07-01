@@ -132,7 +132,10 @@
                                         data: "myusername=" +username +"&mypassword=" +password,
                                         success: function(data){
                                                 if(data=="success")
+                                                {
                                                         load_edit();
+                                                        $("#head_pic").html('<img src="images/edit2.png">');
+                                                }
                                                 else
                                                         $("#error_login").html("Invalid Login! Try again.");
 
