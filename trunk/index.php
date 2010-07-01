@@ -107,7 +107,7 @@
         }
         $(document).ready(function(){
                 if(load_page()==null)
-                        $("#rightsidebar").html('<div align="justify"><font face="palatino, times, times new roman" size=3><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br></font></div><div align="center"><img src="images/res.jpg"></div> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
+                        $("#rightsidebar").html('<div align="justify"><font face="palatino, times, times new roman" size=3><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br><br><br><br><br><br><br><br></font></div><div align="center"><img src="images/res.jpg"></div> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
                 height(32);
                 $("#login_form").submit(function(){
                         var username=$("#login_username").val();
@@ -251,9 +251,18 @@ $("#tips").click(function(){
                         <div align="justify">
                         <font face="palatino, times, times new roman" size=3>
                             Resume Bakery is an ultimate resume management system that helps you to create resumes as u wish. This helps you to market yourself well. It improves your chances of landing on a dream job. There are only four stages for this easy resume creation :</div><br><br>&nbsp;&nbsp;&nbsp;
-                        <span style="color:maroon"><b>Step one : Create Resume</b></span>   <hr><br><br> <img src="images/edit1.png"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;     <b><span style="color:maroon">Step two : Preview resume </span></b><hr><br><br><img src="images/design1.png"><br><br> 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span style="color:maroon">Step three : Design Template</span></b>  <hr><br><br><img src="images/preview1.png"><br><br>
+                        <span style="color:maroon"><b>Step one : Create Resume</b></span>   <hr><br><br> <img src="images/edit1.png"> 
+		<span style="color:maroon;float: right;width: 290px;font-size: 14px;">This enables you to create resume eaisly<br><br> <img src="images/redball.gif"/>Flexiblity to add Sections <br><br>  <img src="images/redball.gif"/> Options to share Resume <br><br> <img src="images/redball.gif"/> Inline editting option <br><br> <img src="images/redball.gif"/>Eaisly upload photo</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;   
+
+  <b><span style="color:maroon">Step two : Preview resume </span></b>
+<hr><br><br><img src="images/design1.png"> 	<span style="color:maroon;float: right;width: 290px;font-size: 14px;">Provides user with smart and formal apperence <br><br> <img src="images/redball.gif"/>Generate pdf copy <br><br>  <img src="images/redball.gif"/> Flexibility to choose from shared templates <br><br> <img src="images/redball.gif"/> Edit if needed <br></span>
+
+
+
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span style="color:maroon">Step three : Design Template</span></b>  <hr><br><br><img src="images/preview1.png"><span style="color:maroon;float: right;width: 290px;font-size: 14px;">Flexibily design your template . Be diffrent .<br><br> <img src="images/redball.gif"/>User can generate or adopt resume templates <br><br>  <img src="images/redball.gif"/>Add attributes to format your resume  <br><br> <img src="images/redball.gif"/> Save and use it <br></span>
+ <hr>
                         </font>
-                        <hr>
+               
                         <br><br>
 
                         <div id="container_middle1">
