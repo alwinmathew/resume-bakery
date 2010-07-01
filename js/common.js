@@ -362,7 +362,7 @@ function design_page_js()
                 new jscolor.color(document.getElementById('margin_color'), {});
                 new jscolor.color(document.getElementById('background_color'), {});
                 $("#user").css("display","block");
-                height(32);
+                height(31);
                 var user=readCookie("user");
                 $("#user b").html(user);
                 var def_font,def_ftsize,def_mgwidth,def_mgcolor,def_bdwidth,def_bgcolor;
