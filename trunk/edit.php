@@ -214,7 +214,7 @@
             <div id="rightbar">
 
             <div id="preview" onclick="load_preview();">Preview &nbsp;&nbsp;&nbsp;<img src="images/preview.jpg"/></div>
-		<hr>
+            <hr>
             <div id="section_view">		<img src="images/redball.gif"/>
 		<span style="color:red;vertical-align: top;font-size: 14px;"> SECTIONS </span><br><br>
                 <p class="sec_views" id="sec_summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">- Summary</p>

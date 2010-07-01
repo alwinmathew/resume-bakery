@@ -226,7 +226,7 @@
                 <img style="vertical-align: super;" src="images/arrow.gif"/>&nbsp;&nbsp;&nbsp;&nbsp;
                 <img src="images/a.png" onmouseover="this.src='images/amouse.png';" onmouseout="this.src='images/a.png';" />
                 <br><br>
-                <marquee style="color: brown;">Easy and Smart Resume generator. &nbsp;&nbsp;Experience it.</marquee>
+                <marquee style="color: brown;">Easy and Smart Resume Generator. &nbsp;&nbsp;Experience it !</marquee>
         </div>
 
         
@@ -329,17 +329,17 @@
                     <img src="images/redball.gif"> Your address, contact details should be neatly presented, with date of birth, nationality and marital status also possible here.<br><br>
                     <img src="images/redball.gif"> Employers are usually more interested in activities which require you to show team commitment or personal initiative and drive.
             </div>
-            <div id="headpopup2" style="left: 370px;">
-                    hiiiiiiiiii
+            <div id="headpopup2" style="left: 300px;width: 405px;">
+                    <img src="images/sample.png">
             </div>
             <div id="headpopup3" style="text-align: justify;left: 530px;">
                     We provide you with a smart and efficient Resume Management software. This Resume management tool helps to make you a sucessfull individual by helping you land on your dream job. We provide options to Edit Resume, Modify Resume, Save Resume and Generate Resume PDF. There are additional options to maintain groups, design your own template , share resume etc. So go ahead & try it out!
             </div>
             <div id="headpopup4" style="left: 660px;width: 160px;">
                     CONTACT US<br><br>
-                    <img src="images/redball.gif"/>sarathlakshman@gmail.com<br>
-                    <img src="images/redball.gif"/>alwinmathew316@gmail.com<br>
-                    <img src="images/redball.gif"/>neenujacob123@gmail.com
+                    <img src="images/redball.gif" style="vertical-align: middle;"> sarathlakshman@gmail.com<br>
+                    <img src="images/redball.gif" style="vertical-align: middle;"> alwinmathew316@gmail.com<br>
+                    <img src="images/redball.gif" style="vertical-align: middle;"> neenujacob123@gmail.com
             </div>
     </div>
 

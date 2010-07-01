@@ -108,6 +108,7 @@
         {
                 font-family: Trebuchet MS, Helvetica, sans-serif;
                 font-size: 12px;
+                color: maroon;
         }
         #control table
         {
@@ -135,7 +136,7 @@
         {
                 float: left;
                 width: 80px;
-                /*border: 1px solid teal;*/
+                color: #330033;
                 padding-top: 5px;
                 padding-bottom: 5px;
                 vertical-align: top;
@@ -143,7 +144,6 @@
         .field
         {
                 float: right;
-                /*border: 1px solid red;*/
                 width: 80px;
                 padding-top: 5px;
                 padding-bottom: 5px;
