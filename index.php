@@ -107,7 +107,13 @@
         }
         $(document).ready(function(){
                 if(load_page()==null)
-                        $("#rightsidebar").html('<div align="justify"><font face="palatino, times, times new roman" size=3><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br></font></div><div align="center"><img src="images/res.jpg"></div> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
+                        $("#rightsidebar").html('<div align="justify"><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><br><a href="#"><b>Preview Resume</b></a><br>Preview your resume as you write it at each step. <br><br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br><br><br></div><div align="center"><img src="images/res.jpg"></div> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
+                else if(load_page()=="edit")
+                        $("#head_pic").html('<img src="images/edit2.png">');
+                else if(load_page()=="preview")
+                        $("#head_pic").html('<img src="images/preview.png">');
+                else if(load_page()=="design"||load_page()=="design?type=new")
+                        $("#head_pic").html('<img src="images/design.png">');
                 height(32);
                 $("#login_form").submit(function(){
                         var username=$("#login_username").val();
@@ -224,30 +230,30 @@
                 <div id="user" style="float: right;color: maroon;font-size: 10px;display: none;"><span>Welcome <b style="color: red;font-weight: bold;font-size: 12px;"></b></span>&nbsp; | &nbsp;<span id="logout" style="cursor: pointer;color: maroon;" onclick="logout();">Log Out</span></div>
                 <img src="images/abc.png"/>&nbsp;&nbsp;&nbsp;
                 <img style="vertical-align: super;" src="images/arrow.gif"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="images/a.png" onmouseover="this.src='images/amouse.png';" onmouseout="this.src='images/a.png';" />
+                <span id="head_pic"><img src="images/a.png" onclick='$("#page_body").fadeTo("fast",0.1);$("#popup").css("display","block");' onmouseover="this.src='images/amouse.png';" onmouseout="this.src='images/a.png';"></span>
                 <br><br>
                 <marquee style="color: brown;">Easy and Smart Resume Generator. &nbsp;&nbsp;Experience it !</marquee>
         </div>
 
         
-        <div id="rightsidebar">
+        <div id="rightsidebar" style="color: #330033;font-size: 14px;font-family: Trebuchet MS, Helvetica, sans-serif;">
                 
         </div>
         <div id="container" align="center">
-                <div id="leftsidebar" align="justify">
+                <div id="leftsidebar" align="justify" style="color: #330033;font-size: 14px;font-family: Trebuchet MS, Helvetica, sans-serif;">
                         <p align="center"><b>Why to choose Resume Bakery?</b></p><br>
                         <div align="center"><img src="images/aa.jpg"></div>
 		        <p style="color:red; text-align: center;"><br><br>Are you confused?</p><br><br>
-			<img src="images/redball.gif"/> Resume Bakery takes stress out of your job search.<br>
+			<img src="images/redball.gif"/> Resume Bakery takes stress out of your job search.<br><br>
                         <img src="images/redball.gif"/> It create resumes based on your current career level, background and career objectives.<br><br><br><br><br>
                         <p align="center"><b>Be confident </b></p><div align="center"><img src="images/ss.jpeg"/><br>Find Your Dream Job<br>With a Good Resume</div>
                 </div>
                 <div id="middlesidebar" align="left">
                         <div id="heading">
-                                <font face="palatino, times, times new roman"><b>&nbsp;Create a Professional Resume</b></font>
-                        </div><br>
-                        <span style="color:#C7A317">home >></span> <br>
-                        <img src="images/goldLine.gif"><br><br>
+                                <font face="palatino, times, times new roman"><b>Create a Professional Resume</b></font>
+                        </div>
+                        <br>
+                        
                         <font face="palatino, times, times new roman" size=3>
                         <div align="justify" style="color: #330033;">
                             Resume Bakery is an ultimate resume management system that helps you to create resumes as u wish. This helps you to market yourself well. It improves your chances of landing on a dream job. There are only three stages for this easy resume creation :
@@ -265,7 +271,7 @@
 
                         <div id="container_middle1">
                                 <font face="palatino, times, times new roman" size=3>
-                                        <b>With a good resume advertise yourself.</b>
+                                        <b>Advertise yourself with a good resume !</b>
 				</font>
                         </div>
 
@@ -279,11 +285,11 @@
                                 <div id="tab">
                                         <br><br>
                                         <table align="center">
-                                                <tr><td><span style="color:maroon"><b>Username :</b></span> </td>
-                                                <td><input name="myusername" type="text" id="login_username"></td></tr>
+                                                <tr><td><span style="color:maroon"><b>Username </b></span> </td>
+                                                <td>: <input name="myusername" type="text" id="login_username"></td></tr>
                                                 <tr/><tr/><tr/><tr/>
-                                                <tr><td><span style="color:maroon"><b>Password :</b></span> </td>
-                                                <td><input name="mypassword" type="password" id="login_password"></td></tr>
+                                                <tr><td><span style="color:maroon"><b>Password </b></span> </td>
+                                                <td>: <input name="mypassword" type="password" id="login_password"></td></tr>
                                                 <tr/><tr/><tr/><tr/><tr/><tr/>
                                         </table>
 				</div><br>
@@ -295,7 +301,7 @@
                         <div id="error_login"> </div>
                                 <div id="container_middle3">
 			
-					 Forgot password &nbsp;|&nbsp; <a id="register" title="Register as new user" onclick='$("#popup").show();'>Not yet Registered</a>
+					 Forgot password &nbsp;|&nbsp; <span id="register" title="Register as new user" style="cursor: pointer;" onclick='$("#popup").show();'>Not yet registered?</span>
 						    
 				</div>
                 </div>

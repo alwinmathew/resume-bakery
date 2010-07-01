@@ -213,7 +213,7 @@
             </div>
             <div id="rightbar">
 
-            <div id="preview" onclick="load_preview();">Preview &nbsp;&nbsp;&nbsp;<img src="images/preview.jpg"/></div>
+            <div id="preview">Preview &nbsp;&nbsp;&nbsp;<img src="images/preview.jpg"/></div>
             <hr>
             <div id="section_view">		<img src="images/redball.gif"/>
 		<span style="color:red;vertical-align: top;font-size: 14px;"> SECTIONS </span><br><br>
