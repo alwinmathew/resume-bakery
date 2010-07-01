@@ -107,7 +107,7 @@
         }
         $(document).ready(function(){
                 if(load_page()==null)
-                        $("#rightsidebar").html('<div align="justify"><font face="palatino, times, times new roman" size=3><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br><br><br><br><br><br><br><br></font></div><div align="center"><img src="images/res.jpg"></div> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
+                        $("#rightsidebar").html('<div align="justify"><font face="palatino, times, times new roman" size=3><a href="#"><b>Create Resume</b></a><br>It is very easy to customize and update your resume to suit your needs.<br><br><a href="#"><b>Design Template</b></a><br>You can create layouts of your resume. This helps to keep up identity. Be different and attractive.<br><br><a href="#"><b>Preview   Resume</b></a><br>Preview your resume as you write it at each step. <br><br><a href="#"><b>Manage Groups</b></a><br>You can easily manage groups. The owner can set a common template for all its users.<br><br><br><br><br><br><br></font></div><div align="center"><img src="images/res.jpg"></div> <span style="color:red"><br><br> CREATE YOUR RESUME </span><br><br>');
                 height(32);
                 $("#login_form").submit(function(){
                         var username=$("#login_username").val();
@@ -140,21 +140,37 @@
                         $("#popup").css("display","block");
                 });
 
-$("#tips").click(function(){
-                        $("#headpopup").css("display","block");
-                });		
-		
-		$("#sample").click(function(){
+                var body=$("body").css("width"),page=$("#page_body").css("width");
+                body=body.substring(0,body.length-2);
+                page=page.substring(0,page.length-2);
+                body=parseInt(body);
+                page=parseInt(page)-25;
+                var left=(body-page)/2;
+                $("#head_popups").css("left",left+"px");
+                $("#tips").mouseover(function(){
                         $("#headpopup1").css("display","block");
-                });		
-
-		$("#about").click(function(){
+                });
+                $("#tips").mouseout(function(){
+                        $("#headpopup1").css("display","none");
+                });
+		$("#sample").mouseover(function(){
                         $("#headpopup2").css("display","block");
-                });		
-
-		$("#help").click(function(){
+                });
+                $("#sample").mouseout(function(){
+                        $("#headpopup2").css("display","none");
+                });
+		$("#about").mouseover(function(){
                         $("#headpopup3").css("display","block");
-                });		
+                });
+                $("#about").mouseout(function(){
+                        $("#headpopup3").css("display","none");
+                });
+		$("#help").mouseover(function(){
+                        $("#headpopup4").css("display","block");
+                });
+                $("#help").mouseout(function(){
+                        $("#headpopup4").css("display","none");
+                });
                 $("#popup_close").click(function(){
                         $("#popup").css("display","none");
                         $("#signup_username").val("");
@@ -162,22 +178,6 @@ $("#tips").click(function(){
                         $("#error_signup").html("");
                         $("#page_body").fadeTo("fast",1);
                 });
-
-		  $("#headpopup_close").click(function(){
-                        $("#headpopup").css("display","none");
-                });
-		
-
-		  $("#headpopup_close1").click(function(){
-                        $("#headpopup1").css("display","none");
-                });
-  $("#headpopup_close2").click(function(){
-                        $("#headpopup2").css("display","none");
-                });
-  $("#headpopup_close3").click(function(){
-                        $("#headpopup3").css("display","none");
-                });
-
 
                 $("#signup_form").submit(function(){
                         var username=$("#signup_username").val();
@@ -215,10 +215,10 @@ $("#tips").click(function(){
     
         <div id="tp">
                 <div id="topbar" align="center">
-                        <a id="tips" title="Register as new user" onclick='$("#headpopup").show();'> TIPS FOR A GOOD RESUME</a>
- 			<a id="sample" title="Register as new user" onclick='$("#headpopup1").show();'> SAMPLE RESUME</a>
-                         <a id="about" title="Register as new user" onclick='$("#headpopup2").show();'> ABOUT US </a>
-			 <a id="help" title="Register as new user" onclick='$("#headpopup3").show();'> HELP </a>
+                        <a id="tips"> TIPS FOR A GOOD RESUME</a>
+                        <a id="sample"> SAMPLE RESUME</a>
+                        <a id="about"> ABOUT US </a>
+                        <a id="help"> HELP </a>
                 </div>
                 <br>
                 <div id="user" style="float: right;color: maroon;font-size: 10px;display: none;"><span>Welcome <b style="color: red;font-weight: bold;font-size: 12px;"></b></span>&nbsp; | &nbsp;<span id="logout" style="cursor: pointer;color: maroon;" onclick="logout();">Log Out</span></div>
@@ -248,21 +248,19 @@ $("#tips").click(function(){
                         </div><br>
                         <span style="color:#C7A317">home >></span> <br>
                         <img src="images/goldLine.gif"><br><br>
-                        <div align="justify">
                         <font face="palatino, times, times new roman" size=3>
-                            Resume Bakery is an ultimate resume management system that helps you to create resumes as u wish. This helps you to market yourself well. It improves your chances of landing on a dream job. There are only four stages for this easy resume creation :</div><br><br>&nbsp;&nbsp;&nbsp;
-                        <span style="color:maroon"><b>Step one : Create Resume</b></span>   <hr><br><br> <img src="images/edit1.png"> 
-		<span style="color:maroon;float: right;width: 290px;font-size: 14px;">This enables you to create resume eaisly<br><br> <img src="images/redball.gif"/>Flexiblity to add Sections <br><br>  <img src="images/redball.gif"/> Options to share Resume <br><br> <img src="images/redball.gif"/> Inline editting option <br><br> <img src="images/redball.gif"/>Eaisly upload photo</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;   
+                        <div align="justify" style="color: #330033;">
+                            Resume Bakery is an ultimate resume management system that helps you to create resumes as u wish. This helps you to market yourself well. It improves your chances of landing on a dream job. There are only three stages for this easy resume creation :
+                        </div><br><br>&nbsp;&nbsp;&nbsp;
+                        <span style="color:maroon"><b>Step 1 : Create Resume</b></span>   <hr><br><img src="images/edit1.png">
+                        <span style="color:maroon;float: right;width: 290px;font-size: 14px;">Create resumes easily<br><br> <img src="images/redball.gif"/> easy photo upload<br><br> <img src="images/redball.gif"/> inline editing option <br><br> <img src="images/redball.gif"/> flexiblity to add sections<br><br><img src="images/redball.gif"/> options to share resume </span><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b><span style="color:maroon">Step 2 : Preview Resume </span></b>
+                        <hr><br><img src="images/design1.png"><span style="color:maroon;float: right;width: 290px;font-size: 14px;">Give resumes a smart and formal look <br><br> <img src="images/redball.gif"/> option to generate pdf copy <br><br>  <img src="images/redball.gif"/> flexibility to choose from shared templates <br><br> <img src="images/redball.gif"/> option to edit as and when required </span><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b> <span style="color:maroon;">Step 3 : Design Template</span></b>  <hr><br><img src="images/preview1.png"><span style="color:maroon;float: right;width: 290px;font-size: 14px;">Design your template easily & be different!<br><br> <img src="images/redball.gif"/> facility to generate resume templates <br><br><img src="images/redball.gif"/> different style elements to design your resume <br><br>  <img src="images/redball.gif"/> option to share your template with friends  </span><br><br><br>
+                        <hr>
 
-  <b><span style="color:maroon">Step two : Preview resume </span></b>
-<hr><br><br><img src="images/design1.png"> 	<span style="color:maroon;float: right;width: 290px;font-size: 14px;">Provides user with smart and formal apperence <br><br> <img src="images/redball.gif"/>Generate pdf copy <br><br>  <img src="images/redball.gif"/> Flexibility to choose from shared templates <br><br> <img src="images/redball.gif"/> Edit if needed <br></span>
-
-
-
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span style="color:maroon">Step three : Design Template</span></b>  <hr><br><br><img src="images/preview1.png"><span style="color:maroon;float: right;width: 290px;font-size: 14px;">Flexibily design your template . Be diffrent .<br><br> <img src="images/redball.gif"/>User can generate or adopt resume templates <br><br>  <img src="images/redball.gif"/>Add attributes to format your resume  <br><br> <img src="images/redball.gif"/> Save and use it <br></span>
- <hr>
                         </font>
-               
+                        
                         <br><br>
 
                         <div id="container_middle1">
@@ -279,7 +277,7 @@ $("#tips").click(function(){
 
                         <form id="login_form" >
                                 <div id="tab">
-                                        <br><br><br><br>
+                                        <br><br>
                                         <table align="center">
                                                 <tr><td><span style="color:maroon"><b>Username :</b></span> </td>
                                                 <td><input name="myusername" type="text" id="login_username"></td></tr>
@@ -323,29 +321,27 @@ $("#tips").click(function(){
                     </form>
                     <p id="error_signup"></p>
                 </div>
-        </div>
-        <div id="headpopup" style="display: none;">
-
-                <div id="headpopup_close"></div>    <img src="images/redball.gif"/>Leaving out Job Objective! If you don't show a sense of direction, employers won't be interested.<br></br><img src="images/redball.gif"/>Remove everything that starts with "responsibilities included" and replace it with on-the-job accomplishments. <br></br><img src="images/redball.gif"/>Your address, contact details should be neatly presented, with date of birth, nationality and marital status also possible here.   <br></br><img src="images/redball.gif"/>Employers are usually more interested in activities which require you to show team commitment or personal initiative and drive.</div>  
-
-<div id="headpopup1" style="display: none;">
-
-<div id="headpopup_close1"></div>hiiiiiiiiii
-</div>
-
-<div id="headpopup2" style="display: none;">
-
-<div id="headpopup_close2"></div>We provide you with a Smart and Efficient Resume mangenmet software . This Resume management tool helps to make u a sucessful individual by helping you to land on your dream job . We provide options to Edit Resume, Modify Resume, Save Resume and Generate Resume. There are additional options to maintain Groups , Design your own template , Share Resume etc You haven't tried it yet :-)
-</div>
-
-<div id="headpopup3" style="display: none;">
-
-<div id="headpopup_close3"></div>CONTACT US<br></br>
-<img src="images/redball.gif"/>sarathlakshman@gmail.com<br>
-<img src="images/redball.gif"/>alwinmathew316@gmail.com<br>
-<img src="images/redball.gif"/>neenujacob123@gmail.com
-
-</div>
+    </div>
+    <div id="head_popups">
+            <div id="headpopup1" style="text-align: justify;left: 180px;">
+                    <img src="images/redball.gif"> Leaving out Job Objective! If you don't show a sense of direction, employers won't be interested.<br><br>
+                    <img src="images/redball.gif"> Remove everything that starts with "responsibilities included" and replace it with on-the-job accomplishments. <br><br>
+                    <img src="images/redball.gif"> Your address, contact details should be neatly presented, with date of birth, nationality and marital status also possible here.<br><br>
+                    <img src="images/redball.gif"> Employers are usually more interested in activities which require you to show team commitment or personal initiative and drive.
+            </div>
+            <div id="headpopup2" style="left: 370px;">
+                    hiiiiiiiiii
+            </div>
+            <div id="headpopup3" style="text-align: justify;left: 530px;">
+                    We provide you with a smart and efficient Resume Management software. This Resume management tool helps to make you a sucessfull individual by helping you land on your dream job. We provide options to Edit Resume, Modify Resume, Save Resume and Generate Resume PDF. There are additional options to maintain groups, design your own template , share resume etc. So go ahead & try it out!
+            </div>
+            <div id="headpopup4" style="left: 660px;width: 160px;">
+                    CONTACT US<br><br>
+                    <img src="images/redball.gif"/>sarathlakshman@gmail.com<br>
+                    <img src="images/redball.gif"/>alwinmathew316@gmail.com<br>
+                    <img src="images/redball.gif"/>neenujacob123@gmail.com
+            </div>
+    </div>
 
 </body>
 

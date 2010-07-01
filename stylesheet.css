@@ -263,8 +263,22 @@ html
 	color:white;
 	border-width: 0px;
 }
-
-
+#head_popups
+{
+        position: absolute;
+        top:40px;
+        width: 1000px;
+}
+#headpopup1,#headpopup2,#headpopup3,#headpopup4
+{
+        position: relative;
+        display: none;
+        background-color: #F0DFBE;
+        border:2px solid maroon;
+        font-size: 10px;
+        padding:10px;
+        width: 226px;
+}
 #popup
 {
         top: auto;
@@ -280,57 +294,7 @@ html
         height:220px;
         position: fixed;
 }
-#headpopup {
-background-color:#F0DFBE;
-border:2px solid maroon;
-left:350px;
-margin-bottom:70px;
-margin-left:2px;
-margin-right:auto;
-padding:20px 8px 8px;
-position:fixed;
-top:auto;
-width:450px;
-}
 
-
-#headpopup1 {
-background-color:#F0DFBE;
-border:2px solid maroon;
-left:350px;
-margin-bottom:70px;
-margin-left:2px;
-margin-right:auto;
-padding:20px 8px 8px;
-position:fixed;
-top:auto;
-width:450px;
-}
-
-#headpopup2 {
-background-color:#F0DFBE;
-border:2px solid maroon;
-left:350px;
-margin-bottom:70px;
-margin-left:2px;
-margin-right:auto;
-padding:20px 8px 8px;
-position:fixed;
-top:auto;
-width:450px;
-}
-#headpopup3 {
-background-color:#F0DFBE;
-border:2px solid maroon;
-left:350px;
-margin-bottom:70px;
-margin-left:2px;
-margin-right:auto;
-padding:20px 8px 8px;
-position:fixed;
-top:auto;
-width:450px;
-}
 #popup button
 {
         width: 100px;
@@ -359,53 +323,6 @@ width:450px;
         text-align:center;
         top:-15px;
 }
-#headpopup_close
-{
-        width:16px;
-        height:16px;
-        position:relative;
-        cursor:pointer;
-        background: url('images/cancel.png');
-        left:210px;
-        text-align:center;
-        top:-15px;
-}
-
-#headpopup_close1
-{
-        width:16px;
-        height:16px;
-        position:relative;
-        cursor:pointer;
-        background: url('images/cancel.png');
-        left:210px;
-        text-align:center;
-        top:-15px;
-}
-#headpopup_close2
-{
-        width:16px;
-        height:16px;
-        position:relative;
-        cursor:pointer;
-        background: url('images/cancel.png');
-        left:210px;
-        text-align:center;
-        top:-15px;
-}
-#headpopup_close3
-{
-        width:16px;
-        height:16px;
-        position:relative;
-        cursor:pointer;
-        background: url('images/cancel.png');
-        left:210px;
-        text-align:center;
-        top:-15px;
-}
-
-
 
 #error_login, #error_signup
 {

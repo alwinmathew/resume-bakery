@@ -31,7 +31,7 @@ $html.=                         '</div>
 $html.=($data['gender']!=NULL)?('<span id="gender">'.(($data['gender']=='M')?'Male':'Female').'</span>'):'';
 if(($data['gender']!=NULL)&&($data['dob']!=NULL||$data['marital_status']!=NULL))
         $html.='<span id="g">, </span>';
-$html.=($data[dob]!=NULL)?('<span id="dob">'.$data['dob'].(($data['marital_status']!=NULL)?', ':'').'</span>'):'';
+$html.=($data['dob']!=NULL)?('<span id="dob">'.$data['dob'].(($data['marital_status']!=NULL)?', ':'').'</span>'):'';
 $html.=($data['marital_status']!=NULL)?('<span id="marital_status">'.(($data['marital_status']=='S')?'Single':'Married').'</span>'):'';
 $html.='
                                                 
@@ -52,54 +52,60 @@ $html.='
 $html.=($sections['summary']=='1')?
                             '<tr class="section" id="summary">
                                 <td class="title"><h3>Summary</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['summary'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['summary'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['skills']=='1')?
                             '<tr class="section" id="skills">
                                 <td class="title"><h3>Skills</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['skills'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['skills'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['experience']=='1')?
                             '<tr class="section" id="experience">
                                 <td class="title"><h3>Experience</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['experience'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['experience'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['studies']=='1')?
                             '<tr class="section" id="studies">
                                 <td class="title"><h3>Studies</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['studies'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['studies'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['interests']=='1')?
                             '<tr class="section" id="interests">
                                 <td class="title"><h3>Interests</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['interests'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['interests'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['hobbies']=='1')?
                             '<tr class="section" id="hobbies">
                                 <td class="title"><h3>Hobbies</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['hobbies'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['hobbies'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['languages']=='1')?
                             '<tr class="section" id="languages">
                                 <td class="title"><h3>Languages</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['languages'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['languages'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['certificates']=='1')?
                             '<tr class="section" id="certificates">
                                 <td class="title"><h3>Certificates</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['certificates'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['certificates'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['publications']=='1')?
                             '<tr class="section" id="publications">
                                 <td class="title"><h3>Publications</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['publications'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['publications'].'</pre></p></td>
                             </tr>':'';
 $html.=($sections['awards']=='1')?
                             '<tr class="section" id="awards">
                                 <td class="title"><h3>Awards</h3></td>
-                                <td class="data" align="justify" style="font-family: '.$templates['font_family'].';font-size: '.$templates['font_size'].';"><p><pre>'.$data['awards'].'</pre></p></td>
+                                <td class="data" align="justify" style="font-size: '.$templates['font_size'].';"><p><pre style="font-family: '.$templates['font_family'].';">'.$data['awards'].'</pre></p></td>
                             </tr>':'';
 $html.='</table></div></div>';
+//function pre_entities($matches) {
+//	return str_replace($matches[1],htmlentities($matches[1]),$matches[0]);
+//}
+////to html entities;  assume content is in the "content" variable
+//$html = preg_replace_callback('/<pre.*   (.*?)<\/pre>/imsu',pre_entities, $html);
+
 
 include("pdf/mpdf.php");
 
