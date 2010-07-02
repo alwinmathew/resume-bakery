@@ -120,7 +120,7 @@
            
 
  <div id="preview_pdf"><img src="images/redball.gif"><span style="color:red; font-size: 14px;"><b> PUBLISH</b> </span><br><br>    <a href="saveaspdf">Generate PDF</a><img src="images/pdf.jpg" style="vertical-align: bottom;"></div><hr><div style="padding: 10px"><img src="images/redball.gif"/><span style="color:red; font-size: 14px;font-family: Trebuchet MS, Helvetica, sans-serif;"><b>&nbsp;TEMPLATE</b> </span><br><br><div align="center"><img src="images/resume.jpeg"></div></div>
-            <div id="preview_new_template"><a>Create new template</a></div>
+            <div id="preview_new_template" style="text-align: center;"><a>Create new template</a></div>
             <div class="preview_share_temp" id="preview_add_template"><img src="images/green.gif"><span style="vertical-align: top;"> Add shared template</span></div>
             <div class="preview_share_temp" id="preview_add_share" style="display: none;">Enter template key: <input id="preview_shared_key" type="text" size="14" maxlength="16"><button id="preview_addshare_ok">OK</button></div>
 
