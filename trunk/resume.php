@@ -2,8 +2,13 @@
         $user=$_GET['id'];
         if($user=='')
             header("location: .");
-        include 'fetchdatabase.php';
-        $sql="SELECT * FROM sections WHERE username='$user'";
+        include 'logininfo.php';
+        $area_of_work=$_GET['resume'];
+        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+        $result=mysql_query($sql);
+        $data=mysql_fetch_array($result);
+        
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
         $id=$user;
@@ -87,7 +92,7 @@
                                 ?>
                                 <div id="preview_personal_info" style="margin-top: <?=($templates['header_image']!="0")?60+10:"0"?>px;">
                                         <div id="preview_profile_pic" align="center">
-                                                <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
+                                                <?echo ($data['profile_pic']!="0")?("<img src='files/$user-$area_of_work.jpg'>"):'';?>
                                         </div>
                                         <div id="preview_info" align="left" style="font-family: <?=$templates['font_family']?>;">
                                                 <div class="preview_name">

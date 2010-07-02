@@ -1,9 +1,17 @@
 <?
         include 'session.php';
-        include 'fetchdatabase.php';
-        $sql="SELECT * FROM sections WHERE username='$user'";
+        include 'logininfo.php';
+        $area_of_work=$_GET['resume'];
+        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+        $result=mysql_query($sql);
+        $data=mysql_fetch_array($result);
+        
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
+        $sql="SELECT area_of_work FROM personalinfo WHERE username='$user'";
+        $result=mysql_query($sql);
+        $count=mysql_num_rows($result);
 ?>
 
 <html>
@@ -24,7 +32,7 @@
                 <div align="center">
                         <div id="personal_info">
                                 <div id="profile_pic" align="center">
-                                        <span><img src="files/<?echo ($data['profile_pic']=="0")?"default.jpg":$user.".jpg";?>"></span>
+                                        <span><img src="files/<?echo ($data['profile_pic']=="0")?"default.jpg":"$user-$area_of_work.jpg";?>"></span>
                                         <p><span id="upload" style="cursor: pointer;">+ Upload</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="remove" style="cursor: pointer;">- Remove</span></p>
                                         <p id="response" style="color: red;"></p>
                                 </div>
@@ -217,10 +225,29 @@
                     <div id="area_of_work">
                             <img src="images/redball.gif"><span style="color:red;font-size: 14px;"> AREA OF WORK </span><br><br>
                             Your current Resume is:<br><br>
-                            <div id="current_resume" style="text-align: center;font-size: 14px;color: #2b87d4;">General</div>
-                            <br><br>
-                            <div id="add_resume" style="font-weight: normal;text-align: center;"><a>Create new resume</a></div>
-                            <br><br>
+                            <div id="current_resume" style="text-align: center;font-size: 14px;color: #2b87d4;"></div>
+                            <br>
+                            <?
+                                if($count>1)
+                                {
+                                    echo
+                                        '<div id="choose_resume" align="center">Choose your resume :
+                                                <select id="select_resume">';
+                                    while($resumes=mysql_fetch_array($result))
+                                    {
+                                        echo '<option'.(($resumes['area_of_work']==$area_of_work)?' selected ':'').' value="'.$resumes['area_of_work'].'">'.$resumes['area_of_work'].'</option>';
+                                    }
+                                    echo '      </select>';
+                                    if($area_of_work!="General")
+                                        echo '<br><span id="del_resume" style="color: red;font-size: 10px;cursor: pointer;">- delete selected resume</span>';
+                                    echo '</div><br><br>';
+                                }
+                            ?>
+                            <div id="create_resume" style="font-weight: normal;text-align: center;cursor: pointer;"><a>Create new resume</a></div>
+                            <div id="add_resume" style="font-weight: normal;display: none;">Resume Name :<br>
+                                <input id="new_resume" type="text" maxlength="10" size="10">
+                                <button id="addresume_ok">OK</button>
+                            </div>
                     </div>
                     <hr>
                     <div id="section_view">		<img src="images/redball.gif"/>
@@ -255,7 +282,7 @@
 
                           <div id="share">Your Resume is <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br><br><br>
                         <img src="images/r.jpg">
-                        <a style="float: right;width: 90px;font-size: 14px;" href="resume?id=<?echo $user;?>">View your public resume</a>
+                        <a style="float: right;width: 90px;font-size: 14px;" href="resume?id=<?=$user;?>&resume=<?=$area_of_work?>">View your public resume</a>
                     </div>
             </div>
 	</div>

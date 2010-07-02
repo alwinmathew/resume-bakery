@@ -1,6 +1,10 @@
 <?php
         include 'session.php';
-        include 'fetchdatabase.php';
+        include 'logininfo.php';
+        $area_of_work=$_POST['resume'];
+        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+        $result=mysql_query($sql);
+        $data=mysql_fetch_array($result);
 
         $target_path="tmp/$user"."_header.jpg";
 

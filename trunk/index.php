@@ -23,45 +23,46 @@
                 ht+="px";
                 $("#rightsidebar").css("height",ht);
         }
-        function load_edit()
+        function load_edit(resume)
         {
                 page="edit";
-                createPageCookie(page);
-                $("#container").load("edit.php #resume_body",function(){
+                createCookie("page",page);
+                createCookie("resume",resume);
+                $("#container").load("edit.php?resume="+resume +" #resume_body",function(){
                         edit_page_js();
                 });
-                $("#rightsidebar").load("edit.php #rightbar",function(){
+                $("#rightsidebar").load("edit.php?resume="+resume +" #rightbar",function(){
                         edit_page_js();
                 });
         }
-        function load_preview()
+        function load_preview(resume)
         {
                 page="preview";
-                createPageCookie(page);
-                $("#container").load("preview.php #preview_body",function(){
+                createCookie("page",page);
+                $("#container").load("preview.php?resume="+resume +" #preview_body",function(){
                         preview_page_js();
                 });
-                $("#rightsidebar").load("preview.php #preview_rightbar",function(){
+                $("#rightsidebar").load("preview.php?resume="+resume +" #preview_rightbar",function(){
                         preview_page_js();
                 });
         }
-        function load_design(param)
+        function load_design(resume,param)
         {
                 page="design"+param;
-                createPageCookie(page);
-                $("#container").load("design.php"+param +" #preview_popup",function(){
+                createCookie("page",page);
+                $("#container").load("design.php?resume="+resume +param +" #preview_popup",function(){
                         design_page_js();
                 });
-                $("#rightsidebar").load("design.php"+param +" #control",function(){
+                $("#rightsidebar").load("design.php?resume="+resume +param +" #control",function(){
                         design_page_js();
                 });
         }
-        function createPageCookie(type)
+        function createCookie(type,val)
 	{
 		var date = new Date();
 		date.setTime(date.getTime()+(1*60*60*1000));
 		var expires = "; expires="+date.toGMTString();
-                document.cookie="page="+type+expires+"; path=/";
+                document.cookie=type+"="+val+expires+"; path=/";
         }
         function readCookie(type)
         {
@@ -79,17 +80,17 @@
         }
         function load_page()
         {
-                var page=readCookie("page");
+                var page=readCookie("page"),resume=readCookie("resume");
                 if(page==null)
                         return null;
                 if(page=="edit")
-                        load_edit();
+                        load_edit(resume);
                 else if(page=="preview")
-                        load_preview();
+                        load_preview(resume);
                 else if(page=="design")
-                        load_design("");
-                else if(page=="design?type=new")
-                        load_design("?type=new");
+                        load_design(resume,"");
+                else if(page=="design&type=new")
+                        load_design(resume,"&type=new");
                 return page;
         }
         function logout()
@@ -98,6 +99,7 @@
 		date.setTime(date.getTime()+(-1*60*60*1000));
 		var expires = "; expires="+date.toGMTString();
                 document.cookie="page="+null+expires+"; path=/";
+                document.cookie="resume="+null+expires+"; path=/";
                 $.ajax({
                         url: "logout.php",
                         success: function(){
@@ -133,7 +135,7 @@
                                         success: function(data){
                                                 if(data=="success")
                                                 {
-                                                        load_edit();
+                                                        load_edit("General");
                                                         $("#head_pic").html('<img src="images/edit2.png">');
                                                 }
                                                 else
@@ -153,7 +155,7 @@
                 body=body.substring(0,body.length-2);
                 page=page.substring(0,page.length-2);
                 body=parseInt(body);
-                page=parseInt(page)-25;
+                page=parseInt(page);
                 var left=(body-page)/2;
                 $("#head_popups").css("left",left+"px");
                 $("#tips").mouseover(function(){

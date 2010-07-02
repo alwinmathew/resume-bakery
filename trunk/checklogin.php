@@ -24,14 +24,13 @@
 
 	// Mysql_num_row is counting table row
 	$count=mysql_num_rows($result);
-	$status="error";
+        if($count==0)
+                die("error");
+        $data=mysql_fetch_array($result);
+        if(strcmp($data['username'],$myusername)!=0||strcmp($data['password'],$mypassword)!=0)
+                die("error");
 
-        // If result matched $myusername and $mypassword, table row must be 1 row
-	if($count==1)
-        {
-                setcookie("user",$myusername,time()+3600);
-                session_start();
-                $status="success";
-        }
-        die($status);
+        setcookie("user",$myusername,time()+3600);
+        session_start();
+        die("success");
 ?>
