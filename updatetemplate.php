@@ -2,10 +2,7 @@
     include 'session.php';
     include 'logininfo.php';
     
-
-    mysql_connect("$host", "$username", "$password")or die("cannot connect");
-    mysql_select_db("$db_name")or die("cannot select DB");
-
+    $area_of_work=$_POST['resume'];
     $type=$_POST['type'];
     $value=$_POST['value'];
 
@@ -18,7 +15,7 @@
             $template_key=substr($template_key,8,16);
             $sql="INSERT INTO templates (template_name,template_key,owner,users) VALUES('$value','$template_key','$user','$user')";
             $result=mysql_query($sql);
-            $sql="UPDATE personalinfo SET template_id='$template_key' WHERE username='$user'";
+            $sql="UPDATE personalinfo SET template_id='$template_key' WHERE username='$user' AND area_of_work='$area_of_work'";
             $result=mysql_query($sql);
             die;
     }
@@ -44,7 +41,7 @@
                     $sql.=$templates['border_width']."',background_color='";
                     $sql.=$templates['background_color']."' WHERE template_key='$value' AND users='$user'";
                     $result=mysql_query($sql);
-                    $sql="UPDATE personalinfo SET template_id='$value' WHERE username='$user'";
+                    $sql="UPDATE personalinfo SET template_id='$value' WHERE username='$user' AND area_of_work='$area_of_work'";
             }
             else
             {
@@ -64,14 +61,14 @@
                     $sql.=$templates['background_color']."' WHERE template_key='$template_key' AND users='$user'";
                     $result=mysql_query($sql);
                     copy("files/".$templates['template_key']."_header.jpg","files/$template_key"."_header.jpg");
-                    $sql="UPDATE personalinfo SET template_id='$template_key' WHERE username='$user'";
+                    $sql="UPDATE personalinfo SET template_id='$template_key' WHERE username='$user' AND area_of_work='$area_of_work'";
             }
             $result=mysql_query($sql);
             die("success");
     }
     if($type=="change")
     {
-            $sql="UPDATE personalinfo SET template_id='$value' WHERE username='$user'";
+            $sql="UPDATE personalinfo SET template_id='$value' WHERE username='$user' AND area_of_work='$area_of_work'";
             $result=mysql_query($sql);
             die;
     }
@@ -88,7 +85,7 @@
                     $value=mysql_fetch_array($result);
                     $value=$value['template_key'];
             }
-            $sql="UPDATE personalinfo SET template_id='$value' WHERE username='$user'";
+            $sql="UPDATE personalinfo SET template_id='$value' WHERE username='$user' AND area_of_work='$area_of_work'";
             $result=mysql_query($sql);
             die;
     }
@@ -101,7 +98,7 @@
             die;
     }
 
-    $sql="SELECT template_id FROM personalinfo WHERE username='$user'";
+    $sql="SELECT template_id FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
     $result=mysql_query($sql);
     $data=mysql_fetch_array($result);
     $id=$data['template_id'];

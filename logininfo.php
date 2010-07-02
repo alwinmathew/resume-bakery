@@ -3,4 +3,7 @@
         $username="root"; // Mysql username
         $password="niwla316"; // Mysql password
         $db_name="test"; // Database name
+
+        mysql_connect("$host", "$username", "$password")or die("cannot connect");
+	mysql_select_db("$db_name")or die("cannot select DB");
 ?>

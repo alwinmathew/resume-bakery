@@ -1,7 +1,12 @@
 <?
         include 'session.php';
-        include 'fetchdatabase.php';
-        $sql="SELECT * FROM sections WHERE username='$user'";
+        include 'logininfo.php';
+        $area_of_work=$_GET['resume'];
+        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+        $result=mysql_query($sql);
+        $data=mysql_fetch_array($result);
+        
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
         $param=($_GET['type']=="new")?TRUE:FALSE;
@@ -110,7 +115,7 @@
                                 else
                                     echo 0;?>px;">
                                 <div id="design_profile_pic" align="center">
-                                        <?echo ($data['profile_pic']!="0")?('<img src="files/'.$user.'.jpg">'):'';?>
+                                        <?echo ($data['profile_pic']!="0")?("<img src='files/$user-$area_of_work.jpg'>"):'';?>
                                 </div>
                                 <div id="design_info" align="left" style="font-family: <?=($param)?"Trebuchet MS, Helvetica, sans-serif":$templates['font_family']?>;">
                                         <div class="design_name">

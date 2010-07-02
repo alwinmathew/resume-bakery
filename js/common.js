@@ -2,10 +2,11 @@ function edit_page_js()
 {
         function update_info(type,value,fn)
         {
+                var resume=readCookie("resume");
                 $.ajax({
                         type: 'POST',
                         url: "updateinfo.php",
-                        data: "infotype=" +type +"&infovalue=" +value,
+                        data: "infotype=" +type +"&infovalue=" +value +"&resume=" +resume,
                         success: function(){
                                 $(".section div").css("display","none");
                                 $(".info_edit").css("display","none");
@@ -40,10 +41,11 @@ function edit_page_js()
 
         function update_section(type,value)
         {
+                var resume=readCookie("resume");
                 $.ajax({
                         type: 'POST',
                         url: "updatesection.php",
-                        data: "sectiontype=" +type +"&sectionvalue=" +value,
+                        data: "sectiontype=" +type +"&sectionvalue=" +value +"&resume=" +resume,
                         success: function(data){
                                 if(type=="sharing")
                                 {
@@ -150,12 +152,49 @@ function edit_page_js()
                         refresh_info();
                 });
         }
-
+        function update_resume(type)
+        {
+                var name;
+                if(type=="change")
+                {
+                        name=$("#select_resume option:selected").val();
+                        createCookie("resume",name);
+                        load_edit(name);
+                }
+                else
+                {
+                        if(type=="add")
+                            name=$("#new_resume").val();
+                        else if(type=="delete")
+                            name=$("#select_resume option:selected").val();
+                        if(name!="")
+                        {
+                                $.ajax({
+                                        type: 'POST',
+                                        url: "updateresume.php",
+                                        data: "type="+ type +"&value=" +name,
+                                        success: function(data){
+                                                if(data=="success")
+                                                {
+                                                    if(type=="delete")
+                                                        name="General";
+                                                    load_edit(name);
+                                                }
+                                        }
+                                });
+                        }
+                }
+                $("#add_resume").css("display","none");
+                $("#create_resume").show();
+        }
+        
         $(document).ready(function(){
                 $("#user").css("display","block");
                 height(32);
                 var user=readCookie("user");
                 $("#user b").html(user);
+                var resume=readCookie("resume");
+                $("#current_resume").html(resume);
                 refresh_info();
                 refresh_section();
                 var i;
@@ -175,6 +214,7 @@ function edit_page_js()
                         autoSubmit: true,
                         onSubmit : function(file,ext){
                                 //disable upload button
+                                this.setData({'resume': resume});
                                 this.disable();
                                 if (!(ext && /^(jpg|png|jpeg|gif)$/i.test(ext))){
                                         // extension is not allowed
@@ -192,7 +232,7 @@ function edit_page_js()
                 });
                 $("#remove").click(function(){
                         update_info("profile_pic","0","");
-                        load_edit();
+                        load_edit(resume);
                 });
                 $("#share span").click(function(){
                         update_section("sharing","");
@@ -234,8 +274,21 @@ function edit_page_js()
                         var section=id.substr(4);
                         update_section(section,"0");
                 });
+                $("#create_resume").click(function(){
+                        $(this).hide();
+                        $("#add_resume").css("display","block");
+                });
+                $("#addresume_ok").click(function(){
+                        update_resume('add');
+                });
+                $("#select_resume").change(function(){
+                        update_resume('change');
+                });
+                $("#del_resume").click(function(){
+                        update_resume('delete');
+                });
                 $("#preview").click(function(){
-                        load_preview();
+                        load_preview(resume);
                         $("#head_pic").html('<img src="images/preview.png">');
                 });
         });
@@ -245,28 +298,30 @@ function preview_page_js()
 {
         function update_template(type)
         {
+                var resume=readCookie("resume");
                 var id=$("#preview_user_templates option:selected").val();
                 $.ajax({
                         type: 'POST',
                         url: "updatetemplate.php",
-                        data: "type=" +type+"&value=" +id,
+                        data: "type=" +type+"&value=" +id +"&resume=" +resume,
                         success: function(){
-                                load_preview();
+                                load_preview(resume);
                         }
                 });
         }
         function add_template()
         {
+                var resume=readCookie("resume");
                 var key=$("#preview_shared_key").val();
                 if(key!="")
                 {
                         $.ajax({
                                 type: 'POST',
                                 url: "updatetemplate.php",
-                                data: "type=add_shared&value=" +key,
+                                data: "type=add_shared&value=" +key +"&resume=" +resume,
                                 success: function(data){
                                         if(data=="success")
-                                                load_preview();
+                                                load_preview(resume);
                                 }
                         });
                 }
@@ -278,19 +333,20 @@ function preview_page_js()
                 height(31);
                 var user=readCookie("user");
                 $("#user b").html(user);
+                var resume=readCookie("resume");
                 $("#preview_edit").click(function(){
-                        load_edit();
+                        load_edit(resume);
                         $("#head_pic").html('<img src="images/edit2.png">');
                 });
                 $("#preview_user_templates").change(function(){
                         update_template('change');
                 });
                 $("#preview_new_template").click(function(){
-                        load_design("?type=new");
+                        load_design(resume,"&type=new");
                         $("#head_pic").html('<img src="images/design.png">');
                 });
                 $("#preview_design_resume").click(function(){
-                        load_design("");
+                        load_design(resume,"");
                         $("#head_pic").html('<img src="images/design.png">');
                 });
                 $("#preview_share_template").click(function(){
@@ -320,13 +376,14 @@ function design_page_js()
 {
         function update_template(type,value)
         {
+                var resume=readCookie("resume");
                 $.ajax({
                         type: 'POST',
                         url: "updatetemplate.php",
-                        data: "type=" +type +"&value=" +value,
+                        data: "type=" +type +"&value=" +value +"&resume=" +resume,
                         success: function(data){
                                 if(value=="remove_temp"||value=="remove_header")
-                                        load_design("");
+                                        load_design(resume,"");
                                 if(value=="status_temp")
                                         return data;
                         }
@@ -372,7 +429,6 @@ function design_page_js()
                         update_template("background_color",bgcolor);
                 }
                 update_template("header_image","check_header");
-                load_preview();
         }
         $(document).ready(function(){
                 new jscolor.color(document.getElementById('margin_color'), {});
@@ -381,6 +437,7 @@ function design_page_js()
                 height(31);
                 var user=readCookie("user");
                 $("#user b").html(user);
+                var resume=readCookie("resume");
                 var def_font,def_ftsize,def_mgwidth,def_mgcolor,def_bdwidth,def_bgcolor;
                 def_font=$(".design_section p").css("font-family");
                 def_ftsize=$(".design_section p").css("font-size");
@@ -395,7 +452,7 @@ function design_page_js()
                         $(this).css('text-decoration','none');
                 });
                 $("#preview").click(function(){
-                        load_preview();
+                        load_preview(resume);
                         $("#head_pic").html('<img src="images/preview.png">');
                 });
                 $("#remove_header").click(function(){
@@ -461,10 +518,11 @@ function design_page_js()
 //                                $("#image_header").html('<img id="header_image" src="tmp/'+user +'_header.jpg">');
                 });
                 $("#save").click(function(){
-                        if(page=="design?type=new")
+                        if(page=="design&type=new")
                             save_template(true);
                         else if(page=="design")
                             save_template(false);
+                        load_preview(resume);
                 });
                 new AjaxUpload('header_upload', {
                         action: 'addheader.php',
@@ -472,6 +530,7 @@ function design_page_js()
                         autoSubmit: true,
                         onSubmit : function(file,ext){
                                 //disable upload button
+                                this.setData({'resume': resume});
                                 this.disable();
                                 if (!(ext && /^(jpg|png|jpeg|gif)$/i.test(ext))){
                                         // extension is not allowed
