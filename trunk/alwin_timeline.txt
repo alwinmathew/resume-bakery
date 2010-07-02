@@ -91,9 +91,3 @@
 * Design on overall project template
 * Modification based on new project design
 * Tested new design
-
-1st-2nd June 2010
-* Added multiple resume support
-* Tried out few examples
-* Tested pdf compatibility
-* Modified overall design 
