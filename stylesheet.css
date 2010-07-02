@@ -8,7 +8,7 @@ html
 	margin:auto;
         background-color:white;
 	width:1010px;
-	border: 1px solid #6495ED;
+	/*border: 1px solid #6495ED;*/
 }
 #header
 {
@@ -155,10 +155,10 @@ html
 }
 #tp
 {
-	background-image:url("images/3toneBG.gif");
+	background-image: url("images/3toneBG.gif");
 	height:205px;
 	position:relative;
-	width:1000px;
+	width:1002px;
 	color:white;
 	font-size:12px;
 	padding:4px;
@@ -450,4 +450,11 @@ html
 {
         text-decoration: underline;
         border: none;
+}
+#area_of_work
+{
+        padding: 10px;
+        font-family: Trebuchet MS, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 13px;
 }

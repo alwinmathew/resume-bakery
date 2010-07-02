@@ -212,43 +212,51 @@
 		</div>
             </div>
             <div id="rightbar">
+                    <div id="preview">Preview &nbsp;&nbsp;&nbsp;<img src="images/preview.jpg"/></div>
+                    <hr>
+                    <div id="area_of_work">
+                            <img src="images/redball.gif"><span style="color:red;font-size: 14px;"> AREA OF WORK </span><br><br>
+                            Your current Resume is:<br><br>
+                            <div id="current_resume" style="text-align: center;font-size: 14px;color: #2b87d4;">General</div>
+                            <br><br>
+                            <div id="add_resume" style="font-weight: normal;text-align: center;"><a>Create new resume</a></div>
+                            <br><br>
+                    </div>
+                    <hr>
+                    <div id="section_view">		<img src="images/redball.gif"/>
+                        <span style="color:red;vertical-align: top;font-size: 14px;"> SECTIONS </span><br><br>
+                        <p class="sec_views" id="sec_summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">- Summary</p>
+                        <p class="sec_views" id="sec_skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">- Skills</p>
+                        <p class="sec_views" id="sec_experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">- Experience</p>
+                        <p class="sec_views" id="sec_studies" style="display: <?echo ($sections['studies']!="0")?"block":"none";?>;">- Studies</p>
+                        <p class="sec_views" id="sec_interests" style="display: <?echo ($sections['interests']!="0")?"block":"none";?>;">- Interests</p>
+                        <p class="sec_views" id="sec_hobbies" style="display: <?echo ($sections['hobbies']!="0")?"block":"none";?>;">- Hobbies</p>
+                        <p class="sec_views" id="sec_languages" style="display: <?echo ($sections['languages']!="0")?"block":"none";?>;">- Languages</p>
+                        <p class="sec_views" id="sec_certificates" style="display: <?echo ($sections['certificates']!="0")?"block":"none";?>;">- Certificates</p>
+                        <p class="sec_views" id="sec_publications" style="display: <?echo ($sections['publications']!="0")?"block":"none";?>;">- Publications</p>
+                        <p class="sec_views" id="sec_awards" style="display: <?echo ($sections['awards']!="0")?"block":"none";?>;">- Awards</p>
+                        <select name="add_section">
+                            <option selected id="add_title">+ add Section</option>
+                            <option class="add_new" id="add_summary" style="display: <?echo ($sections['summary']=="0")?"block":"none";?>;">Summary</option>
+                            <option class="add_new" id="add_skills" style="display: <?echo ($sections['skills']=="0")?"block":"none";?>;">Skills</option>
+                            <option class="add_new" id="add_experience" style="display: <?echo ($sections['experience']=="0")?"block":"none";?>;">Experience</option>
+                            <option class="add_new" id="add_studies" style="display: <?echo ($sections['studies']=="0")?"block":"none";?>;">Studies</option>
+                            <option class="add_new" id="add_interests" style="display: <?echo ($sections['interests']=="0")?"block":"none";?>;">Interests</option>
+                            <option class="add_new" id="add_hobbies" style="display: <?echo ($sections['hobbies']=="0")?"block":"none";?>;">Hobbies</option>
+                            <option class="add_new" id="add_languages" style="display: <?echo ($sections['languages']=="0")?"block":"none";?>;">Languages</option>
+                            <option class="add_new" id="add_certificates" style="display: <?echo ($sections['certificates']=="0")?"block":"none";?>;">Certificates</option>
+                            <option class="add_new" id="add_publications" style="display: <?echo ($sections['publications']=="0")?"block":"none";?>;">Publications</option>
+                            <option class="add_new" id="add_awards" style="display: <?echo ($sections['awards']=="0")?"block":"none";?>;">Awards</option>
+                        </select>
+                    </div>
+                          <hr>
 
-            <div id="preview">Preview &nbsp;&nbsp;&nbsp;<img src="images/preview.jpg"/></div>
-            <hr>
-            <div id="section_view">		<img src="images/redball.gif"/>
-		<span style="color:red;vertical-align: top;font-size: 14px;"> SECTIONS </span><br><br>
-                <p class="sec_views" id="sec_summary" style="display: <?echo ($sections['summary']!="0")?"block":"none";?>;">- Summary</p>
-                <p class="sec_views" id="sec_skills" style="display: <?echo ($sections['skills']!="0")?"block":"none";?>;">- Skills</p>
-                <p class="sec_views" id="sec_experience" style="display: <?echo ($sections['experience']!="0")?"block":"none";?>;">- Experience</p>
-                <p class="sec_views" id="sec_studies" style="display: <?echo ($sections['studies']!="0")?"block":"none";?>;">- Studies</p>
-                <p class="sec_views" id="sec_interests" style="display: <?echo ($sections['interests']!="0")?"block":"none";?>;">- Interests</p>
-                <p class="sec_views" id="sec_hobbies" style="display: <?echo ($sections['hobbies']!="0")?"block":"none";?>;">- Hobbies</p>
-                <p class="sec_views" id="sec_languages" style="display: <?echo ($sections['languages']!="0")?"block":"none";?>;">- Languages</p>
-                <p class="sec_views" id="sec_certificates" style="display: <?echo ($sections['certificates']!="0")?"block":"none";?>;">- Certificates</p>
-                <p class="sec_views" id="sec_publications" style="display: <?echo ($sections['publications']!="0")?"block":"none";?>;">- Publications</p>
-                <p class="sec_views" id="sec_awards" style="display: <?echo ($sections['awards']!="0")?"block":"none";?>;">- Awards</p>
-                <select name="add_section">
-                    <option selected id="add_title">+ add Section</option>
-                    <option class="add_new" id="add_summary" style="display: <?echo ($sections['summary']=="0")?"block":"none";?>;">Summary</option>
-                    <option class="add_new" id="add_skills" style="display: <?echo ($sections['skills']=="0")?"block":"none";?>;">Skills</option>
-                    <option class="add_new" id="add_experience" style="display: <?echo ($sections['experience']=="0")?"block":"none";?>;">Experience</option>
-                    <option class="add_new" id="add_studies" style="display: <?echo ($sections['studies']=="0")?"block":"none";?>;">Studies</option>
-                    <option class="add_new" id="add_interests" style="display: <?echo ($sections['interests']=="0")?"block":"none";?>;">Interests</option>
-                    <option class="add_new" id="add_hobbies" style="display: <?echo ($sections['hobbies']=="0")?"block":"none";?>;">Hobbies</option>
-                    <option class="add_new" id="add_languages" style="display: <?echo ($sections['languages']=="0")?"block":"none";?>;">Languages</option>
-                    <option class="add_new" id="add_certificates" style="display: <?echo ($sections['certificates']=="0")?"block":"none";?>;">Certificates</option>
-                    <option class="add_new" id="add_publications" style="display: <?echo ($sections['publications']=="0")?"block":"none";?>;">Publications</option>
-                    <option class="add_new" id="add_awards" style="display: <?echo ($sections['awards']=="0")?"block":"none";?>;">Awards</option>
-                </select>
-            </div>
-		  <hr>
 
 
-
-                  <div id="share">Your Resume is <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br><br><br>
-                <img src="images/r.jpg">
-                <a style="float: right;width: 90px;font-size: 14px;" href="resume?id=<?echo $user;?>">View your public resume</a>
-            </div>
+                          <div id="share">Your Resume is <span><?echo ($sections['sharing']=='1')?"Public":"Private";?></span><br><br><br>
+                        <img src="images/r.jpg">
+                        <a style="float: right;width: 90px;font-size: 14px;" href="resume?id=<?echo $user;?>">View your public resume</a>
+                    </div>
             </div>
 	</div>
 
