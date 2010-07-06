@@ -4,7 +4,7 @@
 <style type="text/css">
     body
     {
-        background-color: #663366;
+        background-color: #ddf2da;
         width: 900px;
         margin-left: auto;
         margin-right: auto;
@@ -14,10 +14,15 @@
     {
         background-color: white;
         padding: 30px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        height: 620px;
+        width: 800px;
+        height: 250px;
         font-size: 12px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        margin: auto;
     }
     td
     {
@@ -29,6 +34,12 @@
         color: red;
         font-size: 10px;
         font-weight: bold;
+    }
+    fieldset
+    {
+        color: green;
+        padding: 20px;
+        margin: auto;
     }
 </style>
 
