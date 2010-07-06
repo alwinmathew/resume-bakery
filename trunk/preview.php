@@ -137,7 +137,6 @@
                                     echo '<option'.(($user_templates['template_key']==$id)?' selected ':'').' value="'.$user_templates['template_key'].'">'.$user_templates['template_name'].'</option>';
                             }
                         ?>
-
                 </select>
             </div>
             <?
