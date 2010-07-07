@@ -32,5 +32,44 @@
 * Tried on designing home page
 
 
-*
-27th May 2010-30th May 2010
+6th June 2010
+* Tested pdf compatibility
+
+7th-11th June 2010
+* Study on file upload
+* profile pic 
+* Tried out uploading 
+* Tested modified design tool
+
+12th-15th June 2010
+* Tried on header management features
+* Tried out examples
+
+16th-21th June 2010
+* Study on template sharing
+* Study on group management
+* Study on overall design
+
+22th-25st June 2010
+* Design on multiple templates 
+* General idea on database
+* Tested pdf compatibility
+* Tested overall working
+
+27th-30th June 2010
+* Tested for error
+* Modification based on new project design
+
+1th-4th July 2010
+* Tried out multiple resume support
+* Took screen shots of each features of the project
+* Modified overall design
+* checked for errors
+
+5th-6th July 2010
+* Checked for errors 
+* Generated resumes
+
+7th July 2010
+* Flow diagram
+
