@@ -8,12 +8,12 @@
     
     $type=$_POST['sectiontype'];
     $value=$_POST['sectionvalue'];
-    if($type=="sharing")
+    if($type=="sharing")        //changes sharing status
     {
             $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
             $result=mysql_query($sql);
             $sections=mysql_fetch_array($result);
-            if($sections['sharing']=='1')
+            if($sections['sharing']=='1')       //toggles between private & public status
                 $value='0';
             else
                 $value='1';

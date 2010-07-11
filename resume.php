@@ -3,25 +3,27 @@
         if($user=='')
             header("location: .");
         include 'logininfo.php';
-        $area_of_work=$_GET['resume'];
-        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+        $area_of_work=$_GET['resume'];  //gets correct resume as area_of_work
+        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";  //fetches user info from DB
         $result=mysql_query($sql);
         $data=mysql_fetch_array($result);
         
-        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";  //fetches user's sections' status from DB
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
         $id=$user;
-        if($sections['sharing']!='1')
+        if($sections['sharing']!='1')       //checks if the resume is set to private
         {
-                include 'session.php';
-                if($id!=$user)
-                {
+                include 'session.php';      
+                if($id!=$user)              
+                {       //if yes, checks whether a user session is active
+                        //if so, displays the resume page of the active user
+                        //else the user is redirected to homepage
                         header("location: resume?id=$user");
                 }
         }
         $id=$data['template_id'];
-        $sql="SELECT * FROM templates WHERE template_key='$id'";
+        $sql="SELECT * FROM templates WHERE template_key='$id'";    //fetches template info from DB
         $result=mysql_query($sql);
         $templates=mysql_fetch_array($result);
         $width=(int)$templates['margin_width'];

@@ -6,12 +6,12 @@
     $type=$_POST['type'];
     $value=$_POST['value'];
 
-    if($type=="new")
+    if($type=="new")        //to create new template
     {
             if($value=="")
                     $value=$user." template";
             $template_key="$user-$value".rand();
-            $template_key=md5($template_key);
+            $template_key=md5($template_key);       //generates template key using md5 of owner, template name & a random no..
             $template_key=substr($template_key,8,16);
             $sql="INSERT INTO templates (template_name,template_key,owner,users) VALUES('$value','$template_key','$user','$user')";
             $result=mysql_query($sql);
@@ -19,14 +19,14 @@
             $result=mysql_query($sql);
             die;
     }
-    if($type=="add_shared")
+    if($type=="add_shared") //to add a template shared by a friend or group member
     {
             $sql="SELECT * FROM templates WHERE template_key='$value'";
             $result=mysql_query($sql);
             if(mysql_num_rows($result)==0)
                     die("error");
             $templates=mysql_fetch_array($result);
-            if($templates['read_only']=="1")
+            if($templates['read_only']=="1")    //case 1: read-only; if so, creates a new record wit same features and user field set to current user
             {
                     $sql="INSERT INTO templates (template_key,users) VALUES('$value','$user')";
                     $result=mysql_query($sql);
@@ -43,7 +43,7 @@
                     $result=mysql_query($sql);
                     $sql="UPDATE personalinfo SET template_id='$value' WHERE username='$user' AND area_of_work='$area_of_work'";
             }
-            else
+            else        //case 2: read-write; creates a new record wit same features and owner field set to current user
             {
                     $value=$templates['template_name'];
                     $template_key="$user-$value".rand();
@@ -66,13 +66,13 @@
             $result=mysql_query($sql);
             die("success");
     }
-    if($type=="change")
+    if($type=="change")     //to change template
     {
             $sql="UPDATE personalinfo SET template_id='$value' WHERE username='$user' AND area_of_work='$area_of_work'";
             $result=mysql_query($sql);
             die;
     }
-    if($type=="remove")
+    if($type=="remove")     //to remove template
     {
             $sql="DELETE FROM templates WHERE template_key='$value' AND users='$user'";
             $result=mysql_query($sql);
@@ -90,9 +90,9 @@
             die;
     }
 
-    if($value=="status_temp")
+    if($value=="status_temp")       //returns whether the temporary header image exists or not
             die(file_exists("tmp/$user"."_header.jpg"));
-    if($value=="remove_temp")
+    if($value=="remove_temp")   //removes temporary header image
     {
             unlink("tmp/$user"."_header.jpg");
             die;
@@ -103,12 +103,12 @@
     $data=mysql_fetch_array($result);
     $id=$data['template_id'];
 
-    if($value=="remove_header")
+    if($value=="remove_header")     //removes header image of template
     {
             unlink("files/$id"."_header.jpg");
             $value="0";
     }
-    else if($value=="check_header")
+    else if($value=="check_header") //saves temporary header image as permanent
     {
             if(file_exists("tmp/$user"."_header.jpg"))
             {

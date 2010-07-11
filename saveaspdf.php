@@ -3,22 +3,22 @@
 
     include 'session.php';
     include 'logininfo.php';
-    $area_of_work=$_GET['resume'];
-    $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+    $area_of_work=$_GET['resume'];  //gets correct resume as area_of_work
+    $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";  //fetches user info from DB
     $result=mysql_query($sql);
     $data=mysql_fetch_array($result);
 
-    $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
+    $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'"; //fetches user's sections' status from DB
     $result=mysql_query($sql);
     $sections=mysql_fetch_array($result);
     $id=$data['template_id'];
-    $sql="SELECT * FROM templates WHERE template_key='$id'";
+    $sql="SELECT * FROM templates WHERE template_key='$id'";    //fetches template info from DB
     $result=mysql_query($sql);
     $templates=mysql_fetch_array($result);
 
     $width=(int)$templates['margin_width'];
     $height=297-(2*$width);
-    $pic="files/$user-$area_of_work.jpg";
+    $pic="files/$user-$area_of_work.jpg";       //path to profile pic
 
     $header_pos=($templates['margin_width']<8)?'style="margin-right: '.(8-$templates['margin_width']).'mm;"':'';
 
@@ -112,7 +112,7 @@
     //$html = preg_replace_callback('/<pre.*   (.*?)<\/pre>/imsu',pre_entities, $html);
 
 
-    include("pdf/mpdf.php");
+    include("pdf/mpdf.php");            //mpdf library is used to generate the corresponding pdf file
 
     $mpdf=new mPDF('win-1252','A4',0,'',0,0,0,0,0,0);
 
@@ -121,7 +121,7 @@
     $mpdf->SetDisplayMode('fullpage','single');
 
     // LOAD a stylesheet
-    $stylesheet = file_get_contents('pdfstyle.css');
+    $stylesheet = file_get_contents('pdfstyle.css');    //stylesheet of the html to be converted to pdf
 
     $mpdf->WriteHTML($stylesheet,1);	// The parameter 1 tells that this is css/style only and no body/html/text
 

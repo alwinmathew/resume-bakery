@@ -1,15 +1,15 @@
 <?
         include 'session.php';
         include 'logininfo.php';
-        $area_of_work=$_GET['resume'];
-        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+        $area_of_work=$_GET['resume'];      //gets correct resume as area_of_work
+        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";  //fetches user info from DB
         $result=mysql_query($sql);
         $data=mysql_fetch_array($result);
         
-        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";      //fetches user's sections' status from DB
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
-        $sql="SELECT area_of_work FROM personalinfo WHERE username='$user'";
+        $sql="SELECT area_of_work FROM personalinfo WHERE username='$user'";        //fetches all resumes of the user (in case of multiple resumes)
         $result=mysql_query($sql);
         $count=mysql_num_rows($result);
 ?>
