@@ -25,7 +25,7 @@
 
 	// Mysql_num_row is counting table row
 	$count=mysql_num_rows($result);
-	// If result matched $myusername and $mypassword, table row must be 1 row
+	// If result matched $myusername, table row must be greater than 0
         if($count==0)
         {
             $sql="INSERT INTO $user_tbl VALUES('$myusername','$mypassword')";
@@ -36,5 +36,5 @@
             $result=mysql_query($sql);
             die("success");
         }
-        die("error");
+        die("error");   //username already exists
 ?>

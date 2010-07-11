@@ -2,16 +2,16 @@
         include 'session.php';
         include 'logininfo.php';
         $area_of_work=$_GET['resume'];
-        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";      //fetches user info from DB
         $result=mysql_query($sql);
         $data=mysql_fetch_array($result);
         
-        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";      //fetches user's sections' status from DB
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
-        $param=($_GET['type']=="new")?TRUE:FALSE;
+        $param=($_GET['type']=="new")?TRUE:FALSE;       //to identify whether user is creating a new template or modifying an existing one
         $id=$data['template_id'];
-        $sql="SELECT * FROM templates WHERE template_key='$id'";
+        $sql="SELECT * FROM templates WHERE template_key='$id'";    //fetches template info from DB
         $result=mysql_query($sql);
         $templates=mysql_fetch_array($result);
 ?>

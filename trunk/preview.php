@@ -1,23 +1,23 @@
 <?php
         include 'session.php';
         include 'logininfo.php';
-        $area_of_work=$_GET['resume'];
-        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";
+        $area_of_work=$_GET['resume'];      //gets the correct resume as area_of_work
+        $sql="SELECT * FROM personalinfo WHERE username='$user' AND area_of_work='$area_of_work'";  //fetches user info from DB
         $result=mysql_query($sql);
         $data=mysql_fetch_array($result);
 
-        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'";
+        $sql="SELECT * FROM sections WHERE username='$user' AND area_of_work='$area_of_work'"; //fetches user's sections' status from DB
         $result=mysql_query($sql);
         $sections=mysql_fetch_array($result);
         $id=$data['template_id'];
-        $sql="SELECT * FROM templates WHERE template_key='$id'";
+        $sql="SELECT * FROM templates WHERE template_key='$id'";    //fetches template info from DB
         $result=mysql_query($sql);
         $templates=mysql_fetch_array($result);
         if(file_exists("tmp/$user"."_header.jpg"))
-                unlink("tmp/$user"."_header.jpg");
+                unlink("tmp/$user"."_header.jpg");      //deletes temporary header images if any
         $width=(int)$templates['margin_width'];
         $height=297-(2*$width);
-        $sql="SELECT template_name,template_key FROM templates WHERE users='$user'";
+        $sql="SELECT template_name,template_key FROM templates WHERE users='$user'";    //fetches all templates possessed by the user from DB
         $result=mysql_query($sql);
         
 ?>
@@ -137,6 +137,7 @@
                                     echo '<option'.(($user_templates['template_key']==$id)?' selected ':'').' value="'.$user_templates['template_key'].'">'.$user_templates['template_name'].'</option>';
                             }
                         ?>
+
                 </select>
             </div>
             <?

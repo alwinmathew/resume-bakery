@@ -23,6 +23,7 @@
 	$result=mysql_query($sql);
 
 	// Mysql_num_row is counting table row
+        //count must be 1
 	$count=mysql_num_rows($result);
         if($count==0)
                 die("error");
@@ -30,7 +31,7 @@
         if(strcmp($data['username'],$myusername)!=0||strcmp($data['password'],$mypassword)!=0)
                 die("error");
 
-        setcookie("user",$myusername,time()+3600);
+        setcookie("user",$myusername,time()+3600);      //starts user session
         session_start();
         die("success");
 ?>

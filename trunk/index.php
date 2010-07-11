@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/jscolor/jscolor.js"></script>
 <script type="text/javascript">
         var page;
-        function height(diff)
+        function height(diff)       //to adjust height of sidebars according to content in container
         {
                 var ht=$("#container").css("height");
                 ht=ht.substring(0,ht.length-2);
@@ -23,7 +23,7 @@
                 ht+="px";
                 $("#rightsidebar").css("height",ht);
         }
-        function load_edit(resume)
+        function load_edit(resume)      //to load edit page dynamically
         {
                 page="edit";
                 createCookie("page",page);
@@ -35,7 +35,7 @@
                         edit_page_js();
                 });
         }
-        function load_preview(resume)
+        function load_preview(resume)   //to load preview page dynamically
         {
                 page="preview";
                 createCookie("page",page);
@@ -46,7 +46,7 @@
                         preview_page_js();
                 });
         }
-        function load_design(resume,param)
+        function load_design(resume,param)  //to load design page dynamically
         {
                 page="design"+param;
                 createCookie("page",page);
@@ -57,14 +57,14 @@
                         design_page_js();
                 });
         }
-        function createCookie(type,val)
+        function createCookie(type,val)     //to create cookies for identifying current resume in use & also the current page (in case of reload)
 	{
 		var date = new Date();
 		date.setTime(date.getTime()+(1*60*60*1000));
 		var expires = "; expires="+date.toGMTString();
                 document.cookie=type+"="+val+expires+"; path=/";
         }
-        function readCookie(type)
+        function readCookie(type)       //to read cookie value
         {
                 var nameEQ=type+"=";
                 var ca = document.cookie.split(';');
@@ -78,7 +78,7 @@
                 }
                 return null;
         }
-        function load_page()
+        function load_page()    //to load the correct page & resume based on cookie value
         {
                 var page=readCookie("page"),resume=readCookie("resume");
                 if(page==null)
@@ -93,7 +93,7 @@
                         load_design(resume,"&type=new");
                 return page;
         }
-        function logout()
+        function logout()   //logouts user
         {
                 var date = new Date();
 		date.setTime(date.getTime()+(-1*60*60*1000));
@@ -116,7 +116,7 @@
                         $("#head_pic").html('<img src="images/preview.png">');
                 else if(load_page()=="design"||load_page()=="design?type=new")
                         $("#head_pic").html('<img src="images/design.png">');
-                height(32);
+                height(32);         //adjusts the height of sidebars..
                 $("#login_form").submit(function(){
                         var username=$("#login_username").val();
                         var password=$("#login_password").val();
@@ -135,7 +135,7 @@
                                         success: function(data){
                                                 if(data=="success")
                                                 {
-                                                        load_edit("General");
+                                                        load_edit("General");       //sets area_of_work as "General" (default)
                                                         $("#head_pic").html('<img src="images/edit2.png">');
                                                 }
                                                 else
@@ -157,7 +157,7 @@
                 body=parseInt(body);
                 page=parseInt(page);
                 var left=(body-page)/2;
-                $("#head_popups").css("left",left+"px");
+                $("#head_popups").css("left",left+"px");        //positions the header popups according to different screen resolutions
                 $("#tips").mouseover(function(){
                         $("#headpopup1").css("display","block");
                 });
