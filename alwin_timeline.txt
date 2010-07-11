@@ -92,11 +92,15 @@
 * Modification based on new project design
 * Tested new design
 
-1st-2nd June 2010
+1st-2nd July 2010
 * Added multiple resume support
 * Tried out few examples
 * Tested pdf compatibility
 * Modified overall design
 
-6th June 2010
+6th July 2010
 * Added admin info page
+
+9th-11th July 2010
+* Prepared Functional design diagram
+* Added comments in code
