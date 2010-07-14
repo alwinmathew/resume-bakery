@@ -43,7 +43,7 @@
     }
 </style>
 
-<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="install/js/jquery.js"></script>
 <script type="text/javascript">
         $(document).ready(function(){
                 $("#submit").click(function(){
